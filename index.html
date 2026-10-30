@@ -227,6 +227,12 @@ body.racing #touch,body.racing .touchControl{
 @media(max-width:740px){#menu .brand.japaneseBrand{font-size:clamp(25px,7.4vw,36px)}.siteVersionTag{display:none}}
 @media(max-width:390px){#menu .brand.japaneseBrand{font-size:clamp(23px,7.1vw,29px)}#topBar .logoSmall{font-size:10px}}
 </style>
+<style id="tns-offroad-recovery-css">
+.touchRecover{position:absolute;left:54%;bottom:19px;transform:translateX(-50%);width:86px;height:43px;border:1px solid #dcb87a99;border-radius:11px;background:#0b1a2ddc;color:#fff1d9;font-size:10px;font-weight:900;white-space:nowrap;letter-spacing:-.03em;pointer-events:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none;z-index:13;display:none;box-shadow:0 3px 18px #03070c77}
+@media(pointer:coarse){body.racing #touchRecover{display:block}}
+@media(pointer:coarse) and (orientation:landscape) and (max-height:510px){body.racing #touchRecover{bottom:10px;left:52%;height:41px;width:84px}}
+@media(pointer:coarse) and (max-width:370px){body.racing #touchRecover{left:58%;width:78px}}
+</style>
 <style id="tns-touge-v6">
 /* Head-to-head touge driving, analog steering and true 3D mountain road. */
 #skyline{z-index:0}#road3d{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;pointer-events:none}#gl{z-index:2;pointer-events:none}#cars3d{z-index:3}#effects{z-index:4}#vignette{z-index:5}#grain{z-index:6}
@@ -319,7 +325,7 @@ body.racing #touchDrift:before{content:''}body.racing #touchDrift{font-size:11px
  <label>エンジン音量<input id="engineVolume" type="range" min="0" max="100" value="82"></label>
  <label>ステアリング感度<input id="steerSensitivity" type="range" min="45" max="170" value="100"></label>
  </div><p class="driveHint">【本格ドリフト】ブレーキングで前荷重 → 進入・ステア → アクセルオフ/サイドブレーキ/フェイントでリアのグリップを崩し、アクセルとカウンターステアで維持。MTではクラッチとギアも操作できます。</p></div>
- <div class="menuBottom"><div class="sectionTitle">05 / START YOUR RUN <span id="levelBadge" class="levelChip">LV.1</span></div><button class="primary" id="startBtn">RACE START　▶</button><div class="keyHint">操作：<span class="kbd">W</span> 加速　<span class="kbd">S</span> ブレーキ　<span class="kbd">A</span><span class="kbd">D</span> ステア　<span class="kbd">SPACE</span> サイドブレーキ　<span class="kbd">Q</span><span class="kbd">E</span> シフト　<span class="kbd">Ctrl</span> クラッチ　<span class="kbd">SHIFT</span> ニトロ</div><div class="menuFooter">※非公式の自主制作ゲームです。車種名・数値は参考表現です。3D車両は実車の特徴を参考にした独自生成メッシュです。標準コースは創作地形。GPX取込時は座標・標高のみを利用し、実際の沿道建物や路面を再現するものではありません。</div></div>
+ <div class="menuBottom"><div class="sectionTitle">05 / START YOUR RUN <span id="levelBadge" class="levelChip">LV.1</span></div><button class="primary" id="startBtn">RACE START　▶</button><div class="keyHint">操作：<span class="kbd">W</span> 加速　<span class="kbd">S</span> ブレーキ　<span class="kbd">A</span><span class="kbd">D</span> ステア　<span class="kbd">SPACE</span> サイドブレーキ　<span class="kbd">Q</span><span class="kbd">E</span> シフト　<span class="kbd">Ctrl</span> クラッチ　<span class="kbd">SHIFT</span> ニトロ</div><div class="menuFooter">※場外では路肩で減速・ガードレール接触。PCのRキー、スマホの「コース復帰」で復帰できます（+3秒）。非公式の自主制作ゲームです。車種名・数値は参考表現です。3D車両は実車の特徴を参考にした独自生成メッシュです。標準コースは創作地形。GPX取込時は座標・標高のみを利用し、実際の沿道建物や路面を再現するものではありません。</div></div>
 </div>
 <div id="hud" class="hidden">
  <div id="raceTop"><div class="rLabel"><span id="hudTrack">榛名山</span> <span style="color:#ffb46d">//</span> <span id="hudMode">DOWNHILL BATTLE</span></div><div class="progressTrack"><div class="progressFill" id="progressFill"></div></div><div class="progressDetail"><span id="raceDistance">0 / 3.2 KM</span><span id="raceClock">00:00.000</span></div></div>
@@ -333,7 +339,7 @@ body.racing #touchDrift:before{content:''}body.racing #touchDrift{font-size:11px
  <div id="miniMapWrap"><canvas id="miniMap" width="344" height="330"></canvas><div class="mapTitle">◈ MOUNTAIN RADAR</div></div>
  <div id="centerMessage"></div><div id="coachAdvice" aria-live="off">ラインを読み、滑らかなステアで荷重を作る</div>
  <div id="gameToolbar"><button class="iconBtn" id="transmissionSwitch" title="AT / MT 切替">AT</button><button class="iconBtn" id="drivePreset" title="アシスト切替">SPORT</button><span class="hudCoins">🪙 <b id="hudWallet">0 C</b></span><button class="iconBtn" id="cameraBtn" title="カメラ変更 (C)">CAM</button><button class="iconBtn" id="soundBtn" title="音声切替 (M)">♪</button><button class="iconBtn" id="pauseBtn" title="ポーズ (ESC)">Ⅱ</button></div>
- <div id="touch" class="hidden"><div id="steeringPad" role="slider" aria-label="アナログステアリング" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="0"><div id="wheelFace"><span></span></div></div><button class="touchControl" id="touchLeft" data-input="left">◀</button><button class="touchControl" id="touchRight" data-input="right">▶</button><button class="touchControl" id="touchBrake" data-input="brake">BRAKE</button><button class="touchControl" id="touchGas" data-input="gas">GAS</button><button class="touchControl" id="touchDrift" data-input="drift">H-BRAKE</button><button class="touchControl" id="touchNitro" data-input="nitro">NITRO</button><button class="touchControl" id="touchClutch">CLUTCH</button><button class="touchControl" id="shiftDown">GEAR −</button><button class="touchControl" id="shiftUp">GEAR ＋</button></div>
+ <div id="touch" class="hidden"><div id="steeringPad" role="slider" aria-label="アナログステアリング" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="0"><div id="wheelFace"><span></span></div></div><button class="touchControl" id="touchLeft" data-input="left">◀</button><button class="touchControl" id="touchRight" data-input="right">▶</button><button class="touchControl" id="touchBrake" data-input="brake">BRAKE</button><button class="touchControl" id="touchGas" data-input="gas">GAS</button><button class="touchControl" id="touchDrift" data-input="drift">H-BRAKE</button><button class="touchControl" id="touchNitro" data-input="nitro">NITRO</button><button class="touchControl" id="touchClutch">CLUTCH</button><button class="touchControl" id="shiftDown">GEAR −</button><button class="touchControl" id="shiftUp">GEAR ＋</button><button class="touchRecover" id="touchRecover" type="button" title="コースに復帰（+3秒）">↶ コース復帰</button></div>
 </div>
 <div id="notification"></div>
 <div id="garageModal" class="modalCover hidden"><div class="modal panel"><div class="modalHdr"><div><div class="eyebrow">THE WORLD'S GARAGE</div><h2>CHOOSE YOUR MACHINE</h2></div><button class="close" data-close="garageModal">×</button></div><div class="garageWallet"><span>🪙 <b id="carWallet">92,000 C</b></span><button data-open-shop="cars">🚗 車両を購入</button><button data-open-shop="tuning">⚙ チューニング</button><button data-open-shop="custom">🎨 カスタム</button></div><div class="garageControls"><input type="search" id="carSearch" placeholder="メーカー・モデル検索（AE86, Ferrari, Porsche...）"><select id="brandFilter"><option value="all">全メーカー</option></select><select id="carSort"><option value="default">デフォルト</option><option value="power">馬力順</option><option value="handling">ハンドリング順</option><option value="top">最高速度順</option></select></div><div class="garageCount" id="garageCount"></div><div class="garageLayout"><div class="garageGrid" id="garageGrid"></div><div class="garageDetail" id="garageDetail"></div></div></div></div>
@@ -2243,7 +2249,14 @@ function tune(c){return tunedStats(c)}
 function notify(msg,time=2800){$('notification').textContent=msg;$('notification').classList.add('on');clearTimeout(notifyTimer);notifyTimer=setTimeout(()=>$('notification').classList.remove('on'),time)}
 function formatTime(t){if(!isFinite(t))return '--:--.---';return (Math.floor(t/60)+'').padStart(2,'0')+':'+(Math.floor(t%60)+'').padStart(2,'0')+'.'+(Math.floor(t*1000)%1000+'').padStart(3,'0')}
 function setWeather(kind){weather=kind;const st=$('stage');st.style.background=weather==='day'?'#8cc0ce':weather==='dusk'?'#2e2c41':'#0a101e';}
-function resetPlayer(){racePeakKph=0;player={s:0,lane:0,speed:0,heading:0,slip:0,slipAngle:0,yawError:0,yawRate:0,steer:0,frontLoad:.51,prevGas:0,prevClutch:0,nitro:100,rpm:.14,rpmValue:900,maxRPM:7800,gear:1,shiftCooldown:0,shiftFlash:0,boost:false};driveInputs.steer=0;driveInputs.analog=false;driveInputs.clutch=false;technique='neutral';techTimer=0;loadGhost();raceTime=0;finishTime=0;countdown=3.6;driftScore=0;combo=0;driftLast=0;remote.finished=false;}
+function resetPlayer(){racePeakKph=0;player={s:0,lane:0,speed:0,heading:0,slip:0,slipAngle:0,yawError:0,yawRate:0,steer:0,frontLoad:.51,prevGas:0,prevClutch:0,nitro:100,rpm:.14,rpmValue:900,maxRPM:7800,gear:1,shiftCooldown:0,shiftFlash:0,railCooldown:0,boost:false};driveInputs.steer=0;driveInputs.analog=false;driveInputs.clutch=false;technique='neutral';techTimer=0;loadGhost();raceTime=0;finishTime=0;countdown=3.6;driftScore=0;combo=0;driftLast=0;remote.finished=false;}
+function recoverToRoad(){
+ if(!started||racePhase!=='race'||paused)return;
+ if(Math.abs(player.lane)<course.roadWidth*.5-.25&&player.speed>3){notify('道路上では復帰操作は不要です',1200);return}
+ player.lane=0;player.yawError=0;player.yawRate=0;player.slipAngle=0;player.slip=0;
+ player.speed=Math.min(player.speed*.45,5.0);player.railCooldown=1.0;
+ raceTime+=3;notify('コースへ復帰（タイムペナルティ +3秒）',2000);
+}
 function startRace(fromHost=false,data=null){if(mode==='online'&&course.imported){notify('GPXコースのオンライン共有は非対応です。標準コースを選択してください。',3600);return}if(!ownsCar(selected)){openShop('cars');notify('この車は未購入です。ショップで購入してください');return}if(mode==='online'&&!fromHost&&online.role==='guest'){notify('ゲストはホストのレース開始を待ちます');return}if(mode==='online'&&!online.connected){openModal('onlineModal');notify('対戦相手と先に接続してください');return}if(data){mode='online';makeCourse(clamp(data.course|0,0,courses.length-1));setWeather(['dusk','day','night','rain'].includes(data.weather)?data.weather:'dusk');$('trackSelect').value=courseIndex;$('weatherSelect').value=weather;}else{makeCourse(+$('trackSelect').value);setWeather($('weatherSelect').value);}resetPlayer();racePeakKph=0;const qty=mode==='battle'?1:mode==='traffic'?5:0;bots=[];for(let i=0;i<qty;i++){const id=mode==='battle'?13:[12,21,33,49,85][i]%CARS.length;bots.push({car:id,s:clamp(14+i*8,0,course.length),lane:((i%3)-1)*2.2,speed:12+i*1.8,finish:0,seed:i+1})}
 if(mode==='online'&&!fromHost)sendRTC({type:'start',course:courseIndex,weather,car:selected});
 for(const el of ['menu','garageModal','onlineModal','resultModal','pauseModal'])$(el).classList.add('hidden');$('hud').classList.remove('hidden');
@@ -2351,8 +2364,14 @@ function updateDrivingModel(dt){
  let throttle=gas*spec.accel*rpmBand*shiftCut*(clutch?.11:1)*Math.pow(Math.max(.10,1-kph/(spec.roadMax*1.24)),.67);
  if(v<4&&gas&&!clutch)throttle*=1.0;
  const grade=(sample(player.s+5).e-sample(Math.max(0,player.s-5)).e)/10;
- let longitudinal=throttle+(boost?spec.boost*.81:0)-brake*spec.brake*.61*wet-(.26+v*.011+v*v*.0019)-(Math.abs(player.lane)>course.roadWidth*.5-.7?5.2:0)-9.81*grade;
+ // Shoulder = gravel/grass: more drag and less grip at speed, but never an immovable speed trap.
+ const roadHalf=course.roadWidth*.5;
+ const shoulderDist=Math.max(0,Math.abs(player.lane)-(roadHalf-.25));
+ const vergeDrag=shoulderDist>0?(0.35+Math.min(shoulderDist,1.6)*1.10)*clamp(v/4,0,1):0;
+ let longitudinal=throttle+(boost?spec.boost*.81:0)-brake*spec.brake*.61*wet-(.26+v*.011+v*v*.0019)-vergeDrag-9.81*grade;
  if(hb)longitudinal-=Math.min(v,4.5)*.54;
+ // A stopped driver must be able to drive back onto the road, including on uphill stages.
+ if(gas&&!brake&&!clutch&&v<2.2)longitudinal=Math.max(1.15,longitudinal);
  player.speed=clamp(v+longitudinal*dt,0,Math.min(spec.roadMax,spec.top)*1.06/3.6);
  player.nitro=clamp(player.nitro+(boost?-spec.boostDrain:1.0)*dt,0,100);player.boost=boost;
  const frontTransfer=brake*.28+Math.max(0,(player.prevGas||0)-gas)*.21+Math.max(0,-longitudinal)*.010;
@@ -2363,9 +2382,9 @@ function updateDrivingModel(dt){
  const wasClutch=player.prevClutch||0;
  if(wasClutch&&!clutch&&gas&&player.speed>13&&rearWheel){player.clutchKick=.40;chooseTechnique('clutch',1.1)}
  player.prevClutch=clutch;player.clutchKick=Math.max(0,(player.clutchKick||0)-dt);player.feintTimer=Math.max(0,(player.feintTimer||0)-dt);
- const roadOff=Math.abs(player.lane)>course.roadWidth*.5-1.1;
+ const roadOff=shoulderDist>0;
  const assist=driveSettings.assist==='easy'?1:driveSettings.assist==='sport'?.54:0;
- const availableGrip=Math.max(.30,spec.grip)*wet*(roadOff?.50:1);
+ const availableGrip=Math.max(.30,spec.grip)*wet*(1-.34*clamp(shoulderDist/1.35,0,1));
  const frontGrip=availableGrip*(.85+player.frontLoad*.33)*(1-brake*.22),rearBase=availableGrip*(.92+(1-player.frontLoad)*.23);
  const rearGrip=rearBase*(hb?.22:1)*(1-(player.feintTimer>0?.29:0))*(1-(player.clutchKick>0?.35:0))*(1-(rearWheel?gas*.11:0));
  const wheelbase=Math.max(2.15,Math.min(3.3,2.28+(spec.mass-900)/3400));
@@ -2392,7 +2411,18 @@ function updateDrivingModel(dt){
  // Lateral velocity moves across the visible track. Momentum cannot be cancelled by tapping drift.
  const lateralSpeed=player.speed*Math.sin(player.yawError-player.slipAngle*.24);
  player.lane=clamp(player.lane+lateralSpeed*dt,-25,25);
- if(Math.abs(player.lane)>course.roadWidth*.5-.15){player.speed=Math.max(0,player.speed-(Math.abs(player.lane)>course.roadWidth*.5+2?9:2)*dt);player.yawError*=1-dt*.6}
+ // Guardrail collision: limit departure distance and apply one impact rather than repeated braking.
+ player.railCooldown=Math.max(0,(player.railCooldown||0)-dt);
+ const railLimit=roadHalf+1.24;
+ if(Math.abs(player.lane)>railLimit){
+   const side=Math.sign(player.lane);
+   player.lane=side*(railLimit-.07);
+   if(player.railCooldown<=0&&player.speed>3.2){
+     player.speed*=.78;
+     player.railCooldown=.75;
+   }
+   if(player.yawError*side>0){player.yawError=-side*.075;player.yawRate=0;player.slipAngle*=.68}
+ }
  player.slip=player.slipAngle*180/Math.PI;
  const angle=Math.abs(player.slip),realSlide=player.speed>11&&angle>8&&Math.abs(player.lane)<course.roadWidth*.5+2;
  if(realSlide){const quality=clamp((angle-6)/24,0,1.3),pts=dt*player.speed*8*quality*(1+.15*Math.max(0,Math.min(3,player.frontLoad*5-2)));driftScore+=pts;combo+=dt;player.nitro=clamp(player.nitro+pts*.015,0,100);driftLast=gameTime;
@@ -2779,9 +2809,10 @@ for(const btn of document.querySelectorAll('[data-mode]')){btn.onclick=()=>{mode
 $('startBtn').onclick=()=>startRace();$('cameraBtn').onclick=()=>{cameraMode=(cameraMode+1)%4;notify(['3D CHASE CAMERA','3D CLOSE CAMERA','COCKPIT CAMERA','3D SIDE / FULL BODY'][cameraMode],1200)};
 $('pauseBtn').onclick=pauseRace;$('resumeBtn').onclick=pauseRace;$('restartBtn').onclick=()=>{closeModal('pauseModal');startRace()};$('backToMenu').onclick=quitRace;$('helpBtn').onclick=()=>openModal('helpModal');$('resultRetry').onclick=()=>startRace();$('resultMenu').onclick=quitRace;$('resultShop').onclick=()=>{quitRace();openShop('missions')};
 function handleKey(e,down){const key=e.code;let property=({KeyW:'gas',ArrowUp:'gas',KeyS:'brake',ArrowDown:'brake',KeyA:'left',ArrowLeft:'left',KeyD:'right',ArrowRight:'right',Space:'drift',ShiftLeft:'nitro',ShiftRight:'nitro',ControlLeft:'clutch',ControlRight:'clutch'})[key];const inInput=['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName);if(inInput)return;if(property){e.preventDefault();if(property==='clutch')driveInputs.clutch=down;else input[property]=down;return}if(!down)return;
-if(key==='KeyQ'){shiftGear(-1);return}if(key==='KeyE'){shiftGear(1);return}if(key==='KeyG'){$('transmissionSwitch').click();return}if(key==='Escape'||key==='KeyP'){e.preventDefault();pauseRace()}else if(key==='KeyM'){toggleMute()}else if(key==='KeyC')$('cameraBtn').click();else if(key==='KeyL'){lightsOn=!lightsOn;notify('ヘッドライト '+(lightsOn?'ON':'OFF'),1000)}else if(key==='KeyR'&&started){player.lane=0;player.speed*=.6;notify('コースに復帰',1000)};}
+if(key==='KeyQ'){shiftGear(-1);return}if(key==='KeyE'){shiftGear(1);return}if(key==='KeyG'){$('transmissionSwitch').click();return}if(key==='Escape'||key==='KeyP'){e.preventDefault();pauseRace()}else if(key==='KeyM'){toggleMute()}else if(key==='KeyC')$('cameraBtn').click();else if(key==='KeyL'){lightsOn=!lightsOn;notify('ヘッドライト '+(lightsOn?'ON':'OFF'),1000)}else if(key==='KeyR'&&started){e.preventDefault();recoverToRoad()};}
 window.addEventListener('keydown',e=>handleKey(e,true));window.addEventListener('keyup',e=>handleKey(e,false));window.addEventListener('blur',()=>{Object.keys(input).forEach(k=>input[k]=false);driveInputs.clutch=false;driveInputs.steer=0;driveInputs.analog=false});
 for(const el of document.querySelectorAll('[data-input]')){let key=el.dataset.input;el.addEventListener('pointerdown',e=>{e.preventDefault();el.setPointerCapture(e.pointerId);input[key]=true;el.classList.add('pressed')});for(const ev of ['pointerup','pointercancel','lostpointercapture'])el.addEventListener(ev,()=>{input[key]=false;el.classList.remove('pressed')})}
+$('touchRecover').addEventListener('click',e=>{e.preventDefault();recoverToRoad()});
 
 // Audio: a user-provided track is encoded to a data URI and can be embedded in an exported index.html.
 const musicEl=$('bgmEl');musicEl.loop=true;musicEl.preload='auto';let customBgm=!!musicEl.getAttribute('src'),customBgmName=customBgm?(musicEl.dataset.filename||'HTMLに内蔵されたBGM'):'未選択';let muted=false,bgmVol=.46;
