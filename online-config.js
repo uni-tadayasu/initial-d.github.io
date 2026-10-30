@@ -3,6 +3,6 @@
 // 招待リンクには中継URLが自動で入るので、友達は設定不要です。
 // 固定ドメインを使う場合のみ relayUrl を埋めてください。
 window.TNS8_CONFIG = {
-  relayUrl: "", // 例: "wss://your-game.example.com/ws"
+  relayUrl: "wss://fishing-acoustic-long-quote.trycloudflare.com/ws", // 例: "wss://your-game.example.com/ws"
   roomCapacity: 8
 };
