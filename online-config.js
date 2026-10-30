@@ -1,8 +1,5 @@
-// GitHub Pages用の8人オンライン接続設定。
-// 空欄でも、ホストがゲーム内の「通信サーバーURL」へ一度WSS URLを貼れば使えます。
-// 招待リンクには中継URLが自動で入るので、友達は設定不要です。
-// 固定ドメインを使う場合のみ relayUrl を埋めてください。
+// GitHub Pages用の8人部屋コード接続設定（起動BATが自動生成）.
 window.TNS8_CONFIG = {
-  relayUrl: "", // 例: "wss://your-game.example.com/ws"
+  relayUrl: "wss://democracy-mpeg-dispatched-incident.trycloudflare.com/ws",
   roomCapacity: 8
 };
