@@ -34,7 +34,7 @@ function renderLobby(){
  const label=$id('roomLinkState');if(label)label.textContent=room.joined?`● ${room.code} ／ ${n} / ${MAX}人 ／ ${room.phase==='running'?'レース中':'ロビー'}`:room.active?'● 接続中 / 再接続中':'● 未接続';
  const cap=$id('tns8Count');if(cap)cap.textContent=`参加者 ${n} / 8人`;
  const lst=$id('tns8List');if(lst){
-  lst.innerHTML=room.members.map((m,i)=>`<div class="tns8Driver ${m.id===room.id?'self':''}"><b>${i+1}. ${safeText(m.name)} ${m.id===room.owner?'👑':''}${m.id===room.id?'（自分）':''}</b><small>${m.connected?'● 接続中':'○ 再接続待ち'}　${m.car>=0?'CAR '+(m.car+1):''}${m.finished?' 🏁':''}</small></div>`).join('')||'<div class="tns8Empty">部屋作成または参加で、ここにプレイヤーが表示されます。</div>';
+  lst.innerHTML=room.members.map((m,i)=>`<div class="tns8Driver ${m.id===room.id?'self':''}"><b>${i+1}. ${safeText(m.name)} ${m.id===room.owner?'👑':''}${m.id===room.id?'（自分）':''}</b><small>${m.connected?'● 接続中':'○ 再接続待ち'}　${m.car>=0?safeText(m.carNick||((typeof CARS!=='undefined'&&CARS[m.car])?CARS[m.car].name:'CAR '+(m.car+1))):''}${m.finished?' 🏁':''}</small></div>`).join('')||'<div class="tns8Empty">部屋作成または参加で、ここにプレイヤーが表示されます。</div>';
  }
  const st=$id('roomStartRace');if(st){st.disabled=!(connected&&isHost()&&n>=2&&room.phase==='lobby');st.textContent=room.phase==='running'?'🏁 レース進行中':!connected?'▶ 接続してください':!isHost()?'▶ ホストの開始を待機':n<2?'▶ 2人以上で開始できます':`▶ ${n}人で一斉レース開始`;}
  const reset=$id('tns8Again');if(reset){reset.disabled=!(connected&&isHost()&&room.phase==='running');reset.hidden=room.phase!=='running'}
@@ -71,8 +71,8 @@ function openSocket(reconnect){
  ws.onopen=()=>{clearTimeout(timeout);if(gen!==room.gen){ws.close();return}
   room.retries=0;
   if(reconnect&&room.id&&room.token)send('resume',{room:room.code,you:room.id,token:room.token});
-  else if(room.action==='create')send('create',{name:name(),car:carIndex()});
-  else send('join',{room:room.code,name:name(),car:carIndex()});
+  else if(room.action==='create')send('create',{name:name(),car:carIndex(),carNick:carNickname()});
+  else send('join',{room:room.code,name:name(),car:carIndex(),carNick:carNickname()});
   clearInterval(room.ping);room.ping=setInterval(()=>{send('ping');updateSelection()},10000);
  };
  ws.onmessage=event=>{if(gen!==room.gen)return;let d;try{d=JSON.parse(event.data)}catch(e){return}onPacket(d)};
@@ -83,9 +83,10 @@ function openSocket(reconnect){
 }
 function name(){return String($id('tns8Name')?.value||'DRIVER').trim().slice(0,18)||'DRIVER'}
 function carIndex(){return typeof selected==='number'?selected:0}
+function carNickname(){return typeof getCarNickname==='function'?getCarNickname(carIndex()):''}
 function updateSelection(){if(!room.joined)return;
- const value=name()+'|'+carIndex();if(room.lastSelect===value)return;
- room.lastSelect=value;send('select',{name:name(),car:carIndex()});}
+ const value=name()+'|'+carIndex()+'|'+carNickname();if(room.lastSelect===value)return;
+ room.lastSelect=value;send('select',{name:name(),car:carIndex(),carNick:carNickname()});}
 function retry(){if(!room.active)return;
  if(room.retries>=12){say('接続に失敗しました。サーバー起動と online-config.js のURLを確認し、「再接続」を押してください。',true);return}
  let wait=Math.min(15000,700*Math.pow(1.65,room.retries++));
@@ -111,7 +112,7 @@ function onPacket(d){if(!d||typeof d!=='object')return;
   if(['room_full','room_not_found','invalid_code','race_running','resume_denied','already_joined'].includes(d.code)){
    if(d.code==='resume_denied'){
     room.id='';room.token='';room.joined=false;
-    room.action='join';send('join',{room:room.code,name:name(),car:carIndex()});
+    room.action='join';send('join',{room:room.code,name:name(),car:carIndex(),carNick:carNickname()});
    }else if(d.code!=='already_joined'){
     room.gen++;room.active=false;room.joined=false;
     try{room.ws?.close()}catch(e){}room.ws=null;clearTimeout(room.timer);clearInterval(room.ping);renderLobby();
@@ -123,7 +124,7 @@ function onPacket(d){if(!d||typeof d!=='object')return;
   room.code=codeText(d.room);room.id=String(d.you||'');room.token=String(d.token||'');
   room.owner=String(d.owner||'');room.phase=d.phase||'lobby';room.run=d.run||null;
   room.joined=true;room.clockOffset=Number(d.serverTime||Date.now())-Date.now();
-  $id('easyRoomCode').value=room.code;room.lastSelect=name()+'|'+carIndex();
+  $id('easyRoomCode').value=room.code;room.lastSelect=name()+'|'+carIndex()+'|'+carNickname();
   say(`✅ ${room.code} に接続しました。友達を招待してください。`);
   return;
  }
@@ -163,7 +164,7 @@ function onPacket(d){if(!d||typeof d!=='object')return;
  if(d.type==='state'){
   if(d.id===room.id)return;
   const m=room.members.find(x=>x.id===d.id);if(!m)return;
-  room.racers.set(d.id,{id:d.id,name:m.name,car:limit(d.car,0,1000),s:limit(d.s,0,100000),lane:limit(d.lane,-30,30),speed:limit(d.speed,0,170),stamp:performance.now(),finished:false,time:null});
+  room.racers.set(d.id,{id:d.id,name:m.name,carNick:String(d.carNick||m.carNick||'').slice(0,20),car:limit(d.car,0,1000),s:limit(d.s,0,100000),lane:limit(d.lane,-30,30),speed:limit(d.speed,0,170),stamp:performance.now(),finished:false,time:null});
   return;
  }
  if(d.type==='finished'){
@@ -192,7 +193,7 @@ function rivals(){if(!room.joined||room.phase!=='running')return [];
 function standings(){if(!room.joined||room.phase!=='running')return [];
  const now=performance.now();return room.sessionRacers.filter(x=>x.id!==room.id).map(x=>{
   const live=room.racers.get(x.id);
-  return {id:x.id,name:x.name||'RIVAL',car:live?.car??x.car,
+  return {id:x.id,name:x.name||'RIVAL',carNick:live?.carNick??x.carNick??'',car:live?.car??x.car,
    s:live&&now-live.stamp<7000?live.s:0,
    finished:!!live?.finished,time:live?.time??Infinity};
  });
@@ -281,6 +282,6 @@ if(typeof startRace==='function'){
  };
 }
 window.TNS8={active:()=>room.active,joined:()=>room.joined,requestStart,send:submitGame,rivals,standings,
- room,connect,leave,retry:manualRetry,getRemoteCount:()=>visibleMembers().length};
+ room,connect,leave,retry:manualRetry,updateSelection,getRemoteCount:()=>visibleMembers().length};
 setupUI();
 })();
