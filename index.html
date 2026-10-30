@@ -237,7 +237,7 @@ body.racing #touch,body.racing .touchControl{
 /* Head-to-head touge driving, analog steering and true 3D mountain road. */
 #skyline{z-index:0}#road3d{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;pointer-events:none}#gl{z-index:2;pointer-events:none}#cars3d{z-index:3}#effects{z-index:4}#vignette{z-index:5}#grain{z-index:6}
 .driveSetup{background:linear-gradient(145deg,rgba(17,32,51,.88),rgba(12,23,38,.95));padding:14px;border:1px solid rgba(148,220,221,.25);border-radius:12px;margin:14px 0 18px}
-.driveSetupTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#c0e4ee;font-size:11px;letter-spacing:.12em;font-weight:900;margin-bottom:12px}.driveSetupGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.driveSetup label{display:flex;flex-direction:column;gap:4px;font-size:10px;font-weight:800;color:#a6becb}.driveSetup select,.driveSetup input{width:100%;accent-color:#ed9c4a;background:#13253b;border:1px solid #9ab4c250;color:#f6fafc;border-radius:5px;padding:9px}.driveSetup .driveHint{font-size:10px;color:#8bb3c4;margin:10px 0 0;line-height:1.8}
+.driveSetupTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#c0e4ee;font-size:11px;letter-spacing:.12em;font-weight:900;margin-bottom:12px}.driveSetupGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.driveSetup label{display:flex;flex-direction:column;gap:4px;font-size:10px;font-weight:800;color:#a6becb}.driveSetup select,.driveSetup input{width:100%;accent-color:#ed9c4a;background:#13253b;border:1px solid #9ab4c250;color:#f6fafc;border-radius:5px;padding:9px}.driveSetup .driveHint{font-size:10px;color:#8bb3c4;margin:10px 0 0;line-height:1.8}#steerSensitivityValue{display:inline;color:#ffe3ac;font-size:11px;font-weight:900;letter-spacing:.02em}.driveSetup input[type=range]{touch-action:pan-x}
 #advancedHud{position:absolute;left:18px;top:102px;z-index:7;display:flex;flex-direction:column;gap:5px;pointer-events:none;font-size:10px;font-weight:900;color:#d3e5ea;text-shadow:0 2px 6px #040a10}#advancedHud b{font-size:18px;color:#ffe1a5;font-weight:1000}.driftTechnique{background:rgba(9,17,29,.76);border-left:3px solid #f9bc6a;border-radius:3px;padding:7px 10px;max-width:250px}.trackSlope{background:#071522ad;padding:6px 9px;border-radius:4px;max-width:260px}#tachReadout{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;letter-spacing:.06em;color:#d8e7f1;margin-top:5px}#tachReadout b{color:#fbe6c8;font-size:16px}#weightTransfer{width:100%;height:5px;display:flex;overflow:hidden;background:#485560;border-radius:9px;margin-top:7px}#weightTransferFront{width:50%;height:100%;background:linear-gradient(90deg,#5ee4ef,#ffcb73);transition:width .08s linear}#battleGap{font-size:11px;color:#cde9dc;letter-spacing:.08em}#transmissionSwitch{border:1px solid #ffffff66;min-width:43px;color:#ffe0a3}
 #steeringPad{position:absolute;left:12px;bottom:132px;width:156px;height:156px;display:none;z-index:12;pointer-events:auto;touch-action:none!important;user-select:none!important;border:1px solid #b9d8e276;border-radius:100%;background:radial-gradient(circle,#172a39d9 0%,#091527cc 65%,#03091499 100%);box-shadow:inset 0 0 27px #718ba033,0 10px 34px #03070c90;align-items:center;justify-content:center}#steeringPad:after{content:'STEER  ↔';position:absolute;bottom:-18px;font-size:9px;color:#e5c89b;letter-spacing:.14em;font-weight:900}#wheelFace{width:85%;height:85%;display:flex;align-items:center;justify-content:center;position:relative;border:13px solid #b1bac1;border-radius:50%;background:radial-gradient(circle,#101a28 0 30%,#212e3d 31% 39%,transparent 40%);box-shadow:inset 0 0 13px #000,0 0 9px #000;transition:transform .08s linear;pointer-events:none}#wheelFace:before{content:'';position:absolute;left:50%;top:15%;height:67%;width:12px;transform:translateX(-50%);background:linear-gradient(0deg,#455463,#c4ccd5);clip-path:polygon(25% 0,75% 0,100% 100%,0 100%)}#wheelFace:after{content:'';position:absolute;top:50%;left:50%;height:18px;width:18px;transform:translate(-50%,-50%);border-radius:50%;background:#e4ba7d;border:2px solid #e2e9ee}#wheelFace span{height:9px;width:100%;background:linear-gradient(90deg,#566b7f,#d3dce7,#536b80);position:absolute;top:52%;left:0;transform:translateY(-50%)}
 #touchClutch,#shiftDown,#shiftUp{position:absolute;display:none;z-index:12;pointer-events:auto}#touchClutch{right:168px;bottom:140px;width:62px;height:62px;font-size:10px;border-radius:12px}#shiftDown,#shiftUp{bottom:45px;width:62px;height:47px;border-radius:10px;font-size:11px}#shiftDown{left:17px}#shiftUp{left:93px}
@@ -318,12 +318,12 @@ body.racing #touchDrift:before{content:''}body.racing #touchDrift{font-size:11px
   <div class="audioRow"><button class="secondary exportBtn" id="bgmExport" type="button">BGMを内蔵した index.html を保存</button><button class="secondary" id="bgmReset" type="button">初期BGMに戻す</button></div>
   <p>「HTMLを保存」を押すと選んだ音声もこの1ファイルに埋め込みます（最大42MBの音声ファイル）。</p>
  </div>
- <div class="driveSetup"><div class="driveSetupTitle"><span>⚙ 走行シミュレーション設定</span><span>TOUGE PHYSICS 8.0</span></div>
+ <div class="driveSetup"><div class="driveSetupTitle"><span>⚙ 走行シミュレーション設定</span><span>TOUGE PHYSICS 9.0 / WALL-SAFE</span></div>
  <div class="driveSetupGrid">
  <label>ミッション<select id="transmissionMode"><option value="auto">AT / 自動変速</option><option value="manual">MT / クラッチ・手動変速</option></select></label>
  <label>走行アシスト<select id="assistMode"><option value="easy">EASY / 安定重視</option><option value="sport">SPORT / リアル志向</option><option value="pro">PRO / アシストなし</option></select></label>
  <label>エンジン音量<input id="engineVolume" type="range" min="0" max="100" value="82"></label>
- <label>ステアリング感度<input id="steerSensitivity" type="range" min="45" max="170" value="100"></label>
+ <label>ステアリング感度 <output id="steerSensitivityValue" for="steerSensitivity">65%（標準）</output><input id="steerSensitivity" type="range" min="25" max="125" step="5" value="65"></label>
  </div><p class="driveHint">【本格ドリフト】ブレーキングで前荷重 → 進入・ステア → アクセルオフ/サイドブレーキ/フェイントでリアのグリップを崩し、アクセルとカウンターステアで維持。MTではクラッチとギアも操作できます。</p></div>
  <div class="menuBottom"><div class="sectionTitle">05 / START YOUR RUN <span id="levelBadge" class="levelChip">LV.1</span></div><button class="primary" id="startBtn">RACE START　▶</button><div class="keyHint">操作：<span class="kbd">W</span> 加速　<span class="kbd">S</span> ブレーキ　<span class="kbd">A</span><span class="kbd">D</span> ステア　<span class="kbd">SPACE</span> サイドブレーキ　<span class="kbd">Q</span><span class="kbd">E</span> シフト　<span class="kbd">Ctrl</span> クラッチ　<span class="kbd">SHIFT</span> ニトロ</div><div class="menuFooter">※場外では路肩で減速・ガードレール接触。PCのRキー、スマホの「コース復帰」で復帰できます（+3秒）。非公式の自主制作ゲームです。車種名・数値は参考表現です。3D車両は実車の特徴を参考にした独自生成メッシュです。標準コースは創作地形。GPX取込時は座標・標高のみを利用し、実際の沿道建物や路面を再現するものではありません。</div></div>
 </div>
@@ -1844,6 +1844,8 @@ $('courseCountBadge')?.replaceChildren(document.createTextNode(courses.length+' 
 /* TOUGE PHYSICS 6 — actual 3D road & mountain mesh, no external library. */
 /* HEADWAY TOUGE 7.0 — procedural high-detail 3D mountain roads, offline and WebGL1 compatible.
  * Generated scenery is stylized, not 1:1 photogrammetry. GPX paths may use real survey traces. */
+// Shared with the collision solver: visual rail centers and physical contact are identical.
+const GUARDRAIL_SHOULDER = 1.33; // distance from asphalt edge to barrier (meters)
 class TougeRoad3D {
  constructor(canvas){
   this.canvas=canvas;this.good=false;this.cacheKey='';this.vertices=0;this.mvp=null;this.lastScene='';
@@ -1982,7 +1984,7 @@ class TougeRoad3D {
     if(Math.floor(s/130)%3===0){let lane=half*.42,px=[this.getPos(s,lane-.11,.043),this.getPos(s+step,lane-.11,.043),this.getPos(s+step,lane+.11,.043),this.getPos(s,lane+.11,.043)];quad(...px,this.hex('#34363a',.86),1)}
     // Pressed steel crash barrier, realistic 0.7 m height with regularly spaced posts.
     for(let side of [-1,1]){
-      const railLane=side*(half+1.33),r0=this.getPos(s,railLane,soilY(s,railLane)+.56),r1=this.getPos(s+step,railLane,soilY(s+step,railLane)+.56);
+      const railLane=side*(half+GUARDRAIL_SHOULDER),r0=this.getPos(s,railLane,soilY(s,railLane)+.56),r1=this.getPos(s+step,railLane,soilY(s+step,railLane)+.56);
       const t0=vecAdd(r0,[0,.40,0]),t1=vecAdd(r1,[0,.40,0]);
       quad(r0,r1,t1,t0,'#a8b6bd',5);
       quad(vecAdd(r0,[0,.07,0]),vecAdd(r1,[0,.07,0]),vecAdd(r1,[0,.11,0]),vecAdd(r0,[0,.11,0]),'#dce0d8',5);
@@ -1991,7 +1993,7 @@ class TougeRoad3D {
   }
   // Posts separated from rail, black reflectors on bends, drainage inlets and retaining wall.
   for(let s=Math.ceil(startS/6)*6;s<end;s+=6){for(let side of [-1,1]){
-    const ln=side*(half+1.33),p=this.getPos(s,ln,soilY(s,ln)+.45),w=.095;
+    const ln=side*(half+GUARDRAIL_SHOULDER),p=this.getPos(s,ln,soilY(s,ln)+.45),w=.095;
     prism(p,w,.96,w,'#8e9ba1',5);
     if(Math.floor(s/6)%3===0){const q=this.getPos(s,ln,soilY(s,ln)+.75);prism(q,.14,.10,.17,side>0?'#e04a3b':'#f6eac9',4)}
   }}
@@ -2309,22 +2311,42 @@ function updateCoach(){const el=$('coachAdvice');if(!el)return;
 
 /* Initial-D-inspired touge driving model. Gameplay approximation, not an automotive simulator. */
 const DRIVE_KEY='tns_real_drive_v6';
-let driveSettings={transmission:'auto',assist:'sport',engineVolume:.82,steerSensitivity:1.0};
-try{Object.assign(driveSettings,JSON.parse(localStorage.getItem(DRIVE_KEY)||'{}'))}catch(e){}
+let driveSettings={transmission:'auto',assist:'sport',engineVolume:.82,steerSensitivity:.65};
+try{
+ const old=JSON.parse(localStorage.getItem(DRIVE_KEY)||'{}');Object.assign(driveSettings,old);
+ // One-time migration of the former 100% default. Manually tuned values are otherwise preserved.
+ if(!localStorage.getItem('tns_steer_migrated_v9')){
+  if(!Number.isFinite(+old.steerSensitivity)||Math.abs(+old.steerSensitivity-1)<.001)driveSettings.steerSensitivity=.65;
+  localStorage.setItem('tns_steer_migrated_v9','1');localStorage.setItem(DRIVE_KEY,JSON.stringify(driveSettings));
+ }
+}catch(e){}
+driveSettings.steerSensitivity=clamp(Number(driveSettings.steerSensitivity)||.65,.25,1.25);
+function displaySteerSensitivity(){const label=$('steerSensitivityValue');if(label)label.textContent=Math.round(driveSettings.steerSensitivity*100)+'%'+(Math.abs(driveSettings.steerSensitivity-.65)<.01?'（標準）':'');}
+
 const driveInputs={steer:0,analog:false,clutch:false};
 const GEAR_RATIOS=[0,3.60,2.21,1.49,1.16,.92,.75];
 const DRIFT_NAMES={neutral:'GRIP DRIVING',brake:'BRAKING DRIFT',trail:'TRAIL BRAKING',eBrake:'SIDE BRAKE DRIFT',feint:'FEINT MOTION',lift:'LIFT-OFF OVERSTEER',power:'POWER OVER',clutch:'CLUTCH KICK',counter:'COUNTERSTEER'};
 let technique='',techTimer=0,feintChain=0;
 function chooseTechnique(name,t=.95){technique=name;techTimer=t;const badge=$('techniqueName');if(badge)badge.textContent=DRIFT_NAMES[name]||name;}
-function driveConfigChanged(){driveSettings.transmission=$('transmissionMode').value;driveSettings.assist=$('assistMode').value;driveSettings.engineVolume=+$('engineVolume').value/100;driveSettings.steerSensitivity=+$('steerSensitivity').value/100;try{localStorage.setItem(DRIVE_KEY,JSON.stringify(driveSettings))}catch(e){}notify('走行設定を保存しました',1400)}
+function driveConfigChanged(){driveSettings.transmission=$('transmissionMode').value;driveSettings.assist=$('assistMode').value;driveSettings.engineVolume=+$('engineVolume').value/100;driveSettings.steerSensitivity=clamp(+$('steerSensitivity').value/100,.25,1.25);displaySteerSensitivity();try{localStorage.setItem(DRIVE_KEY,JSON.stringify(driveSettings))}catch(e){}notify('走行設定を保存しました',1400)}
 function setupDrive(){
  for(const [id,val] of [['transmissionMode',driveSettings.transmission],['assistMode',driveSettings.assist],['engineVolume',Math.round(driveSettings.engineVolume*100)],['steerSensitivity',Math.round(driveSettings.steerSensitivity*100)]]){const el=$(id);if(el){el.value=val;el.addEventListener('change',driveConfigChanged)}}
+ displaySteerSensitivity();
+ $('steerSensitivity')?.addEventListener('input',e=>{driveSettings.steerSensitivity=clamp(+e.target.value/100,.25,1.25);displaySteerSensitivity();});
  $('drivePreset').onclick=()=>{driveSettings.assist=driveSettings.assist==='sport'?'pro':driveSettings.assist==='pro'?'easy':'sport';$('assistMode').value=driveSettings.assist;driveConfigChanged();};
  $('transmissionSwitch').onclick=()=>{driveSettings.transmission=driveSettings.transmission==='auto'?'manual':'auto';$('transmissionMode').value=driveSettings.transmission;driveConfigChanged();updateDriveIndicators()};
- const pad=$('steeringPad'),wheel=$('wheelFace');if(pad){let pid=null;
-  const move=e=>{if(pid!==e.pointerId)return;const r=pad.getBoundingClientRect();driveInputs.steer=clamp((e.clientX-r.left-r.width*.5)/(r.width*.37),-1,1);driveInputs.analog=true;wheel.style.transform=`rotate(${driveInputs.steer*150}deg)`;};
-  pad.addEventListener('pointerdown',e=>{e.preventDefault();pid=e.pointerId;pad.setPointerCapture(pid);move(e);});pad.addEventListener('pointermove',e=>{if(pid===e.pointerId){e.preventDefault();move(e)}});
-  const stop=e=>{if(pid!==e.pointerId)return;pid=null;driveInputs.steer=0;driveInputs.analog=false;wheel.style.transform='rotate(0deg)';};for(const ev of ['pointercancel','pointerup','lostpointercapture'])pad.addEventListener(ev,stop);
+ const pad=$('steeringPad'),wheel=$('wheelFace');if(pad){let pid=null,startX=0,startInput=0;
+  // Relative drag: touching the edge of the wheel does not instantly turn it 100%.
+  const move=e=>{if(pid!==e.pointerId)return;const r=pad.getBoundingClientRect();
+   const raw=clamp(startInput+(e.clientX-startX)/(r.width*.69),-1,1);
+   driveInputs.steer=Math.sign(raw)*(.73*Math.abs(raw)+.27*Math.pow(Math.abs(raw),3));
+   driveInputs.analog=true;wheel.style.transform=`rotate(${driveInputs.steer*112}deg)`;
+   pad.setAttribute('aria-valuenow',String(Math.round(driveInputs.steer*100)));
+  };
+  pad.addEventListener('pointerdown',e=>{e.preventDefault();if(pid!==null)return;pid=e.pointerId;startX=e.clientX;startInput=driveInputs.analog?driveInputs.steer:0;pad.setPointerCapture(pid);move(e);});
+  pad.addEventListener('pointermove',e=>{if(pid===e.pointerId){e.preventDefault();move(e)}});
+  const stop=e=>{if(pid!==e.pointerId)return;pid=null;driveInputs.steer=0;driveInputs.analog=false;wheel.style.transform='rotate(0deg)';pad.setAttribute('aria-valuenow','0');};
+  for(const ev of ['pointercancel','pointerup','lostpointercapture'])pad.addEventListener(ev,stop);
  }
  for(const [id,delta] of [['shiftUp',1],['shiftDown',-1]]){$(id)?.addEventListener('pointerdown',e=>{e.preventDefault();shiftGear(delta)});} 
  $('touchClutch')?.addEventListener('pointerdown',e=>{e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);driveInputs.clutch=true;e.currentTarget.classList.add('pressed')});
@@ -2337,6 +2359,13 @@ function shiftGear(dir){if(!started||racePhase!=='race')return;const g=player.ge
   makeGearSound();updateDriveIndicators();
 }
 function updateDriveIndicators(){const b=$('transmissionSwitch');if(b)b.textContent=driveSettings.transmission==='manual'?'MT':'AT';const clutch=$('touchClutch');if(clutch)clutch.style.opacity=driveSettings.transmission==='manual'?'1':'.55';}
+function guardrailCenterLimit(car,yaw,halfWidth){
+ const spec=CAR3D.modelSpec(car);
+ const a=clamp(Math.abs(yaw||0),0,Math.PI*.5);
+ // Lateral envelope of all four corners of a yawed vehicle (units: meters).
+ const sweptHalfWidth=(spec.W*.5)*Math.cos(a)+(spec.L*.5)*Math.sin(a);
+ return Math.max(.24,halfWidth+GUARDRAIL_SHOULDER-sweptHalfWidth-.18);
+}
 function updateDrivingModel(dt){
  if(racePhase==='countdown'){countdown-=dt;if(countdown<=0){countdown=0;racePhase='race';notify('GO!!',850)}return}
  if(racePhase!=='race')return;
@@ -2344,9 +2373,13 @@ function updateDrivingModel(dt){
  const c=CARS[selected],spec=tune(c),wet=weather==='rain'?.66:weather==='dusk'?.94:1;
  const drive=c.drive||'FR',rearWheel=drive==='FR'||drive==='MR'||drive==='RR'||drive==='RWD',frontWheel=drive==='FF',fourWheel=/4WD|AWD|4X4/.test(drive);
  const gas=input.gas?1:0,brake=input.brake?1:0,hb=input.drift?1:0,clutch=driveInputs.clutch?1:0;
- const steerKey=(input.right?1:0)-(input.left?1:0),steerTarget=driveInputs.analog?driveInputs.steer:steerKey;
- player.steer=lerp(player.steer||0,steerTarget*driveSettings.steerSensitivity,Math.min(1,dt*9));
- player.steer=clamp(player.steer,-1,1);
+ const steerKey=(input.right?1:0)-(input.left?1:0);
+ const rawSteer=driveInputs.analog?driveInputs.steer:steerKey;
+ // Speed-dependent steering ratio. High-speed driving requires smaller/smoother inputs.
+ const speedSteerScale=1-.24*clamp(player.speed/35,0,1);
+ const steerTarget=rawSteer*driveSettings.steerSensitivity*speedSteerScale;
+ const steerResponse=driveInputs.analog?5.0:(rawSteer===0?4.4:3.3);
+ player.steer=clamp(lerp(player.steer||0,steerTarget,Math.min(1,dt*steerResponse)),-1,1);
  const steer=player.steer,v=player.speed,kph=v*3.6;
  const maxRPM=c.name.includes('AE86')?7800:c.brand==='Ferrari'||c.brand==='McLaren'?8700:c.brand==='Porsche'?8400:/Rolls|Maybach|Bentley|Mercedes/.test(c.brand)?6400:7600;
  player.maxRPM=maxRPM;player.shiftCooldown=Math.max(0,(player.shiftCooldown||0)-dt);player.shiftFlash=Math.max(0,(player.shiftFlash||0)-dt);
@@ -2388,7 +2421,7 @@ function updateDrivingModel(dt){
  const frontGrip=availableGrip*(.85+player.frontLoad*.33)*(1-brake*.22),rearBase=availableGrip*(.92+(1-player.frontLoad)*.23);
  const rearGrip=rearBase*(hb?.22:1)*(1-(player.feintTimer>0?.29:0))*(1-(player.clutchKick>0?.35:0))*(1-(rearWheel?gas*.11:0));
  const wheelbase=Math.max(2.15,Math.min(3.3,2.28+(spec.mass-900)/3400));
- const steeringAngle=steer*clamp(.37/(1+player.speed*.21),.054,.35);
+ const steeringAngle=steer*clamp(.32/(1+player.speed*.23),.044,.32);
  const desiredYaw=player.speed*Math.tan(steeringAngle)/wheelbase;
  const curve=roadCurve(player.s),requiredYaw=curve*player.speed;
  const sideLoad=(Math.abs(desiredYaw-requiredYaw)*player.speed+Math.abs(curve)*player.speed**2*.19);
@@ -2410,19 +2443,29 @@ function updateDrivingModel(dt){
  if(Math.abs(player.slipAngle)>.13&&steer*Math.sign(player.slipAngle)<-.2){player.yawError*=1-dt*.62;player.slipAngle*=1-dt*.37;if(techTimer<.18)chooseTechnique('counter',.36)}
  // Lateral velocity moves across the visible track. Momentum cannot be cancelled by tapping drift.
  const lateralSpeed=player.speed*Math.sin(player.yawError-player.slipAngle*.24);
- player.lane=clamp(player.lane+lateralSpeed*dt,-25,25);
- // Guardrail collision: limit departure distance and apply one impact rather than repeated braking.
+ const proposedLane=player.lane+lateralSpeed*dt;
  player.railCooldown=Math.max(0,(player.railCooldown||0)-dt);
- const railLimit=roadHalf+1.24;
- if(Math.abs(player.lane)>railLimit){
-   const side=Math.sign(player.lane);
-   player.lane=side*(railLimit-.07);
-   if(player.railCooldown<=0&&player.speed>3.2){
-     player.speed*=.78;
-     player.railCooldown=.75;
+ // Car-body collision against the actual W-beam, not just its center point.
+ // Project half-width AND half-length at current yaw: the front/rear corners must not pierce the rail.
+ const railLimit=guardrailCenterLimit(c,player.yawError,roadHalf);
+ if(Math.abs(proposedLane)>railLimit){
+  const side=Math.sign(proposedLane)||1;
+  player.lane=side*railLimit;
+  const intoBarrier=lateralSpeed*side>0 || player.yawError*side>.08;
+  if(intoBarrier){
+   const impactSpeed=Math.max(0,lateralSpeed*side);
+   if(player.railCooldown<=0 && player.speed>2.5){
+    player.speed*=clamp(.91-impactSpeed*.022,.66,.91);
+    player.railCooldown=.48;
    }
-   if(player.yawError*side>0){player.yawError=-side*.075;player.yawRate=0;player.slipAngle*=.68}
- }
+   // Deflect the vehicle back toward the roadway; don't lock it in the barrier.
+   player.yawError=-side*clamp(.032+impactSpeed*.008,.032,.11);
+   player.yawRate=0;
+   player.slipAngle*=.35;
+  }
+ }else player.lane=proposedLane;
+ // A separate final safety clamp after yaw/collision response handles corner rotation.
+ player.lane=clamp(player.lane,-guardrailCenterLimit(c,player.yawError,roadHalf),guardrailCenterLimit(c,player.yawError,roadHalf));
  player.slip=player.slipAngle*180/Math.PI;
  const angle=Math.abs(player.slip),realSlide=player.speed>11&&angle>8&&Math.abs(player.lane)<course.roadWidth*.5+2;
  if(realSlide){const quality=clamp((angle-6)/24,0,1.3),pts=dt*player.speed*8*quality*(1+.15*Math.max(0,Math.min(3,player.frontLoad*5-2)));driftScore+=pts;combo+=dt;player.nitro=clamp(player.nitro+pts*.015,0,100);driftLast=gameTime;
@@ -3109,7 +3152,7 @@ function quickEnter(m){if(!ownsCar(selected)){const first=profile.owned?.[0];sel
 $('quickSolo').onclick=()=>quickEnter('battle');$('quickTime').onclick=()=>quickEnter('time');
 $('quickOnline').onclick=()=>quickEnter('online');$('quickGarage').onclick=()=>$('openGarage').click();
 
-window.__TN_TEST={get externalGpx(){return externalGpx},importGpxFile,road3D,driveSettings,driveInputs,updateDrivingModel,shiftGear,TNS_MODEL_IMPORT,CARS,courses,REGIONS,LAYOUTS,CAR3D,studio3D,stage3D,makeCourse,sample,roadCurve,formatTime,startRace,updatePhysics,openCarStudio,selectCourse,getState:()=>({started,racePhase,mode,player,course,customBgm,muted,coins:profile.coins}),getProgress:()=>JSON.parse(JSON.stringify(profile)),renderShop,openShop,buyVehicle,buyPart,equipCosmetic,tunedStats,finishRace};
+window.__TN_TEST={guardrailCenterLimit,get externalGpx(){return externalGpx},importGpxFile,road3D,driveSettings,driveInputs,updateDrivingModel,shiftGear,TNS_MODEL_IMPORT,CARS,courses,REGIONS,LAYOUTS,CAR3D,studio3D,stage3D,makeCourse,sample,roadCurve,formatTime,startRace,updatePhysics,openCarStudio,selectCourse,getState:()=>({started,racePhase,mode,player,course,customBgm,muted,coins:profile.coins}),getProgress:()=>JSON.parse(JSON.stringify(profile)),renderShop,openShop,buyVehicle,buyPart,equipCosmetic,tunedStats,finishRace};
 
 </script>
 </body>
