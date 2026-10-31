@@ -1006,7 +1006,7 @@ const CAR3D={
     if(/RX-7/.test(n)){Object.assign(s,{hood:.27,rt:.145,rb:.33,ft:.035,lights:'popup',tail:'long',bel:.86});}
     if(/MX-5|S2000|Cappuccino|Copen|Beat/.test(n)){Object.assign(s,{form:'roadster',roofW:.67,rt:.11,rb:.23,ft:.018,fb:.13,hood:.31,bel:.79,lights:/NA Roadster|Beat/.test(n)?'popup':'slit'});}
     if(/F40/.test(n)){Object.assign(s,{form:'wedge',hood:.20,rt:.12,rb:.29,ft:.045,fb:.14,bel:.75,wing:'f40',lights:'popup',tail:'fourround'});}
-    if(isBlackMaria(c)){Object.assign(s,{L:2.94,W:1.71,H:1.66,wb:1.84,wheel:.283,form:'hatch',hood:.11,rt:.207,rb:.432,ft:.092,fb:.180,roofW:.86,bel:.975,nose:'normal',lights:'square',tail:'rect',wing:'none',bulge:0,crown:.004,deckRise:0,rearGlass:.96,archStyle:'square',doorLayout:2,roofPinch:0,hoodRidge:.001});}
+    if(isBlackMaria(c)){Object.assign(s,{L:2.82,W:1.66,H:1.70,wb:1.70,wheel:.268,form:'hatch',hood:.102,rt:.214,rb:.426,ft:.094,fb:.176,roofW:.88,bel:1.01,nose:'normal',lights:'square',tail:'rect',wing:'none',bulge:0,crown:.003,deckRise:0,rearGlass:.975,archStyle:'square',doorLayout:2,roofPinch:0,hoodRidge:.0008});}
     if(isChoroHero(c)){Object.assign(s,{L:3.25,W:1.62,H:1.61,wb:1.99,wheel:.298,form:'beetle',hood:.175,rt:.275,rb:.410,ft:.073,fb:.225,roofW:.790,bel:.990,nose:'beetle',lights:'round',tail:'round',wing:'none',bulge:.055,crown:.125,roofPinch:.090,rearGlass:.65,hoodRidge:.015,archStyle:'round',backWidth:.84,deckRise:.013});}
     if(/F50|Enzo/.test(n)){Object.assign(s,{form:'wedge',hood:.26,rt:.12,rb:.30,bel:.76,wing:n.includes('F50')?'lowgt':'none',lights:'boomerang',tail:'fourround'});}
     if(/458|488|F8|SF90/.test(n)){Object.assign(s,{form:'wedge',hood:.20,ft:0,rt:.13,rb:.29,bel:.79,lights:'boomerang',tail:'fourround'});}
@@ -1231,7 +1231,7 @@ const CAR3D={
   // It deliberately skips the general-purpose bodykit generator so that a
   // previously selected aero part cannot deform the faithful replica.
   buildBlackMariaReplica(c,cos){
-    const L=2.89,W=1.72,H=1.68,half=W/2,front=L/2,rear=-front;
+    const L=2.62,W=1.60,H=1.74,half=W/2,front=L/2,rear=-front;
     const V=[],rgb=(v)=>this.parse(v);
     const colors={paint:'#17181d',paintLit:'#23242a',paintEdge:'#101115',hood:'#1a1b20',roof:'#212128',roofTop:'#2a2931',
       sill:'#0d0f14',shadow:'#111218',pillar:'#090b10',glass:'#4447a8',glassLit:'#5156bf',glassDark:'#363b99',
@@ -1288,7 +1288,7 @@ const CAR3D={
              [x+Math.cos(a)*(r-.012),y+Math.sin(a)*(r-.012),z+.002],color,.94);
       }
     }
-    const tyreRadius=.279,wheelY=.347,axles=[-.855,.835], archRadius=tyreRadius+.055;
+    const tyreRadius=.248,wheelY=.332,axles=[-.745,.715], archRadius=tyreRadius+.049;
     const color=(key,map,fallback)=>map[cos[key]]||fallback;
     const paint=colors.paint;
     // No tall radiator snout or widebody protrusions. The underside is set back.
@@ -1300,7 +1300,7 @@ const CAR3D={
       }
       return Math.min(.79,y);
     }
-    const bonnetTop=z=>1.035-.100*Math.max(0,(z-.49)/(.955));
+    const bonnetTop=z=>1.020-.088*Math.max(0,(z-.41)/(.84));
     // Square, subtly tapered belt line, unlike the previous generic GT hatch.
     const stations=68;
     for(let j=0;j<stations;j++){
@@ -1333,8 +1333,8 @@ const CAR3D={
       rod([side*.68,.989,1.338],[side*.59,1.055,.52],.009,'#34363b',.55);
     }
     // Hatchback cockpit in short-wheelbase toy proportions.
-    const A=.49,roofF=.020,roofR=-.924,back=-1.260;
-    const baseY=1.052,roofY=1.612,sideBase=.735,sideRoof=.643;
+    const A=.45,roofF=.010,roofR=-.812,back=-1.138;
+    const baseY=1.058,roofY=1.640,sideBase=.712,sideRoof=.648;
     // Deep-black side of cabin, covered by recessed violet glass.
     for(const side of [-1,1]){
       face([side*sideBase,baseY,A],[side*sideRoof,roofY,roofF],
@@ -1374,8 +1374,8 @@ const CAR3D={
         const xx=roofX*(1-u)+lowX*u,y=roofY-.032+(baseY-roofY+.056)*u;
         return [xx,y,z];
       };
-      const topFront=.013,topB=-.448,topRear=-.906;
-      const lowFront=.45,lowB=-.386,lowRear=-1.18;
+      const topFront=.008,topB=-.392,topRear=-.780;
+      const lowFront=.42,lowB=-.342,lowRear=-1.03;
       const pane=(p0,p1,p2,p3,shade)=>{
         face(p0,p1,p2,p3,shade,.98);
       };
@@ -1467,10 +1467,10 @@ const CAR3D={
     }
     const spoilerShade=color('bmspoiler',{rally:'#1e2026',carbon:'#1c1d25',double:'#21212b',crown:'#28242d'},'#101116');
     for(const side of [-1,1]){
-      rod([side*.452,roofY+.010,roofR-.052],[side*.508,roofY+.066,roofR-.229],.042,spoilerShade,.68);
+      rod([side*.396,roofY+.006,roofR-.008],[side*.448,roofY+.040,roofR-.058],.033,spoilerShade,.72);
     }
-    box(0,roofY+.066,roofR-.226,W*.825,.049,.175,spoilerShade,.79);
-    for(const side of [-1,1])box(side*.710,roofY+.075,roofR-.224,.030,.052,.177,'#121217',.55);
+    box(0,roofY+.042,roofR-.060,W*.756,.041,.108,spoilerShade,.81);
+    for(const side of [-1,1])box(side*.646,roofY+.048,roofR-.060,.024,.036,.108,'#121217',.58);
     // Dress follows the existing purchase/equip and bounded performance systems.
     return {data:new Float32Array(V),count:V.length/12,length:L,width:W,height:H,triangles:V.length/36};
   },
@@ -2285,11 +2285,11 @@ const CAR3D={
       }
       // Roof-top rear wing sits above the hatch, unlike an unrelated big GT spoiler.
       const sp=m('bmspoiler');
-      const roofSpoiler=replica?{y:.072,w:.86,z:.245}:sp==='stock'?{y:.060,w:.81,z:.215}:sp==='rally'?{y:.095,w:.78,z:.20}:sp==='carbon'?{y:.18,w:.90,z:.27}:sp==='double'?{y:.34,w:.99,z:.34}:{y:.46,w:1.04,z:.40};
+      const roofSpoiler=replica?{y:.040,w:.78,z:.112}:sp==='stock'?{y:.058,w:.81,z:.215}:sp==='rally'?{y:.095,w:.78,z:.20}:sp==='carbon'?{y:.18,w:.90,z:.27}:sp==='double'?{y:.34,w:.99,z:.34}:{y:.46,w:1.04,z:.40};
       const sy=roofY+roofSpoiler.y;
-      if(sp!=='stock'||replica)for(const side of [-1,1])rod([side*hw*.54,roofY+.013,ry-.040],[side*hw*.60,sy+.002,ry-.105],replica?.036:.034,black,.76);
-      box(0,sy,ry-.175,W*roofSpoiler.w,replica?.048:.042,roofSpoiler.z,sp==='rally'?'#23263e':'#111115',.78);
-      if(replica)for(const side of [-1,1])box(side*hw*.86,sy+.006,ry-.175,.026,.060,.240,'#101115',.78);
+      if(sp!=='stock'||replica)for(const side of [-1,1])rod([side*hw*.47,roofY+.010,ry-.018],[side*hw*.51,sy+.001,ry-.060],replica?.024:.034,black,.79);
+      box(0,sy,replica?ry-.060:ry-.175,W*roofSpoiler.w,replica?.040:.042,roofSpoiler.z,sp==='rally'?'#23263e':'#111115',.80);
+      if(replica)for(const side of [-1,1])box(side*hw*.73,sy+.004,ry-.060,.022,.040,.110,'#101115',.80);
       if(sp==='double'||sp==='crown')box(0,sy+.17,ry-.22,W*roofSpoiler.w*.91,.037,.19,sp==='crown'?'#2a2346':'#131923',.83);
       // Narrow sharp hood seams and slight center ridge emphasize compact box styling.
       const hz=zFront-L*.25,hy=topAt(hz,0)+.030;
@@ -2436,7 +2436,7 @@ const CAR3D={
       }
 
       // ULTIMATE REPLICA: visual details recreated from the small CHORO-Q source photo.
-      // Squared lamp bezels, yellow corner markers, chrome symbol and tall single rear wing.
+      // Squared lamp bezels, yellow corner markers, chrome symbol and a compact back-top rear wing.
       // The original-look meshes follow the updated Choro-Q dress image; elite owned/equipped vehicle stats are applied separately in tunedStats.
       if(replica){
         const zFace=front+.084, matte='#0b0d12',silver='#aab1b8',amethyst='#4544a3';
@@ -2476,7 +2476,7 @@ const CAR3D={
         }
         // Detail on the tailgate and the black spoiler supports.
         box(0,baseY-.21,rear-.055,W*.61,.040,.016,'#171a22',.58);
-        for(const side of [-1,1])rod([side*hw*.55,roofY+.012,ry-.018],[side*hw*.56,sy-.011,ry-.10],.027,'#111318',.84);
+        for(const side of [-1,1])rod([side*hw*.44,roofY+.008,ry-.012],[side*hw*.46,roofY+.044,ry-.058],.022,'#111318',.86);
       }
       // Unique signature underglow, visible during night races.
       const under=m('bmglow');
