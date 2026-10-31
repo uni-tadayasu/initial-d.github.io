@@ -411,10 +411,10 @@ body.racing #touchDrift:before{content:''}body.racing #touchDrift{font-size:11px
 <div id="garageModal" class="modalCover hidden"><div class="modal panel"><div class="modalHdr"><div><div class="eyebrow">THE WORLD'S GARAGE</div><h2>CHOOSE YOUR MACHINE</h2></div><button class="close" data-close="garageModal">×</button></div><div class="garageWallet"><span>🪙 <b id="carWallet">92,000 C</b></span><button data-open-shop="cars">🚗 車両を購入</button><button data-open-shop="tuning">⚙ チューニング</button><button data-open-shop="custom">🎨 カスタム</button></div><div class="garageControls"><input type="search" id="carSearch" placeholder="メーカー・モデル検索（AE86, Ferrari, Porsche...）"><select id="brandFilter"><option value="all">全メーカー</option></select><select id="carSort"><option value="default">デフォルト</option><option value="power">馬力順</option><option value="handling">ハンドリング順</option><option value="top">最高速度順</option></select></div><div class="garageCount" id="garageCount"></div><div class="garageLayout"><div class="garageGrid" id="garageGrid"></div><div class="garageDetail" id="garageDetail"></div></div></div></div>
 
 <div id="showroomModal" class="modalCover hidden"><div class="showroomPane panel">
- <div class="showroomHead"><div><div class="eyebrow">360° PHOTOGRAPHY STUDIO / MODEL-SPECIFIC 3D STUDIO / MESH IMPORT</div><h2 id="studioCarName">AE86 · THREE-DIMENSIONAL SHOWROOM</h2><span id="studioSub">ドラッグで360°回転・ズーム / 標準の独自モデル・高精度メッシュ読込対応</span></div><button class="close" data-close="showroomModal" aria-label="3Dビューワーを閉じる">×</button></div>
+ <div class="showroomHead"><div><div class="eyebrow">FACTORY SCULPT V12 / 142 CAR 3D SHOWROOM / GLB IMPORT</div><h2 id="studioCarName">AE86 · THREE-DIMENSIONAL SHOWROOM</h2><span id="studioSub">ドラッグで360°回転・ズーム / 標準の独自モデル・高精度メッシュ読込対応</span></div><button class="close" data-close="showroomModal" aria-label="3Dビューワーを閉じる">×</button></div>
  <div class="showroomStage" id="showroomStage"><div class="studioGlow"></div><div class="studioGrid"></div><canvas id="showroomCanvas" aria-label="立体の車を360度回転できる3Dビューワー"></canvas><div class="studioNote">DRAG ◁ ▷ ROTATE ・ SCROLL TO ZOOM ・ 全周回転可能</div></div>
  <div class="showroomOptions"><div class="viewChips"><button class="secondary" data-view="front">正面</button><button class="secondary" data-view="back">後ろ</button><button class="secondary" data-view="left">左側</button><button class="secondary" data-view="right">右側</button><button class="secondary" data-view="top">上面</button><button class="secondary" data-view="angle">斜め45°</button><button class="secondary" id="studioSpin">⏸ 自動回転 OFF</button></div><div class="studioSliders"><label>回転 <input type="range" id="studioOrbit" min="-180" max="180" value="40"></label><label>ズーム <input type="range" id="studioZoom" min="5.1" max="13" step=".1" value="8.8"></label></div><div class="studioPalette" id="studioPalette"></div><button class="secondary" id="studioShop" data-open-shop="custom">🎨 CUSTOM SHOP</button><button class="secondary" id="studioSnap">PNG保存</button></div>
- <div class="studioModelImport"><label class="secondary">📁 3Dモデル読込（GLB / OBJ）<input id="tnsModelPicker" type="file" accept=".glb,.obj" hidden></label><button type="button" id="tnsModelFlip" class="secondary">⤾ モデル前後反転</button><button type="button" id="tnsModelReset" class="secondary">↶ 標準モデル</button><button type="button" id="tnsModelExport" class="secondary primaryStudio">💾 3D内蔵版HTMLを保存</button><span id="tnsModelStatus" class="studioModelStatus">標準3Dモデルを使用中</span></div>
+ <div class="studioModelImport"><label class="secondary">📁 3Dモデル読込（GLB / OBJ）<input id="tnsModelPicker" type="file" accept=".glb,.obj" hidden></label><button type="button" id="tnsModelFlip" class="secondary">⤾ モデル前後反転</button><button type="button" id="tnsModelReset" class="secondary">↶ 標準モデル</button><button type="button" id="tnsModelExport" class="secondary primaryStudio">💾 3D内蔵版HTMLを保存</button><button type="button" id="tnsFactoryPhotos" class="secondary" title="実車の参考写真をブラウザで検索">🔎 実車写真と比較</button><span id="tnsModelStatus" class="studioModelStatus">標準3Dモデルを使用中</span></div>
  <div class="studioFoot">車種ごとにボディサイズ、キャビン形状、ヘッドライト・グリル、ホイールなどを組み替えて描画しています。純正車体の完全再現ではありません。</div>
  </div></div>
 
@@ -612,6 +612,10 @@ $('carBadge').textContent=CARS.length+' VEHICLES';
 /* TOUGE NIGHTSHIFT 5.0: vehicle-specific, compact, self-contained polygonal model generator.
    All models are independently parameterized game approximations—not manufacturer CAD meshes.
    Front: +Z. Rear: -Z. No automatic wings by horsepower. */
+/* V12 FACTORY SCULPT: 142 explicit photographic-reference-informed style profiles.
+   Photos were used as visual references only; no images or proprietary OEM meshes are bundled.
+   Most dimensions remain game approximations. AE86, F40 and 992 GT3 RS use documented dimensions. */
+const TOUGE_FACTORY_SCULPT_V12=[[0.023,0.027,0.014,0.009,-0.016,"eight","satin","liftback","sport","two-tone"],[0.023,0.027,0.014,0.009,-0.016,"eight","satin","liftback","sport","two-tone"],[0.07,0.071,0.04,0.034,0.006,"split","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.034,0.006,"five","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.034,0.006,"split","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.034,0.006,"five","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.034,0.006,"five","shadow","fastback","sport","character"],[0.055,0.045,0.024,0.034,0.025,"five","satin","normal","sport","character"],[0.055,0.045,0.024,0.034,0.025,"five","satin","normal","sport","character"],[0.055,0.045,0.024,0.034,0.025,"five","satin","normal","sport","character"],[0.023,0.026,0.01,0.01,0.025,"mesh","chrome","formal","formal","chrome"],[0.023,0.026,0.01,0.01,0.025,"mesh","chrome","formal","formal","chrome"],[0.07,0.071,0.04,0.02,0.006,"five","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.034,0.006,"five","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.034,0.006,"five","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.034,0.006,"centerlock","shadow","fastback","split","track"],[0.07,0.071,0.04,0.02,0.006,"forged","shadow","fastback","split","track"],[0.07,0.071,0.04,0.034,0.006,"forged","shadow","fastback","split","track"],[0.055,0.045,0.024,0.034,-0.016,"five","satin","liftback","sport","clean"],[0.07,0.071,0.04,0.034,0.006,"five","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.034,0.006,"split","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.034,0.006,"split","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.02,0.006,"five","shadow","fastback","sport","character"],[0.092,0.071,0.031,0.064,0.006,"forged","shadow","fastback","split","track"],[0.07,0.071,0.04,0.034,0.006,"split","shadow","fastback","sport","character"],[0.07,0.071,0.04,0.02,0.006,"five","shadow","fastback","sport","clean"],[0.092,0.071,0.031,0.064,0.006,"split","shadow","fastback","sport","clean"],[0.07,0.071,0.016,0.02,0.025,"five","satin","normal","sport","clean"],[0.023,0.027,0.014,0.009,-0.016,"forged","satin","liftback","split","track"],[0.055,0.045,0.024,0.034,0.025,"forged","satin","normal","split","track"],[0.055,0.045,0.024,0.034,-0.016,"centerlock","satin","liftback","split","track"],[0.07,0.071,0.04,0.034,0.006,"forged","shadow","fastback","split","track"],[0.092,0.071,0.031,0.064,0.006,"five","shadow","fastback","sport","clean"],[0.098,0.105,0.04,0.05,0.006,"five","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"split","shadow","fastback","sport","sculpt"],[0.07,0.071,0.04,0.02,0.006,"five","shadow","fastback","sport","clean"],[0.055,0.045,0.024,0.034,0.025,"rally","satin","normal","sport","rally"],[0.055,0.045,0.024,0.034,0.025,"rally","satin","normal","sport","rally"],[0.055,0.045,0.024,0.034,0.025,"rally","satin","normal","sport","character"],[0.07,0.071,0.04,0.034,0.006,"rally","shadow","fastback","sport","character"],[0.055,0.045,0.024,0.034,0.025,"forged","satin","normal","split","rally"],[0.055,0.045,0.024,0.034,0.025,"forged","satin","normal","split","rally"],[0.055,0.045,0.024,0.034,0.025,"forged","satin","normal","split","rally"],[0.055,0.045,0.024,0.034,0.025,"centerlock","satin","normal","split","rally"],[0.07,0.071,0.04,0.034,0.006,"rally","shadow","fastback","sport","character"],[0.055,0.045,0.024,0.034,-0.016,"eight","satin","liftback","sport","clean"],[0.07,0.071,0.04,0.02,0.006,"eight","shadow","fastback","sport","clean"],[0.07,0.071,0.04,0.05,0.006,"eight","shadow","fastback","sport","clean"],[0.07,0.105,0.04,0.05,0.006,"split","shadow","fastback","sport","clean"],[0.07,0.071,0.016,0.034,0.025,"split","satin","normal","sport","clean"],[0.055,0.045,0.024,0.034,0.025,"split","satin","normal","sport","character"],[0.014,0.02,0.01,0,0.041,"turbine","chrome","formal","formal","chrome"],[0.014,0.02,0.01,0,0.041,"turbine","chrome","formal","formal","chrome"],[0.037,0.026,0.01,0.025,0.025,"turbine","chrome","fastback","formal","chrome"],[0.037,0.026,0.01,0.025,0.025,"turbine","chrome","fastback","formal","chrome"],[0.023,0.026,0.01,0.01,0.006,"turbine","chrome","tall","formal","chrome"],[0.037,0.026,0.01,0.025,0.025,"mesh","chrome","fastback","formal","chrome"],[0.023,0.026,0.01,0.01,0.025,"mesh","chrome","formal","formal","chrome"],[0.014,0.02,0.01,0,0.041,"mesh","chrome","formal","formal","chrome"],[0.023,0.026,0.01,0.01,0.006,"mesh","chrome","tall","formal","chrome"],[0.014,0.02,0.01,0,0.041,"turbine","chrome","formal","formal","chrome"],[0.023,0.026,0.01,0.01,0.006,"turbine","chrome","tall","formal","chrome"],[0.023,0.026,0.01,0.01,0.006,"turbine","chrome","tall","formal","chrome"],[0.055,0.045,0.024,0.02,0.025,"forged","satin","normal","split","rally"],[0.07,0.105,0.04,0.05,0.006,"split","shadow","fastback","sport","clean"],[0.055,0.045,0.024,0.034,0.025,"split","satin","normal","sport","character"],[0.07,0.071,0.016,0.034,0.025,"split","satin","normal","sport","clean"],[0.07,0.071,0.04,0.02,0.006,"wire","chrome","normal","sport","vintage"],[0.055,0.045,0.024,0.02,0.025,"forged","satin","normal","split","rally"],[0.07,0.071,0.04,0.034,0.006,"split","shadow","fastback","sport","character"],[0.055,0.045,0.024,0.034,0.025,"split","satin","normal","sport","character"],[0.07,0.071,0.04,0.034,0.006,"split","shadow","fastback","sport","character"],[0.055,0.045,0.024,0.034,0.025,"split","satin","normal","sport","character"],[0.07,0.071,0.016,0.034,0.025,"split","satin","normal","sport","clean"],[0.098,0.105,0.04,0.05,0.006,"split","shadow","fastback","sport","sculpt"],[0.062,0.145,0.053,0.046,0.006,"forged","chrome","911","split","track"],[0.062,0.145,0.053,0.046,0.006,"classic5","shadow","911","sport","character"],[0.062,0.145,0.053,0.046,0.006,"centerlock","shadow","911","split","track"],[0.062,0.145,0.053,0.046,0.006,"split","shadow","911","sport","clean"],[0.07,0.105,0.04,0.05,0.006,"centerlock","shadow","fastback","split","track"],[0.055,0.045,0.024,0.034,0.025,"split","satin","normal","sport","character"],[0.07,0.071,0.016,0.034,0.025,"split","satin","normal","sport","clean"],[0.1,0.12,0.04,0.078,0.006,"star","shadow","wedge","split","track"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","split","track"],[0.098,0.105,0.04,0.05,0.006,"star","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"star","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.07,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","clean"],[0.07,0.071,0.016,0.034,0.025,"forged","satin","normal","sport","clean"],[0.023,0.071,0.024,0.01,0.006,"forged","satin","tall","sport","clean"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"centerlock","shadow","fastback","split","track"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.1,0.12,0.04,0.078,0.006,"star","shadow","wedge","sport","sculpt"],[0.1,0.12,0.04,0.078,0.006,"star","shadow","wedge","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.1,0.12,0.04,0.078,0.006,"centerlock","shadow","wedge","split","track"],[0.098,0.105,0.04,0.05,0.006,"centerlock","shadow","fastback","split","track"],[0.1,0.12,0.04,0.078,0.006,"forged","shadow","wedge","sport","sculpt"],[0.023,0.071,0.024,0.01,0.006,"forged","satin","tall","sport","clean"],[0.07,0.071,0.04,0.02,0.006,"forged","shadow","normal","split","track"],[0.098,0.105,0.04,0.05,0.006,"split","shadow","fastback","sport","sculpt"],[0.055,0.045,0.016,0.034,-0.016,"split","satin","normal","sport","character"],[0.055,0.045,0.024,0.034,0.025,"split","satin","normal","sport","character"],[0.023,0.027,0.014,0.009,-0.016,"classic5","satin","liftback","sport","clean"],[0.055,0.045,0.024,0.034,-0.016,"split","satin","liftback","sport","clean"],[0.07,0.071,0.04,0.034,0.006,"centerlock","shadow","fastback","split","track"],[0.07,0.071,0.04,0.02,0.006,"wire","chrome","normal","sport","vintage"],[0.07,0.071,0.04,0.02,0.006,"wire","chrome","normal","sport","vintage"],[0.07,0.105,0.04,0.05,0.006,"split","shadow","fastback","sport","clean"],[0.07,0.071,0.016,0.034,0.025,"split","satin","normal","sport","clean"],[0.098,0.105,0.04,0.05,0.006,"centerlock","shadow","fastback","split","track"],[0.07,0.071,0.04,0.05,0.006,"forged","shadow","fastback","split","track"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","sport","sculpt"],[0.098,0.105,0.04,0.05,0.006,"centerlock","shadow","fastback","split","track"],[0.098,0.105,0.04,0.05,0.006,"centerlock","shadow","fastback","split","track"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","split","track"],[0.098,0.105,0.04,0.05,0.006,"centerlock","shadow","fastback","split","track"],[0.098,0.105,0.04,0.05,0.006,"five","shadow","fastback","sport","sculpt"],[0.025,0.032,0.034,0.01,0.006,"five","shadow","fastback","sport","character"],[0.098,0.105,0.04,0.05,0.006,"five","shadow","fastback","sport","sculpt"],[0.025,0.032,0.034,0.01,0.006,"five","satin","fastback","sport","clean"],[0.07,0.105,0.04,0.05,0.006,"centerlock","shadow","fastback","split","track"],[0.055,0.045,0.024,0.034,0.025,"aero","satin","normal","clean","character"],[0.098,0.105,0.04,0.05,0.006,"forged","shadow","fastback","clean","sculpt"],[0.055,0.045,0.024,0.034,-0.016,"aero","satin","liftback","sport","clean"],[0.023,0.071,0.024,0.01,0.006,"aero","satin","tall","sport","clean"],[0.055,0.045,0.024,0.034,0.025,"eight","satin","normal","sport","character"],[0.07,0.071,0.04,0.034,0.006,"eight","shadow","fastback","sport","character"],[0.055,0.045,0.024,0.034,-0.016,"split","satin","liftback","sport","clean"],[0.055,0.045,0.024,0.02,-0.016,"classic5","satin","liftback","sport","clean"],[0.055,0.045,0.024,0.034,-0.016,"classic5","satin","liftback","sport","clean"],[0.055,0.045,0.024,0.034,-0.016,"split","satin","liftback","sport","clean"]];
 const CAR3D={
   palette:['#f4f4ec','#171d25','#b82726','#1e4b7d','#8b979e','#c1a474','#17817f','#f4bc33','#744a83','#333c47'],
   overrides:new Map(),meshCache:new Map(),modelSpecs:new Map(),
@@ -624,7 +628,7 @@ const CAR3D={
     if(this.modelSpecs.has(c.id))return this.modelSpecs.get(c.id);
     // Model-specific dimensions (L, W, H, wheelbase). No exact replicas are claimed.
     const dims=`
-4.205,1.625,1.335,2.400;4.205,1.625,1.335,2.400;4.265,1.775,1.310,2.575;4.520,1.810,1.275,2.550;4.380,1.865,1.295,2.470;4.420,1.750,1.305,2.535;4.170,1.695,1.235,2.400;4.715,1.755,1.390,2.730;4.750,1.750,1.395,2.730;4.400,1.720,1.410,2.670;4.910,1.800,1.455,2.920;5.270,1.890,1.475,3.025;4.545,1.755,1.340,2.615;4.675,1.780,1.360,2.720;4.600,1.785,1.360,2.665;4.710,1.895,1.370,2.780;4.470,1.690,1.290,2.475;4.445,1.695,1.285,2.525;4.520,1.690,1.290,2.475;4.310,1.790,1.250,2.450;4.315,1.815,1.315,2.550;4.380,1.845,1.315,2.550;4.335,1.690,1.270,2.430;4.285,1.760,1.230,2.425;4.470,1.770,1.340,2.700;3.970,1.675,1.235,2.265;3.915,1.735,1.235,2.310;4.815,1.795,1.305,2.750;4.180,1.695,1.360,2.620;4.540,1.770,1.430,2.700;4.595,1.890,1.405,2.735;4.380,1.695,1.330,2.570;4.135,1.750,1.285,2.400;4.430,1.810,1.170,2.530;4.535,1.940,1.215,2.630;3.295,1.395,1.175,2.280;4.340,1.690,1.405,2.520;4.465,1.740,1.440,2.540;4.595,1.795,1.470,2.625;4.265,1.775,1.310,2.575;4.310,1.695,1.420,2.510;4.350,1.770,1.405,2.625;4.490,1.770,1.450,2.625;4.495,1.810,1.480,2.650;4.575,1.840,1.285,2.470;3.890,1.735,1.500,2.450;3.295,1.395,1.185,2.060;3.395,1.475,1.285,2.230;4.505,1.895,1.220,2.605;4.770,1.920,1.345,2.870;4.760,1.840,1.435,2.800;5.762,2.018,1.646,3.552;5.545,1.978,1.572,3.295;5.285,1.947,1.507,3.112;5.475,2.017,1.573,3.210;5.355,2.000,1.835,3.295;4.895,1.966,1.397,2.851;5.316,1.987,1.484,3.194;5.575,1.926,1.521,3.266;5.141,1.998,1.742,2.995;5.469,1.921,1.510,3.396;5.210,2.030,1.838,3.135;5.125,1.960,1.720,3.210;4.449,1.720,1.390,2.665;4.728,1.984,1.354,2.700;4.755,1.839,1.420,2.840;5.180,1.955,1.503,3.105;4.520,1.790,1.300,2.400;4.345,1.680,1.370,2.565;4.490,1.780,1.370,2.730;4.795,1.905,1.435,2.855;4.794,1.887,1.386,2.855;4.965,1.905,1.470,2.980;4.870,1.905,1.360,2.825;4.690,1.940,1.295,2.800;4.145,1.610,1.320,2.271;4.291,1.775,1.320,2.272;4.572,1.900,1.322,2.457;4.535,1.900,1.303,2.450;4.456,1.822,1.267,2.482;4.963,1.966,1.379,2.900;5.049,1.937,1.423,2.950;4.358,1.970,1.123,2.450;4.481,1.986,1.120,2.580;4.702,2.035,1.147,2.650;4.527,1.937,1.213,2.650;4.605,1.975,1.186,2.650;4.710,1.972,1.186,2.650;4.712,1.972,1.186,2.650;4.733,2.178,1.589,3.018;4.656,1.974,1.301,2.670;4.973,2.028,1.589,3.020;4.288,1.820,1.140,2.718;4.508,1.908,1.199,2.670;4.543,1.908,1.196,2.670;4.569,1.910,1.196,2.670;4.588,1.946,1.188,2.670;4.744,1.930,1.195,2.670;4.539,1.976,1.195,2.640;4.140,1.890,1.070,2.450;4.460,2.040,1.105,2.650;4.610,2.058,1.135,2.665;4.780,2.030,1.136,2.700;4.550,1.945,1.220,2.620;4.947,2.033,1.160,2.780;5.112,2.016,1.638,3.003;4.404,1.860,1.344,2.224;4.429,1.940,1.240,2.650;4.995,1.951,1.500,2.930;4.530,1.851,1.410,2.630;4.050,1.710,1.405,2.475;4.290,1.790,1.455,2.630;4.470,1.925,1.305,2.622;4.685,1.700,1.235,2.438;4.570,1.680,1.345,2.490;4.495,1.800,1.275,2.665;4.725,1.950,1.295,2.805;4.840,1.944,1.060,2.770;3.785,1.720,1.170,2.300;4.415,1.895,1.225,2.575;4.459,2.000,1.122,2.665;4.460,2.000,1.210,2.710;4.544,2.038,1.212,2.711;4.620,1.945,1.151,2.700;4.611,2.006,1.210,2.700;4.435,2.055,1.145,2.730;4.605,2.036,1.169,2.795;4.685,1.934,1.235,2.722;4.811,1.916,1.395,2.718;4.779,2.003,1.109,2.710;5.027,1.923,1.450,2.946;4.463,1.941,1.246,2.510;4.970,1.964,1.445,2.960;4.750,1.986,1.208,2.745;4.715,1.940,1.585,3.000;4.695,1.890,1.545,2.900;4.685,1.850,1.400,2.835;4.181,1.798,1.252,2.420;3.800,1.810,1.410,2.510;3.705,1.573,1.380,2.420;3.660,1.627,1.485,2.305;3.874,1.727,1.414,2.495;`;
+4.205,1.625,1.335,2.400;4.205,1.625,1.335,2.400;4.265,1.775,1.310,2.575;4.520,1.810,1.275,2.550;4.380,1.865,1.295,2.470;4.420,1.750,1.305,2.535;4.170,1.695,1.235,2.400;4.715,1.755,1.390,2.730;4.750,1.750,1.395,2.730;4.400,1.720,1.410,2.670;4.910,1.800,1.455,2.920;5.270,1.890,1.475,3.025;4.545,1.755,1.340,2.615;4.675,1.780,1.360,2.720;4.600,1.785,1.360,2.665;4.710,1.895,1.370,2.780;4.470,1.690,1.290,2.475;4.445,1.695,1.285,2.525;4.520,1.690,1.290,2.475;4.310,1.790,1.250,2.450;4.315,1.815,1.315,2.550;4.380,1.845,1.315,2.550;4.335,1.690,1.270,2.430;4.285,1.760,1.230,2.425;4.470,1.770,1.340,2.700;3.970,1.675,1.235,2.265;3.915,1.735,1.235,2.310;4.815,1.795,1.305,2.750;4.180,1.695,1.360,2.620;4.540,1.770,1.430,2.700;4.595,1.890,1.405,2.735;4.380,1.695,1.330,2.570;4.135,1.750,1.285,2.400;4.430,1.810,1.170,2.530;4.535,1.940,1.215,2.630;3.295,1.395,1.175,2.280;4.340,1.690,1.405,2.520;4.465,1.740,1.440,2.540;4.595,1.795,1.470,2.625;4.265,1.775,1.310,2.575;4.310,1.695,1.420,2.510;4.350,1.770,1.405,2.625;4.490,1.770,1.450,2.625;4.495,1.810,1.480,2.650;4.575,1.840,1.285,2.470;3.890,1.735,1.500,2.450;3.295,1.395,1.185,2.060;3.395,1.475,1.285,2.230;4.505,1.895,1.220,2.605;4.770,1.920,1.345,2.870;4.760,1.840,1.435,2.800;5.762,2.018,1.646,3.552;5.545,1.978,1.572,3.295;5.285,1.947,1.507,3.112;5.475,2.017,1.573,3.210;5.355,2.000,1.835,3.295;4.895,1.966,1.397,2.851;5.316,1.987,1.484,3.194;5.575,1.926,1.521,3.266;5.141,1.998,1.742,2.995;5.469,1.921,1.510,3.396;5.210,2.030,1.838,3.135;5.125,1.960,1.720,3.210;4.449,1.720,1.390,2.665;4.728,1.984,1.354,2.700;4.755,1.839,1.420,2.840;5.180,1.955,1.503,3.105;4.520,1.790,1.300,2.400;4.345,1.680,1.370,2.565;4.490,1.780,1.370,2.730;4.795,1.905,1.435,2.855;4.794,1.887,1.386,2.855;4.965,1.905,1.470,2.980;4.870,1.905,1.360,2.825;4.690,1.940,1.295,2.800;4.145,1.610,1.320,2.271;4.291,1.775,1.320,2.272;4.580,1.920,1.320,2.460;4.535,1.900,1.303,2.450;4.456,1.822,1.267,2.482;4.963,1.966,1.379,2.900;5.049,1.937,1.423,2.950;4.430,1.980,1.130,2.450;4.481,1.986,1.120,2.580;4.702,2.035,1.147,2.650;4.527,1.937,1.213,2.650;4.605,1.975,1.186,2.650;4.710,1.972,1.186,2.650;4.712,1.972,1.186,2.650;4.733,2.178,1.589,3.018;4.656,1.974,1.301,2.670;4.973,2.028,1.589,3.020;4.288,1.820,1.140,2.718;4.508,1.908,1.199,2.670;4.543,1.908,1.196,2.670;4.569,1.910,1.196,2.670;4.588,1.946,1.188,2.670;4.744,1.930,1.195,2.670;4.539,1.976,1.195,2.640;4.140,1.890,1.070,2.450;4.460,2.040,1.105,2.650;4.610,2.058,1.135,2.665;4.780,2.030,1.136,2.700;4.550,1.945,1.220,2.620;4.947,2.033,1.160,2.780;5.112,2.016,1.638,3.003;4.404,1.860,1.344,2.224;4.429,1.940,1.240,2.650;4.995,1.951,1.500,2.930;4.530,1.851,1.410,2.630;4.050,1.710,1.405,2.475;4.290,1.790,1.455,2.630;4.470,1.925,1.305,2.622;4.685,1.700,1.235,2.438;4.570,1.680,1.345,2.490;4.495,1.800,1.275,2.665;4.725,1.950,1.295,2.805;4.840,1.944,1.060,2.770;3.785,1.720,1.170,2.300;4.415,1.895,1.225,2.575;4.459,2.000,1.122,2.665;4.460,2.000,1.210,2.710;4.544,2.038,1.212,2.711;4.620,1.945,1.151,2.700;4.611,2.006,1.210,2.700;4.435,2.055,1.145,2.730;4.605,2.036,1.169,2.795;4.685,1.934,1.235,2.722;4.811,1.916,1.395,2.718;4.779,2.003,1.109,2.710;5.027,1.923,1.450,2.946;4.463,1.941,1.246,2.510;4.970,1.964,1.445,2.960;4.750,1.986,1.208,2.745;4.715,1.940,1.585,3.000;4.695,1.890,1.545,2.900;4.685,1.850,1.400,2.835;4.181,1.798,1.252,2.420;3.800,1.810,1.410,2.510;3.705,1.573,1.380,2.420;3.660,1.627,1.485,2.305;3.874,1.727,1.414,2.495;`;
     const lines=dims.trim().split(';').filter(Boolean);const d=(lines[c.id]||'4.48,1.85,1.38,2.6').split(',').map(Number);
     const forms={
       hatch:{hood:.14,rt:.23,rb:.43,ft:.055,fb:.17,roofW:.79,bel:.94},
@@ -831,6 +835,16 @@ const CAR3D={
       s.ft+=(tweak-.5)*.014;s.rt+=(Math.sin(id*14.42)-.5)*.009;
       s.roofW+=Math.sin(id*1.77)*.010;
     }
+    // V12: per-vehicle visual silhouette and period-correct design themes.
+    // Each catalog entry has an explicit descriptor, not a random car skin.
+    const q=TOUGE_FACTORY_SCULPT_V12[c.id];
+    if(q){
+      s.factory={noseTaper:q[0],rearTaper:q[1],flare:q[2],bonnetDrop:q[3],deckLift:q[4],rims:q[5],trim:q[6],cabin:q[7],bumper:q[8],side:q[9]};
+      s.roofW=Math.max(.62,Math.min(.90,s.roofW+(q[7]==='formal'?.015:q[7]==='wedge'?-.018:0)));
+      s.deckRise=(s.deckRise||0)+q[4];
+      if(q[7]==='wedge')s.crown=Math.max(.009,s.crown*.73);
+      if(q[7]==='formal')s.crown=Math.max(.015,s.crown*.77);
+    }
     // Keep roof, glazing and all rear-facing geometry inside the overall vehicle length.
     s.bel=Math.min(s.H-.18,Math.max(s.wheel*2+.13,s.bel));
     s.rty=s.H-.058;
@@ -877,10 +891,11 @@ const CAR3D={
     const mix=(a,b,t)=>a+(b-a)*t;
     function width(z){
       const t=z/zFront,f=Math.max(0,t),r=Math.max(0,-t);
-      let frontTaper=((style==='limousine'||style==='suv'||hard) ? .017 : .065);
-      let rearTaper=(style==='round911' ? .13 : style==='wedge' ? .095 : style==='limousine' ? .025 : .065);
-      let end=frontTaper*Math.pow(f,6)+rearTaper*Math.pow(r,6);
-      let fender=Math.exp(-Math.pow((z-frontAx)/.42,2))*.012+Math.exp(-Math.pow((z-rearAx)/.45,2))*.018;
+      let frontTaper=s.factory?.noseTaper??((style==='limousine'||style==='suv'||hard)?.017:.065);
+      let rearTaper=s.factory?.rearTaper??(style==='round911'?.13:style==='wedge'?.095:style==='limousine'?.025:.065);
+      let end=frontTaper*Math.pow(f,5.4)+rearTaper*Math.pow(r,5.5);
+      const flare=s.factory?.flare??.024;
+      let fender=Math.exp(-Math.pow((z-frontAx)/.34,2))*flare+Math.exp(-Math.pow((z-rearAx)/.40,2))*flare*1.12;
       let taper=hw*(1-end+fender);
       return Math.min(hw*1.012,taper);
     }
@@ -894,6 +909,9 @@ const CAR3D={
       else if(hard)y-=f*.021;
       else y-=f*.045+r*.014;
       y-=.030*Math.pow(f,9)+.012*Math.pow(r,8);
+      // Bonnet fall from real-era styling: square 80s, formal luxury, aerodynamic supercar.
+      y-=(s.factory?.bonnetDrop||0)*f*f;
+      y+=(s.factory?.deckLift||0)*Math.pow(r,3)*.25;
       return y;
     }
     function arch(z){let y=.285;for(const wz of parts){let d=Math.abs(z-wz);if(d<archR){let v=centerY+Math.sqrt(Math.max(0,archR*archR-d*d));y=Math.max(y,v)}}return Math.min(s.bel-.035,y)}
@@ -977,7 +995,11 @@ const CAR3D={
 
     if(s.rearGlass>.30)glassSurf('rear');
     // Crown roof across width and fore/aft; actual roof top stays below nominal vehicle height.
-    const roofH=(u,t)=>roofY-s.crown*Math.pow(Math.abs(u),1.80)-Math.sin(t*Math.PI)*.008;
+    const roofH=(u,t)=>{
+      const design=s.factory?.cabin||'normal';
+      const arc=design==='911'?.044:design==='formal'?.007:design==='wedge'?.002:design==='liftback'?.009:.018;
+      return roofY-s.crown*Math.pow(Math.abs(u),design==='formal'?3.0:1.80)-Math.sin(t*Math.PI)*.008+Math.sin(t*Math.PI)*arc;
+    };
     const roofV=(u,t)=>{
       const z=mix(fz,ry,t),rw=mix(roofW*.92,roofW,t);
       const midNarrow=1-(s.roofPinch||0)*Math.sin(t*Math.PI);
@@ -1068,7 +1090,8 @@ const CAR3D={
       // Brake disc is metallic; the painted brake caliper must not cover the wheel hub.
       circleXZ(xo+side*.008,centerY,z,rw*.51,side,'#777f83',.74,0,20);
       box(xo+side*.013,centerY+rw*.30,z+rw*.30,.022,rw*.23,rw*.14,brakeColor,.74);
-      const nSpoke={five:5,six:6,mesh:15,deep:7,classic:8,track:12,aero:18,forged:12}[cos.rims]||8;
+      const nSpoke={five:5,six:6,mesh:15,deep:7,classic:8,track:12,aero:18,forged:12,
+         eight:8,turbine:16,wire:20,split:10,star:5,classic5:5,centerlock:12,rally:10}[cos.rims&&cos.rims!=='stock'?cos.rims:s.factory?.rims]||8;
       for(let i=0;i<nSpoke;i++){let a=i*2*Math.PI/nSpoke,span=(cos.rims==='mesh'?.041:.082),p=(r,ang)=>[xo+side*.02,centerY+Math.cos(ang)*r,z+Math.sin(ang)*r];quad(p(rw*.14,a-span),p(rw*.14,a+span),p(rw*.64,a+span*.35),p(rw*.64,a-span*.35),i%2?colmix(wheelColor,-.12):wheelColor,.91)}
       circleXZ(xo+side*.03,centerY,z,rw*.125,side,'#ccd4d7',.96,0,12);
       for(let i=0;i<5;i++){let a=i*Math.PI*2/5;circleXZ(xo+side*.033,centerY+Math.cos(a)*rw*.18,z+Math.sin(a)*rw*.18,rw*.03,side,'#272e34',.4,0,7)}
@@ -1149,6 +1172,126 @@ const CAR3D={
     const exhaust=cos.exhaustTip||'stock';
     const pipes=exhaust==='single'?[.60]:exhaust==='quad'?[.48,.71,-.48,-.71]:exhaust==='race'?[.16,-.16]:[.65,-.65];
     if(exhaust!=='none')for(const e of pipes){let x=e*hw;box(x,.30,rear-.009,.104,.067,.059,exhaust==='titanium'?'#739ac4':'#aebbc0',.88);box(x,.30,rear-.045,.068,.042,.009,'#11171d',.15)}
+    // V12 sculpt pass: photo-guided vehicle-specific lighting and surface language.
+    // These low-profile details replace flat-model appearance, without touching physics.
+    const fct=s.factory||{};
+    const frontZ=front+.047, backZ=rear-.042;
+    const warmLED= c.year<1995?'#e9e2cd':'#e7f4fb';
+    const lipMat=fct.trim==='chrome'?'#adb9bb':'#171d23';
+    function curvedStroke(points,thickness,color,gloss=.75){
+      for(let i=0;i<points.length-1;i++)rod(points[i],points[i+1],thickness,color,gloss);
+    }
+    // Curving crease on both sides, kept close to the actual shoulder width.
+    for(let side of [-1,1]){
+      let crease=[],crease2=[];
+      for(let j=0;j<=14;j++){
+        let z=mix(zRear+L*.155,zFront-L*.16,j/14);
+        let x=side*(width(z)+.007),fender=Math.sin(j/14*Math.PI);
+        const sideY=s.bel-(fct.side==='chrome'?.102:fct.side==='two-tone'?.122:.205)+.014*fender;
+        crease.push([x,sideY,z]);
+        crease2.push([x,.365+(fct.side==='track'?.023:.0),z]);
+      }
+      if(fct.side==='chrome'||fct.side==='vintage')curvedStroke(crease,.011,fct.side==='chrome'?'#c4cbcd':'#717e88',.83);
+      else if(fct.side==='two-tone')curvedStroke(crease,.012,'#777b82',.53);
+      else curvedStroke(crease,.008,colmix(base,fct.side==='sculpt'?.20:-.18),.77);
+      if(['track','rally','sculpt'].includes(fct.side))curvedStroke(crease2,.010,colmix(base,-.31),.38);
+      // Thin door sill with wheel-arch gaps: does not poke out past either bumper.
+      let sillx=side*(hw*.982),silly=Math.max(.295,Math.min(.39,s.bel-.44));
+      box(sillx,silly,0,.018,.028,L*.39,fct.side==='chrome'?'#9aa3a7':'#19232c',.44);
+    }
+    // Front optics: shallow swept 3-D surface following bonnet contours rather than a box.
+    // Original lamp cluster below provides a dark casing and fallback for old square designs.
+    if(!['popup','rolls','round','oval','bentley','square','quad'].includes(s.lights)){
+      for(const side of [-1,1]){
+        const za=zFront*.72,zb=zFront*.90;
+        const wingx=side*hw*.60,innerx=side*hw*.40,outerx=side*hw*.86;
+        const p=(x,z,h=.008)=>[x,topAt(z,Math.max(-.99,Math.min(.99,x/(width(z)||1))))+h,z];
+        quad(p(innerx,zb),p(wingx,za),p(outerx,za+.055),p(side*hw*.77,zb+.036),'#10202b',.42);
+        curvedStroke([p(innerx,zb,.013),p(wingx,za,.020),p(outerx,za+.055,.018)],.017,warmLED,.94);
+        curvedStroke([p(innerx,zb,.025),p(wingx,za,.025)],.007,'#8bb7ce',.88);
+      }
+    }
+    // 1980s front panel horizontal parking lenses vs modern lower LED corner blades.
+    if(fct.bumper==='sport'||fct.bumper==='split'){
+      for(let side of [-1,1]){
+        let x=side*(hw*.70),z=frontZ+.018,y=.37;
+        box(x,y,z,W*.19,.035,.014,'#111a23',.29);
+        if(c.year>=2015)rod([x-side*W*.08,y+.033,z+.007],[x+side*W*.08,y+.033,z+.007],.010,'#b4d4da',.75);
+      }
+    }
+    // Detailed front grilles: mesh/splitter/chrome matched to the actual brand family.
+    if(s.nose==='bentley'||s.nose==='aston'||s.nose==='audi'||s.nose==='rolls'){
+      const gw=s.nose==='rolls'?W*.31:W*.48,gy=.57,gh=s.nose==='rolls'?.39:.245,z=frontZ+.019;
+      if(s.nose==='bentley'||s.nose==='aston'||s.nose==='audi'){
+        for(let k=-9;k<=9;k++){
+          const x=k*gw/19;
+          curvedStroke([[x-.018,gy-gh*.44,z],[x+.035,gy+gh*.44,z]],.006,'#6d7f88',.45);
+        }
+      }else{
+        for(let k=-11;k<=11;k++){
+          const x=k*gw/23;
+          rod([x,gy-gh*.48,z],[x,gy+gh*.48,z],.008,'#b9c6c8',.87);
+        }
+      }
+    }
+    // BMW split kidney bezel and Porsche lower intake highlights remain distinct.
+    if(s.nose==='kidney'||s.nose==='giantkidney'){
+      for(let side of [-1,1]){
+        const rx=W*.094,cy=Math.min(s.bel-.16,.93),x=side*W*.11,z=frontZ+.020,ry=s.nose==='giantkidney'?.25:.142;
+        curvedStroke([[x-rx,cy+ry*.62,z],[x-rx*.86,cy+ry,z],[x+rx*.86,cy+ry,z],[x+rx,cy+ry*.60,z]],.013,'#c8d2d5',.91);
+      }
+    }
+    // Distinct rear lamp clusters: dual rounds, retro rectangles and thin full width LEDs.
+    if(s.tail==='fourround'){
+      for(let side of [-1,1])for(let k of [-1,1]){
+        const x=side*(hw*.59+k*.15);
+        ringXY(x,rearY,backZ-.012,.083,.086,.018,'#ffd7cd',.91,.08);
+        circleXY(x,rearY,backZ-.021,.043,.046,'#6d0a12',.30,.04,12);
+      }
+    }else if(s.tail==='lightbar'){
+      box(0,rearY+.016,backZ-.010,W*.73,.014,.010,'#f39a99',.87,.12);
+      for(let side of [-1,1])box(side*hw*.78,rearY-.008,backZ-.008,W*.085,.071,.012,'#ab2129',.50,.13);
+    }else if(s.tail==='eighties'||s.tail==='rect'){
+      for(let side of [-1,1]){
+        const x=side*hw*.73,z=backZ-.014;
+        box(x,rearY+.053,z,W*.265,.021,.008,'#b5bcc0',.65);
+        box(x,rearY-.045,z,W*.255,.026,.009,'#a32d31',.64);
+      }
+    }
+    // Rear aero diffuser in sports cars, chrome strip in formal limousines.
+    if(fct.bumper==='split' || fct.side==='track'){
+      for(let k=-2;k<=2;k++){
+        let x=k*W*.071;
+        box(x,.285,rear-.030,.023,.115,.062,'#111821',.22);
+      }
+    }else if(fct.trim==='chrome'){
+      box(0,rearY-.12,rear-.034,W*.77,.009,.010,'#bbc4c8',.81);
+    }
+    // Side vents only for engine layouts / cars where a large side inlet belongs.
+    if((c.drive==='MR'||c.drive==='RR') && (s.sideIntake==='door'||s.sideIntake==='blade')){
+      for(let side of [-1,1]){
+        const z=rearAx*.67,x=side*(hw+.019),y=Math.max(.40,s.bel-.28);
+        for(let q=0;q<3;q++)rod([x,y+q*.041,z-.135],[x,y+q*.038,z+.097],.008,'#64717a',.37);
+      }
+    }
+    // Classic whitewall on period luxury cars, era-correct round/rectangle corner markers.
+    if(c.year<1975||s.face==='century'){
+      for(let side of [-1,1])for(const z of parts){
+        const x=side*(hw+.066),rr=wheelR*.77;
+        for(let j=0;j<24;j++){
+          let a=j*Math.PI/12,b=(j+1)*Math.PI/12;
+          rod([x,centerY+Math.cos(a)*rr,z+Math.sin(a)*rr],[x,centerY+Math.cos(b)*rr,z+Math.sin(b)*rr],.008,'#c7c4ac',.63);
+        }
+      }
+    }
+    // Period-specific rear window heater, compact and set into the glass, no outward extrusion.
+    if(s.rearGlass>.45 && c.year>=1980 && s.form!=='roadster'){
+      for(let t=.19;t<.85;t+=.17){
+        let ya=mix(baseY,roofY,t)+.005,z=mix(rz,ry,t)-.013;
+        let w=mix(baseWinW*.89,roofW*.80,t);
+        rod([-w,ya,z],[w,ya,z],.005,'#536a72',.43);
+      }
+    }
     // V5 hand-shaped factory accents: no universal decorative wing or exhaust.
     // All shape accents remain inside body length, except small functional mirrors.
     const yFront=hoodY(zFront),yRear=hoodY(zRear);
@@ -2947,7 +3090,7 @@ function chooseCar(id){selected=clamp(id|0,0,CARS.length-1);try{localStorage.set
 function refreshGarageList(){const q=($('carSearch').value||'').toLowerCase().trim(),brand=$('brandFilter').value,sort=$('carSort').value;let list=CARS.filter(c=>(brand==='all'||brand===c.brand)&&(!q||(c.brand+' '+c.name+' '+c.year).toLowerCase().includes(q)));
 if(sort==='power')list.sort((a,b)=>b.hp-a.hp);if(sort==='handling')list.sort((a,b)=>b.handling-a.handling);if(sort==='top')list.sort((a,b)=>b.top-a.top);
 $('garageCount').textContent=list.length+' MACHINES / '+profile.owned.length+' OWNED / '+CARS.length+' TOTAL';const grid=$('garageGrid');const keepScroll=grid.scrollTop;thumbObserver?.disconnect();grid.replaceChildren();const frag=document.createDocumentFragment();for(const c of list){const item=document.createElement('button');item.className='garageItem'+(c.id===selected?' active':'')+(ownsCar(c.id)?' ownedCar':' lockedCar');item.type='button';item.innerHTML=`<canvas width="220" height="115"></canvas><strong>${c.brand}</strong><small>${getCarNickname(c.id)?`「${escapeValue(getCarNickname(c.id))}」 / `: ''}${escapeValue(c.name)}</small><span>${ownsCar(c.id)?'✓ 所有中':'🪙 '+coinsText(carPrice(c))} · ${c.hp} PS · ${c.drive}</span>`;item.onclick=()=>chooseCar(c.id);const cv=item.querySelector('canvas');cv.dataset.carId=String(c.id);if(thumbObserver)thumbObserver.observe(cv);else previewCar(cv,c);frag.append(item)}grid.append(frag);grid.scrollTop=keepScroll}
-function refreshGarageDetail(){const c=CARS[selected],s=tunedStats(c),owned=ownsCar(selected),dest=$('garageDetail');dest.innerHTML=`<canvas class="miniCar" id="bigGarageCar" width="430" height="210"></canvas><div class="eyebrow">${c.brand.toUpperCase()} / ${c.year} · ${owned?'OWNED':'FOR SALE'}</div><h3>${getCarNickname(selected)?`「${escapeValue(getCarNickname(selected))}」<small class="nickOriginalCar">${escapeValue(c.brand)} ${escapeValue(c.name)}</small>`:escapeValue(c.name)}</h3><div class="carLine">${c.drive}　|　${s.hp} PS　|　${s.mass.toLocaleString()} kg</div><div class="stats"><div>POWER <b>${s.hp} PS</b><span style="width:${Math.min(100,s.hp/17)}%"></span></div><div>HANDLING <b>${s.handling}/125</b><span style="width:${Math.min(100,s.handling*.8)}%"></span></div><div>TOP SPEED <b>${s.top} KM/H</b><span style="width:${Math.min(100,s.top/5)}%"></span></div><div>ACCELERATION <b>${s.accel.toFixed(1)}</b><span style="width:${Math.min(100,s.accel*5)}%"></span></div></div><p class="garageNote">${owned?'🔧 チューニングとドレスアップは車両ごとに保存されます。':'🔒 この車はまだ未購入です。コインで購入するとレースに使用できます。'} 142車種に個別の造形シグネチャを設定し、ライト・ルーフ・ディテールを立体的に作り分けています。メーカー純正のCADやスキャンデータではありません。</p>${owned?`<div class="garageNickEdit"><label for="garageNickInput">🏷️ 愛車のニックネーム（最大20文字）</label><div class="garageNickRow"><input id="garageNickInput" type="text" maxlength="20" value="${escapeValue(getCarNickname(selected))}" placeholder="例：秋名のハチロク" autocomplete="off" spellcheck="false" aria-label="愛車のニックネーム"><button type="button" id="garageNickSave">保存</button><button type="button" id="garageNickClear">解除</button></div><small>レース中の車名、対戦順位表、オンラインロビーにも表示されます。</small></div>`:''}<button class="viewFull3d" id="garageView3d">◉ 360° 立体ショールーム</button><div class="garageMoneyActions"><button class="secondary" id="garageTuneBtn">⚙ 性能改造</button><button class="secondary" id="garageCustomBtn">🎨 外装カスタム</button></div><button class="primary" id="garageChoose">${owned?'この車で走る ▶':'🪙 購入する '+coinsText(carPrice(c))}</button>`;
+function refreshGarageDetail(){const c=CARS[selected],s=tunedStats(c),owned=ownsCar(selected),dest=$('garageDetail');dest.innerHTML=`<canvas class="miniCar" id="bigGarageCar" width="430" height="210"></canvas><div class="eyebrow">${c.brand.toUpperCase()} / ${c.year} · ${owned?'OWNED':'FOR SALE'}</div><h3>${getCarNickname(selected)?`「${escapeValue(getCarNickname(selected))}」<small class="nickOriginalCar">${escapeValue(c.brand)} ${escapeValue(c.name)}</small>`:escapeValue(c.name)}</h3><div class="carLine">${c.drive}　|　${s.hp} PS　|　${s.mass.toLocaleString()} kg</div><div class="stats"><div>POWER <b>${s.hp} PS</b><span style="width:${Math.min(100,s.hp/17)}%"></span></div><div>HANDLING <b>${s.handling}/125</b><span style="width:${Math.min(100,s.handling*.8)}%"></span></div><div>TOP SPEED <b>${s.top} KM/H</b><span style="width:${Math.min(100,s.top/5)}%"></span></div><div>ACCELERATION <b>${s.accel.toFixed(1)}</b><span style="width:${Math.min(100,s.accel*5)}%"></span></div></div><p class="garageNote">${owned?'🔧 チューニングとドレスアップは車両ごとに保存されます。':'🔒 この車はまだ未購入です。コインで購入するとレースに使用できます。'} 142車種の個別外観プロファイル・リアル寄りのボディ面・灯火・グリル・ホイールを反映。実物写真と公表諸元を参考にした造形ですが、メーカー公式CADや実車スキャンによる完全再現ではありません。</p>${owned?`<div class="garageNickEdit"><label for="garageNickInput">🏷️ 愛車のニックネーム（最大20文字）</label><div class="garageNickRow"><input id="garageNickInput" type="text" maxlength="20" value="${escapeValue(getCarNickname(selected))}" placeholder="例：秋名のハチロク" autocomplete="off" spellcheck="false" aria-label="愛車のニックネーム"><button type="button" id="garageNickSave">保存</button><button type="button" id="garageNickClear">解除</button></div><small>レース中の車名、対戦順位表、オンラインロビーにも表示されます。</small></div>`:''}<button class="viewFull3d" id="garageView3d">◉ 360° 立体ショールーム</button><div class="garageMoneyActions"><button class="secondary" id="garageTuneBtn">⚙ 性能改造</button><button class="secondary" id="garageCustomBtn">🎨 外装カスタム</button></div><button class="primary" id="garageChoose">${owned?'この車で走る ▶':'🪙 購入する '+coinsText(carPrice(c))}</button>`;
  previewCar($('bigGarageCar'),c);if(owned){$('garageNickSave').onclick=()=>saveCarNickname(selected,$('garageNickInput').value);$('garageNickClear').onclick=()=>saveCarNickname(selected,'');$('garageNickInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();saveCarNickname(selected,e.currentTarget.value)}})}$('garageView3d').onclick=()=>openCarStudio();$('garageTuneBtn').onclick=()=>openShop('tuning');$('garageCustomBtn').onclick=()=>openShop('custom');$('garageChoose').onclick=()=>{if(!owned){buyVehicle(selected);return}$('garageModal').classList.add('hidden');refreshChosen()};} 
 
 
@@ -3034,7 +3177,7 @@ let studioYaw=.69,studioElev=.26,studioZoom=8.8,studioSpin=false,studioLast=0,st
 try{let saved=JSON.parse(localStorage.getItem('tns_colors')||'{}');for(let [k,v] of Object.entries(saved))if(/^#[0-9a-fA-F]{6}$/.test(v))CAR3D.overrides.set(+k,v)}catch(e){}
 function openCarStudio(){
  $('studioCarName').textContent=CARS[selected].brand.toUpperCase()+' / '+CARS[selected].name;
- const dims=CAR3D.shape(CARS[selected]);$('studioSub').textContent=`${CARS[selected].year} / ${CARS[selected].drive} / ${dims.L.toFixed(2)} × ${dims.W.toFixed(2)} × ${dims.H.toFixed(2)}m（近似） | 360° 確認`;
+ const dims=CAR3D.shape(CARS[selected]);$('studioSub').textContent=`${CARS[selected].year} / ${CARS[selected].drive} / ${dims.L.toFixed(2)} × ${dims.W.toFixed(2)} × ${dims.H.toFixed(2)}m（近似） | ファクトリースカルプV12 / ${[0,1,77,82].includes(selected)?'一部実測諸元':'近似諸元'} / 360° 確認`;
  studioYaw=.69;studioElev=.26;studioZoom=Math.min(12.6,8.8+Math.max(0,dims.L-4.2)*1.6);studioSpin=false;syncStudio();
  $('showroomModal').classList.remove('hidden');buildStudioColors();if(typeof updateModelLabel==='function')updateModelLabel();
  if(false)for(let col of CAR3D.palette){let b=document.createElement('button');b.type='button';b.style.background=col;b.title='ボディカラー '+col;b.className=CAR3D.paint(CARS[selected])===col?'active':'';
@@ -3255,6 +3398,12 @@ $('tnsModelFlip').onclick=async()=>{
 $('tnsModelReset').onclick=()=>{
  if(!TNS_MODEL_IMPORT.imported.delete(selected)){notify('この車は標準3Dです');return}
  if(cpuStudio)cpuStudio.meshKey='';updateModelLabel();notify('標準3Dに戻しました');
+};
+// Open public image search for the selected model; no third-party photos are redistributed.
+$('tnsFactoryPhotos').onclick=()=>{
+  const c=CARS[selected];
+  const q=[c.year,c.brand,c.name,'front side rear OEM photos'].join(' ');
+  window.open('https://www.google.com/search?tbm=isch&q='+encodeURIComponent(q),'_blank','noopener,noreferrer');
 };
 $('tnsModelExport').onclick=()=>{
  try{const count=TNS_MODEL_IMPORT.saveEmbedded();notify(`${count}車種分の3Dデータを内蔵したHTMLを保存しました`,3500)}catch(e){notify(e.message,3600)}
