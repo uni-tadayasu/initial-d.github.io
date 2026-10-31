@@ -573,9 +573,9 @@ body.racing #tachDial{max-height:94px}body.racing #tachGauge .tachFooter{font-si
   <div class="quickHead"><span>⚡ かんたんスタート</span><span>RACE HUB 8.0</span></div>
   <div class="quickPlayButtons"><button id="quickStory" type="button">📖 ストーリーモード<small>全3章・15戦のライバル物語</small></button><button id="quickDrivers" type="button">👤 運転手を雇う<small>360名・能力強化・名前変更</small></button><button id="quickSolo">▶ すぐソロレース<small>今の車でCPUと走る</small></button><button id="quickTime">⏱ すぐタイムアタック<small>ゴーストと自己記録に挑戦</small></button><button id="quickOnline">🌐 友達とオンライン<small>2人オンライン部屋コード対戦・強力CPU</small></button><button id="quickGarage">🚗 愛車を選ぶ<small>144車種と3Dショールーム</small></button><button id="quickBonus" type="button">👑 王者撃破・超高額ボーナス<small>6,155固定＋無限階層／勝利のみ高額賞金</small></button></div>
   <div class="quickPreferences"><label>CPU難易度<select id="aiLevel"><option value="rookie">入門（以前より強化）</option><option value="normal" selected>標準（賢いCPU）</option><option value="pro">上級（高速ライン）</option><option value="legend">伝説（超攻撃）</option><option value="ultimate">鬼神（最高峰）</option></select></label><label>画質<select id="v8Quality"><option value="balanced">軽量（スマホ向け）</option><option value="high" selected>高画質</option><option value="ultra">超高画質（PC向け）</option></select></label></div>
-  <div class="quickFoot">無課金。端末内セーブに加え、GitHub非公開リポジトリを使う個人同期に対応。リアルタイム対戦にはP2P／PCのBAT中継が必要です。</div>
+  <div class="quickFoot">無課金。セーブは端末内に自動保存。PC・スマホへの引き継ぎはリンク共有だけでOK（手動）。リアルタイム対戦はP2P／PCのBAT中継に対応。</div>
  </div>
- <button type="button" id="cloudQuickOpen" class="secondary cloudQuickOpen">☁ GitHub個人セーブ・スマホ同期　▶</button>
+ <button type="button" id="cloudQuickOpen" class="secondary cloudQuickOpen">🔄 PC・スマホのかんたん引き継ぎ　▶</button>
  <div id="omgCloudIndicator" aria-live="polite">☁ 端末内保存</div>
  <div class="sectionTitle">01 / GAME MODE</div>
  <div class="modegrid" id="modeGrid"><button class="modebtn modeStory" data-mode="story"><strong>📖 ストーリーモード</strong><small>3章 × 5戦／勝利で次へ</small></button><button class="modebtn selected" data-mode="battle"><strong>⚔ 峠バトル</strong><small>強化AIと一対一で競争</small></button><button class="modebtn" data-mode="time"><strong>⏱ タイムアタック</strong><small>自己最速タイムを更新</small></button><button class="modebtn" data-mode="traffic"><strong>🏁 グランプリ</strong><small>強化CPU5台と走る</small></button><button class="modebtn" data-mode="online"><strong>🌐 オンライン対戦</strong><small>友人とリアルタイムP2P</small></button><button class="modebtn bonusModeBtn" data-mode="bonus"><strong>👑 王者撃破 BONUS</strong><small>最強級のCPU。勝利した場合だけ高額賞金</small></button></div>
@@ -4106,7 +4106,7 @@ function renderShop(){const modal=$('shopModal');if(!modal)return;
  }else if(shopTab==='profile'){
   out.innerHTML=`<div class="tuneHero"><div><span class="eyebrow">PILOT PROFILE</span><h3>ドライバーレベル LV.${levelOf()}</h3><p>レベルXP ${profile.levelXP.toLocaleString()} / 所有車 ${profile.owned.length}台。セーブは端末に自動保存。クラウド設定・ログイン後はアカウント別に同期。</p></div></div>
   <div class="profileStats">${[['累計獲得',coinsText(profile.earned)],['累計消費',coinsText(profile.spent)],['完走',profile.stats.races+'回'],['勝利',profile.stats.wins+'回'],['総走行距離',profile.stats.kilometers+' km'],['累計ドリフト',profile.stats.drift.toLocaleString()+' pt'],['最高速度',profile.stats.topSpeed+' km/h'],['チューン回数',profile.stats.upgrades+'回']].map(([k,v])=>`<div><small>${k}</small><b>${v}</b></div>`).join('')}</div>
-  <div class="shopSectionName">🩺 データ診断</div><div class="profileTools">${coinButton('📋 車両・コース・セーブ・CPU診断','diagnose|all')}</div><div class="shopSectionName">☁️ iPhone・Android・PC 共通セーブ</div><div id="tnsCloudSyncPanel"></div><div class="shopSectionName">データをバックアップ</div><p class="shopHint">JSONファイルの手動移行も引き続き利用できます。GitHub個人セーブを使う場合は、専用の非公開リポジトリと限定権限トークンを設定してください。ゲーム内通貨のみを使用します。</p>
+  <div class="shopSectionName">🩺 データ診断</div><div class="profileTools">${coinButton('📋 車両・コース・セーブ・CPU診断','diagnose|all')}</div><div class="shopSectionName">🔄 iPhone・Android・PC かんたんセーブ引き継ぎ</div><div id="tnsCloudSyncPanel" style="padding:10px 0"><button id="omgShopEasySync" type="button" class="secondary" style="width:100%;padding:12px">🔄 PC・スマホのセーブをかんたん引き継ぎ</button><p class="shopHint">引き継ぎリンク・コード・ファイルに対応。登録やトークンは不要です（手動転送）。</p></div><div class="shopSectionName">データをバックアップ</div><p class="shopHint">従来のJSONバックアップもそのまま利用できます。端末切替時には、セーブ引き継ぎを実行してください。</p>
   <div class="profileTools">${coinButton('💾 セーブデータ書き出し','backup|export')}${coinButton('📂 セーブデータを読み込む','backup|import')}<input type="file" id="saveImportFile" class="hidden" accept="application/json,.json">${coinButton('⚠ 全進行データ初期化','backup|reset')}</div>
   <div class="shopSectionName">最近の取引</div><div class="transactions">${profile.transactions.length?profile.transactions.map(t=>`<div><span>${escapeValue(t.desc)}<small>${escapeValue(t.date)}</small></span><b class="${t.change>0?'plus':'minus'}">${t.change>0?'+':''}${coinsText(t.change<0?-t.change:t.change)}</b></div>`).join(''):'まだ取引がありません。'}</div>`;
   $('saveImportFile')?.addEventListener('change',importProfile);
@@ -6464,394 +6464,274 @@ window.__TN_TUNING_V12={PARTS,effectiveTuneLevel,tuneTier,tuneBulkPrice,buyParts
 window.__TN_TEST={YELLOW_BEETLE_GROUPS,YELLOW_BEETLE_SETS,yellowBeetleSetCost,equipYellowBeetleSet,FAIR_BALANCE,balancedEngineRatio,runUltimateDiagnostics,STRAIGHT30_ID,COS_TYPES,COS_OPTIONS,CUSTOM_STYLE_PRESETS,applyCustomPreset,CHORO_HERO_ID,filterCosmeticCards,BLACK_MARIA_ID,isBlackMaria,carPrice,ENGINE_CATALOG,ENGINE_BY_ID,stockEngineOf,isElectricCar,engineCompatibility,equippedEngine,enginePurchased,engineSwapPrice,swapEngine,MASTER_PARTS,APEX_PROJECT,normalMaxProgress,isNormalMax,masterLevel,isMasterMax,apexLevel,nextMasterPrice,nextApexPrice,buyMasterPart,buyApexProject,BONUS_STAGES,BONUS_LEAGUES,BONUS_ENDLESS_INDEX,makeBonusTowerStage,bonusStage,advanceBonusStage,getBonusFilterIndices,buildUnbeatableBoss,updateUnbeatableBoss,racePayout,updateBonusModeUI,normalizeCarNickname,getCarNickname,saveCarNickname,TNS_REAL_DATA,guardrailCenterLimit,get externalGpx(){return externalGpx},importGpxFile,road3D,driveSettings,driveInputs,updateDrivingModel,shiftGear,TNS_MODEL_IMPORT,CARS,courses,REGIONS,LAYOUTS,CAR3D,studio3D,stage3D,makeCourse,sample,roadCurve,formatTime,startRace,updatePhysics,openCarStudio,selectCourse,getState:()=>({started,racePhase,mode,player,course,customBgm,muted,coins:profile.coins}),getProgress:()=>JSON.parse(JSON.stringify(profile)),renderShop,openShop,buyVehicle,buyPart,equipCosmetic,tunedStats,finishRace};
 
 </script>
-<!-- GitHub one-file sync is built into this HTML; no external scripts or local server required -->
+<!-- かんたんセーブ引き継ぎはHTML内で完結します。リアルタイム対戦は別通信経路を利用します。 -->
 
-<!-- V23: One-file GitHub private repo encrypted save. No account server, no secrets embedded. -->
-<div id="omgCloudModal" role="dialog" aria-label="尾文字Z GitHub個人セーブと端末間同期" aria-modal="true" hidden>
-  <div class="omgCloudBox">
-    <div class="omgCloudHead"><h2>☁ 尾文字Z・PC／スマホ同期</h2><button type="button" id="omgCloudClose">✕ 閉じる</button></div>
-    <p class="omgCloudLead">必要なのはこの <b>index.html だけ</b>。端末内セーブを使いながら、GitHubの<strong>非公開リポジトリ</strong>に暗号化して保存できます。ご自身専用のGitHub認証です。</p>
-    <div id="omgCloudStatus" role="status" aria-live="polite">接続待機中</div>
-    <div id="omgCloudAccountBadge" class="omgCloudAccountBadge"></div>
-    <div id="omgCloudInit" class="omgCloudSection">
-      <strong>① GitHub接続（初回だけ）</strong>
-      <div class="omgCloudRow">
-        <label>GitHubユーザー名<input id="omgGhOwner" type="text" autocomplete="off" spellcheck="false" placeholder="例: your-github-name" maxlength="64"></label>
-        <label>非公開リポジトリ名<input id="omgGhRepo" type="text" autocomplete="off" spellcheck="false" value="omogiz-save-private" maxlength="64"></label>
-      </div>
-      <label>セーブ名（複数の保存枠に対応）<input id="omgGhSlot" type="text" value="main" maxlength="40" autocomplete="off" spellcheck="false"></label>
-      <label>GitHubアクセストークン（初回・PCとスマホで別々に入力可能）
-        <input id="omgGhToken" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_..." maxlength="250"></label>
-      <label>暗号化パスフレーズ（12文字以上・両端末で同じもの）
-        <input id="omgGhPhrase" type="password" autocomplete="off" minlength="12" placeholder="忘れるとセーブを復号できません"></label>
-      <label class="omgCloudCheck"><input id="omgGhRemember" type="checkbox" checked><span>この端末に接続情報を暗号化して保存（次回はパスフレーズだけで接続）</span></label>
-      <button id="omgGhConnect" type="button" class="omgCloudPrimary">🔐 GitHubに接続・最新データを読み込み</button>
-      <details><summary>⚙ 初回設定の手順（約3ステップ）</summary>
-        <p>1. <a href="https://github.com/new" rel="noopener noreferrer" target="_blank">GitHubでPrivate（非公開）リポジトリを作成</a>します。例：<code>omogiz-save-private</code>。ゲーム公開用とは<strong>別</strong>のリポジトリにします。</p>
-        <p>2. <a href="https://github.com/settings/personal-access-tokens/new?name=OmojiZ-Private-Save&amp;contents=write" target="_blank" rel="noopener noreferrer">Fine-grained tokenを発行</a>。Repository access は「Only select repositories」で作った保存用リポジトリのみ、Repository permissions は「Contents: Read and write」にします。</p>
-        <p>3. GitHub名・リポジトリ名・トークンと<strong>自分で決めた12文字以上の暗号化パスフレーズ</strong>を入力し、接続します。以後は「同期」ボタン、または自動同期を使えます。</p>
-        <p>重要：GitHub Pagesだけで一般ユーザーのID／パスワード登録を安全に提供することはできません。これは<strong>所有者本人専用</strong>の同期方式です。GitHubトークンを他人に渡さないでください。</p>
-      </details>
-    </div>
-    <div id="omgCloudConnected" class="omgCloudSection" hidden>
-      <strong>② ワンタップ同期（変更時は一定時間後に自動同期）</strong>
-      <button id="omgCloudSync" type="button" class="omgCloudPrimary">🔄 GitHubと同期する</button>
-      <div class="omgCloudRow"><button id="omgGhPairCopy" type="button">📱 スマホ用接続コードをコピー</button><button id="omgGhDisconnect" type="button">接続を切る</button></div>
-      <small>スマホでは下の欄へ接続コードを貼り、同じパスフレーズで接続します。接続コードには暗号化されたトークンが入っています。パスフレーズと一緒に他人へ渡さないでください。</small>
-    </div>
-    <div id="omgCloudConflict" class="omgCloudSection" hidden>
-      <strong>⚠ PCとスマホのセーブが競合しています</strong>
-      <p>どちらを残すか選んでください。上書き前のデータは端末内にバックアップします。</p>
-      <div class="omgCloudRow"><button id="omgGhUseRemote" class="omgCloudPrimary" type="button">GitHub版を採用</button><button id="omgGhUseLocal" class="omgCloudDanger" type="button">この端末版で上書き</button></div>
-    </div>
-    <details id="omgGhPairDetails"><summary>📱 スマホに接続コードを貼り付ける</summary>
-      <p>PCで「スマホ用接続コードをコピー」を押して、スマホへ送ってください。暗号化されていても接続権限を含むため、安全に取り扱ってください。</p>
-      <textarea id="omgGhCode" rows="3" placeholder="OMOZ1.で始まる接続コード" autocomplete="off" spellcheck="false"></textarea>
-      <button id="omgGhPairImport" type="button" class="omgCloudPrimary">📥 接続コードを取り込む</button>
-    </details>
-    <details><summary>💾 GitHubなしでも使える：セーブファイル引き継ぎ</summary>
-      <p>暗号化したセーブファイルをPC・スマホ間で移せます。GitHubに接続しない場合も使えます。パスフレーズは「①」の欄に入力してください。</p>
-      <div class="omgCloudRow"><button id="omgGhExport" type="button">🔒 セーブを書き出す</button><label class="omgCloudFile">📂 セーブを読み込む<input id="omgGhImport" type="file" accept=".json,application/json"></label></div>
-    </details>
-    <details><summary>🔒 セキュリティと保存の注意</summary>
-      <p>セーブデータと接続トークンは、ブラウザ上でAES-GCM方式によって暗号化します。GitHubには暗号化済みセーブだけを書き込み、トークンやパスフレーズをHTMLに埋め込みません。</p>
-      <p>同期用トークンは、指定したPrivateリポジトリのContents権限だけに限定してください。ゲーム内のコイン等を厳密に不正防止する対戦用サーバー認証ではありません。</p>
-      <p>異なる端末で同時に遊んだ場合は競合が生じることがあります。プレイを終えた端末で「同期」してから次の端末を開くと安全です。無料のGitHub APIにはアクセス回数や書き込み回数の制限があります。</p>
-      <button id="omgGhForget" type="button" class="omgCloudDanger">この端末の接続設定を削除</button>
-    </details>
-    <small>ゲームデータのローカル保存は継続します。GitHub個人セーブ同期にBATやPythonは不要です。リアルタイム対戦にはPCのBAT中継またはP2P接続が必要です。</small>
+<!-- 尾文字Z V24: バックエンド不要の最短・セーブ引き継ぎ（コード/リンク/ファイル） -->
+<style id="omogiz-easysync-css">
+#omgCloudModal .omgCloudBox{max-width:650px;gap:12px}
+#omgCloudModal .easySyncHero{border:1px solid #61dac482;border-radius:13px;background:linear-gradient(125deg,#153d45,#142037);padding:16px 14px;display:grid;gap:9px}
+#omgCloudModal .easySyncHero strong{font-size:17px;color:#effff9}
+#omgCloudModal .easySyncHero p{font-size:12px}
+#omgCloudModal .easyStep{display:flex;gap:10px;align-items:center}
+#omgCloudModal .easyStepNum{flex:none;display:grid;place-items:center;width:29px;height:29px;border-radius:50%;background:#73e0cb;color:#0b2b2b;font-size:15px;font-weight:900}
+#omgCloudModal .easySyncLarge{min-height:54px;font-size:15px;font-weight:900;width:100%}
+#omgCloudModal .easySyncNote{color:#afc5d2;font-size:12px;line-height:1.7}
+#omgCloudModal textarea{min-height:90px;resize:vertical}
+#omgCloudModal .easySyncDetails{padding:10px}
+#omgCloudModal .easySyncHint{background:#17273b;padding:10px;border-radius:8px;color:#dbe8f4;line-height:1.6;font-size:12px}
+#omgCloudModal .easySyncSummary{border:1px dashed #537b85;border-radius:10px;padding:12px;display:grid;gap:7px;background:#112b33}
+#omgCloudModal .easySyncSummary b{color:#f6e7b9}
+#omgCloudModal .easySyncSummary button{min-height:46px}
+#omgCloudModal .easySyncWarning{color:#f7c78e;font-size:12px;line-height:1.65}
+@media(max-width:460px){#omgCloudModal .easySyncLarge{font-size:13px}#omgCloudModal .easySyncHero{padding:12px}#omgCloudModal .omgCloudRow{grid-template-columns:1fr 1fr}}
+</style>
+<div id="omgCloudModal" role="dialog" aria-label="尾文字Z かんたんセーブ引き継ぎ" aria-modal="true" hidden>
+ <div class="omgCloudBox">
+  <div class="omgCloudHead"><h2>🔄 尾文字Z・かんたん引き継ぎ</h2><button id="omgCloudClose" type="button">✕ 閉じる</button></div>
+  <div class="easySyncHero">
+    <strong>設定なし。PC ⇄ スマホでセーブを移す</strong>
+    <p>GitHubトークン・ログイン・BAT不要。送る側でリンクをコピーし、受け取る側で開くだけ。<b>同じゲームのURL</b>なら1クリックで受け取り確認できます。</p>
+    <div id="omgCloudAccountBadge" aria-live="polite">この端末のゲームデータを保存中</div>
   </div>
+  <div id="omgCloudStatus" role="status" aria-live="polite">ゲームの進行はこの端末に自動保存されています。</div>
+  <section class="omgCloudSection" aria-label="送信">
+    <div class="easyStep"><span class="easyStepNum">1</span><strong>今の端末から送る</strong></div>
+    <button id="omgEasyShareLink" type="button" class="omgCloudPrimary easySyncLarge">🔗 引き継ぎリンクをコピー</button>
+    <div class="omgCloudRow"><button id="omgEasyCopyCode" type="button">📋 コードをコピー</button><button id="omgEasyShareNative" type="button">📱 共有メニューで送る</button></div>
+    <p class="easySyncNote">PCのChromeで「リンクをコピー」→自分宛てのLINE・メール等でスマホに送信→スマホで開いて確認します。<b>GitHub PagesなどHTTPSで公開している場合</b>にリンク送信が使えます。</p>
+  </section>
+  <section class="omgCloudSection" aria-label="受信">
+    <div class="easyStep"><span class="easyStepNum">2</span><strong>別の端末で受け取る</strong></div>
+    <label>引き継ぎコード／引き継ぎリンクを貼り付ける
+      <textarea id="omgEasyCodeInput" rows="3" placeholder="OMOZ2.で始まるコード、または共有されたURLを貼り付け" spellcheck="false" autocapitalize="none" autocomplete="off"></textarea>
+    </label>
+    <div class="omgCloudRow"><button id="omgEasyPaste" type="button">📋 貼り付け</button><button id="omgEasyReview" type="button" class="omgCloudPrimary">📥 データを確認</button></div>
+    <div id="omgEasyPreview" class="easySyncSummary" hidden>
+      <strong>受け取るセーブ内容</strong>
+      <div id="omgEasyPreviewDetails"></div>
+      <p class="easySyncWarning">受信するとこの端末のゲームデータが入れ替わります。<b>切替前のデータはバックアップします。</b> 送信元のデータだけが採用され、自動で合算はされません。</p>
+      <button type="button" id="omgEasyApply" class="omgCloudPrimary">✅ このデータを読み込む</button>
+      <button type="button" id="omgEasyCancel">やめる</button>
+    </div>
+  </section>
+  <details class="easySyncDetails"><summary>💾 リンクを送れない場合：ファイルで引き継ぎ</summary>
+    <p>ファイルを自分宛てに送って、別の端末で読み込みます。ローカルHTMLでも使えます。</p>
+    <div class="omgCloudRow"><button type="button" id="omgEasyExport">⬇ セーブファイルを保存</button><label class="omgCloudFile">📂 セーブファイルを選択<input id="omgEasyFileInput" type="file" accept=".omoz,.json,text/plain,application/json"></label></div>
+  </details>
+  <details class="easySyncDetails"><summary>🗂 以前のGitHub同期版の端末内データを探す</summary>
+    <p>以前のHTMLで別の保存枠を使っていた場合は、端末に残るデータを選んで復元できます。GitHubには接続しません。</p>
+    <button type="button" id="omgEasyFindLegacy">以前の保存枠を探す</button>
+    <select id="omgEasyLegacySelect" style="width:100%;padding:10px;background:#081725;color:#fff;border:1px solid #526b80;border-radius:8px"><option>未検索</option></select>
+    <button id="omgEasyLegacyReview" type="button">選んだ保存枠を確認する</button>
+  </details>
+  <div class="easySyncHint"><b>大切な違い：</b> これは設定不要の<b>手動引き継ぎ</b>です。PCで遊んだ後は新しいリンクを作ってスマホに渡してください。<b>自動リアルタイム同期にはクラウドまたはPCサーバーが必要</b>です。共有コードにゲーム進行情報が含まれるので公開投稿しないでください。</div>
+  <small>オンラインレース機能・車両144台・専用ドレス・ストーリー・チューニングは従来のままです。</small>
+ </div>
 </div>
 
-<script>
-/* 尾文字Z V23 - serverless private GitHub save, single HTML.
- * Login is repository-scoped PAT authorization, not public user registration.
- * Personal access token + save data are encrypted with user's passphrase.
+<script id="omogiz-easy-sync-v24">
+/* 尾文字Z V24 — ログイン・トークン・サーバー設定不要の手動セーブ引き継ぎ
+ * 同一HTMLで生成した gzip 圧縮セーブを、URL fragment / コピー / ファイルで渡す。
+ * 端末間の自動クラウド同期ではありません。個別確認と復元前バックアップ必須。
  */
 (()=>{
 'use strict';
-const el=id=>document.getElementById(id);
-const lsGet=k=>{try{return localStorage.getItem(k)}catch{return null}};
-const lsSet=(k,v)=>{try{localStorage.setItem(k,typeof v==='string'?v:JSON.stringify(v));return true}catch{return false}};
-const lsDel=k=>{try{localStorage.removeItem(k)}catch{}};
-const parse=(s,d=null)=>{try{return JSON.parse(s)}catch{return d}};
-const encoder=new TextEncoder(),decoder=new TextDecoder();
-const KCFG='omogiz_v23_gh_config',KTOKEN='omogiz_v23_gh_token',KACK='omogiz_v23_gh_ack_';
-const PATH_BASE='omogiz-saves/';
-let cfg=parse(lsGet(KCFG),{})||{},token='',phrase='',ready=false,busy=false,blocked=false,dirty=false,paused=false;
-let ackSha=null,ackHash='',seenSha=null,latestRemote=null,uploadTimer=0,lastSnapshotText='',lastSynced=0, lastReport='';
-let initialized=false,lastPoll=0;
-const slotId=()=>[cfg.owner,cfg.repo,cfg.slot||'main'].join(':').toLowerCase();
-const storeKey=()=>`omogiz_v23_local_${slotId()}`;
-const econKey=()=>`omogiz_v23_economy_${slotId()}`;
-const ackKey=()=>KACK+slotId();
-const gitPath=()=>PATH_BASE+encodeURIComponent(cfg.slot||'main')+'.json';
-const apiPath=()=>`https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${gitPath()}`;
+const el=id=>document.getElementById(id), enc=new TextEncoder(), dec=new TextDecoder();
+const PREFIX='OMOZ2.', HEADER='omogiz-save=', MAX_CODE=300000, MAX_UNPACK=2400000;
+const LREV='omogiz_v24_local_revision',LSENT='omogiz_v24_last_sent',LIMPORTED='omogiz_v24_last_received';
+let busy=false,paused=false,pending=null, lastStatus='進行データはこの端末に自動保存されています。';
+const get=k=>{try{return localStorage.getItem(k)}catch{return null}},set=(k,v)=>{try{localStorage.setItem(k,typeof v==='string'?v:JSON.stringify(v));return true}catch{return false}},parse=(s,d=null)=>{try{return JSON.parse(s)}catch{return d}};
 const raced=()=>typeof started!=='undefined'&&(started||racePhase==='countdown'||racePhase==='race');
 const good=s=>!!s&&s.schema===1&&s.profile&&Array.isArray(s.profile.owned)&&s.prefs&&typeof s.prefs==='object';
-const normalize=(s)=>{if(!good(s))throw Error('セーブデータが不正です');return s};
-const finger=s=>JSON.stringify(s);
-const mark=msg=>{lastReport=String(msg);const x=el('omgCloudStatus');if(x)x.textContent=lastReport};
-function ui(){
- const q=el('cloudQuickOpen'),i=el('omgCloudIndicator'),b=el('omgCloudSync'),c=el('omgCloudConflict'),w=el('omgCloudConnected'),init=el('omgCloudInit');
- const state=blocked?'競合あり':busy?'通信中':!ready?'未接続':dirty?'未同期の変更あり':'同期済み';
- if(q)q.textContent=`☁ GitHubセーブ｜${state} ▶`;
- if(i){i.textContent=`☁ GitHubセーブ：${state}${ready?'（'+(cfg.slot||'main')+'）':''}`;i.dataset.state=blocked?'conflict':!ready?'offline':'online'}
- if(b){b.disabled=!ready||busy||blocked;b.textContent=dirty?'☁ 変更をGitHubへ保存':'🔄 GitHubと同期する'}
- if(c)c.hidden=!blocked;
- if(w)w.hidden=!ready;
- if(init)init.hidden=ready;
- const badge=el('omgCloudAccountBadge');if(badge)badge.textContent=ready?`保存先 ${cfg.owner}/${cfg.repo} / ${cfg.slot||'main'}　・　${state}`:'GitHub認証でセーブを保護（独自ID・パスワードの公開登録機能ではありません）';
- const p=el('omgCloudProfileSummary');if(p)p.textContent=ready?`アカウント（GitHub）: ${cfg.owner} / セーブ枠: ${cfg.slot}　・　${state}`:'未接続：端末内に保存しています';
-}
-function show(){if(el('omgCloudModal')){el('omgCloudModal').hidden=false;ui()}}
-function hide(){if(el('omgCloudModal'))el('omgCloudModal').hidden=true}
-function validateConfig(c){
- for(const k of ['owner','repo','slot'])if(!/^[A-Za-z0-9_.-]{1,64}$/.test(String(c[k]||'')))throw Error(`${k}は英数字・ハイフン・アンダーバーで入力してください`);
- if(c.owner.startsWith('-')||c.owner.endsWith('-')||c.repo==='.'||c.repo==='..')throw Error('GitHubユーザー名／リポジトリ名を確認してください');
-}
-function bytesToB64(u){let s='';for(let i=0;i<u.length;i+=8192)s+=String.fromCharCode(...u.subarray(i,i+8192));return btoa(s)}
-function b64ToBytes(x){const str=atob(x.replace(/\s/g,''));return Uint8Array.from(str,c=>c.charCodeAt(0))}
-const rand=n=>crypto.getRandomValues(new Uint8Array(n));
-async function derive(p,salt){
- const base=await crypto.subtle.importKey('raw',encoder.encode(p),'PBKDF2',false,['deriveKey']);
- return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:200000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
-}
-async function seal(data,p){
- if(p.length<12)throw Error('暗号化パスフレーズは12文字以上にしてください');
- if(!globalThis.crypto?.subtle)throw Error('暗号化が利用できません。HTTPSのGitHub Pagesで開いてください');
- const salt=rand(16),iv=rand(12),key=await derive(p,salt);
- const raw=encoder.encode(JSON.stringify(data)),cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,raw);
- return {format:'OmojiZ-AES-GCM-v1',kdf:'PBKDF2-SHA256-200000',salt:bytesToB64(salt),iv:bytesToB64(iv),payload:bytesToB64(new Uint8Array(cipher))};
-}
-async function unseal(o,p){
- if(!o||o.format!=='OmojiZ-AES-GCM-v1'||typeof o.payload!=='string')throw Error('データが暗号化セーブ形式ではありません');
- try{
-  const salt=b64ToBytes(o.salt),iv=b64ToBytes(o.iv);if(salt.length!==16||iv.length!==12)throw Error('format');
-  const key=await derive(p,salt),plain=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,b64ToBytes(o.payload));
-  return JSON.parse(decoder.decode(plain));
- }catch{throw Error('パスフレーズが異なるか、データが壊れています')}
-}
-function snapshot(){return {schema:1,profile:JSON.parse(JSON.stringify(profile)),prefs:{
+const copyObject=v=>JSON.parse(JSON.stringify(v));
+function snapshot(){return {schema:1,profile:copyObject(profile),prefs:{
  selected,courseIndex,storyStageIndex,bonusStageIndex,bonusTowerFloor,bestTimes,
- customColors:parse(lsGet('tns_colors'),{})||{},
+ customColors:parse(get('tns_colors'),{})||{},
  aiDifficulty:typeof aiDifficulty==='string'?aiDifficulty:'normal',
- driveSettings:typeof driveSettings==='object'?JSON.parse(JSON.stringify(driveSettings)):null
+ driveSettings:typeof driveSettings==='object'?copyObject(driveSettings):null
 }}}
+function currentRevision(){return get(LREV)||'0'}
+function ui(){
+ const btn=el('cloudQuickOpen'),ind=el('omgCloudIndicator'),report=el('omgCloudAccountBadge');
+ const sent=currentRevision()===get(LSENT);
+ if(btn)btn.textContent='🔄 PC・スマホのかんたん引き継ぎ　▶';
+ if(ind){ind.textContent=sent?'💾 この端末に保存済み・引き継ぎデータ作成済み':'💾 この端末に保存中｜別端末へ送るには引き継ぎリンクを作成';ind.dataset.state='online'}
+ if(report)report.textContent=`端末内セーブ：${new Date(Number(get(LREV))||Date.now()).toLocaleString('ja-JP')} 更新｜${sent?'送信コード作成済み':'引き継ぎはまだ実施していません'}`;
+}
+function mark(msg){lastStatus=String(msg);const e=el('omgCloudStatus');if(e)e.textContent=lastStatus;ui()}
+function changed(){if(paused)return;set(LREV,String(Date.now()));ui()}
+function open(){if(el('omgCloudModal')){el('omgCloudModal').hidden=false;ui()}}
+function close(){if(el('omgCloudModal'))el('omgCloudModal').hidden=true}
 function backup(s,reason){
  if(!good(s))return;
- const name=`omogiz_v23_backup_${slotId()}_${Date.now()}`;lsSet(name,{reason,date:new Date().toISOString(),snapshot:s});
- const a=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('omogiz_v23_backup_'+slotId()+'_'))a.push(k)}}catch{}
- a.sort();for(const k of a.slice(0,Math.max(0,a.length-6)))lsDel(k);
+ try{
+  const k=`omogiz_v24_backup_${Date.now()}`;set(k,{reason,date:new Date().toISOString(),snapshot:s});
+  const keys=[];for(let i=0;i<localStorage.length;i++){const x=localStorage.key(i);if(x?.startsWith('omogiz_v24_backup_'))keys.push(x)}
+  keys.sort();for(const old of keys.slice(0,Math.max(0,keys.length-5)))localStorage.removeItem(old);
+ }catch(e){console.warn('Backup limited:',e)}
 }
-function apply(s,{takeBackup=true}={}){
- normalize(s);if(raced())throw Error('レース中はセーブを切り替えられません。終了後に同期してください');
- paused=true;try{
-  if(takeBackup)backup(snapshot(),'データ読み込み前');
-  profile=cleanProfile(s.profile);const p=s.prefs;
-  selected=Math.max(0,Math.min(CARS.length-1,Math.trunc(Number(p.selected)||0)));
-  if(!ownsCar(selected))selected=Number(profile.owned?.[0])||0;
-  storyStageIndex=Math.max(0,Math.min(14,Math.trunc(Number(p.storyStageIndex)||0)));
-  bonusStageIndex=Math.max(0,Math.min(BONUS_ENDLESS_INDEX,Math.trunc(Number(p.bonusStageIndex)||0)));
-  bonusTowerFloor=Math.max(1,Math.min(1000000,Math.trunc(Number(p.bonusTowerFloor)||1)));
-  bestTimes=p.bestTimes&&typeof p.bestTimes==='object'&&!Array.isArray(p.bestTimes)?p.bestTimes:{};
-  const colors=p.customColors&&typeof p.customColors==='object'?p.customColors:{};
-  lsSet('tns_colors',colors);CAR3D.overrides.clear();
-  for(const [k,v] of Object.entries(colors))if(/^#[a-f\d]{6}$/i.test(v))CAR3D.overrides.set(Number(k),v);
-  const ci=Math.trunc(Number(p.courseIndex)||0);
-  if(ci>=0&&ci<courses.length){courseIndex=ci;try{selectCourse(ci,false)}catch{}}
-  if(p.driveSettings&&typeof p.driveSettings==='object'&&typeof driveSettings==='object'){
-   Object.assign(driveSettings,p.driveSettings);try{lsSet(DRIVE_KEY,driveSettings)}catch{}
-  }
-  if(typeof p.aiDifficulty==='string'&&['easy','normal','hard','legend','demon','beginner','standard','expert'].includes(p.aiDifficulty)){
-   aiDifficulty=p.aiDifficulty;lsSet('tns_ai_difficulty',aiDifficulty);
-  }
-  lsSet('tns_car',String(selected));lsSet('omogiz_story_choice',String(storyStageIndex));
-  lsSet('tns_bonus_stage',String(bonusStageIndex));lsSet('tns_bonus_tower_floor',String(bonusTowerFloor));
-  lsSet('tns_bests',bestTimes);storeProgress();
-  try{refreshChosen();refreshGarageDetail();refreshGarageList();refreshWallet();renderShop();updateBonusModeUI()}catch(e){console.warn('画面更新を一部省略:',e)}
-  lastSnapshotText=finger(snapshot());lsSet(storeKey(),s);
- }finally{paused=false}
+function apply(s){
+ if(!good(s))throw Error('対応していない保存データです。');
+ if(raced())throw Error('レース中は読み込みできません。ゴール後にもう一度操作してください。');
+ if(!set('omogiz_v24_recovery_last',{date:new Date().toISOString(),snapshot:snapshot()}))throw Error('復元前データの一時バックアップに失敗しました。ブラウザの保存領域をご確認ください。');
+ backup(snapshot(),'引き継ぎで置き換える前');
+ paused=true;
+ try{
+   profile=cleanProfile(s.profile);
+   const p=s.prefs;
+   selected=Math.max(0,Math.min(CARS.length-1,Math.trunc(Number(p.selected)||0)));
+   if(!ownsCar(selected))selected=Number(profile.owned?.[0])||0;
+   storyStageIndex=Math.max(0,Math.min(14,Math.trunc(Number(p.storyStageIndex)||0)));
+   bonusStageIndex=Math.max(0,Math.min(BONUS_ENDLESS_INDEX,Math.trunc(Number(p.bonusStageIndex)||0)));
+   bonusTowerFloor=Math.max(1,Math.min(1000000,Math.trunc(Number(p.bonusTowerFloor)||1)));
+   bestTimes=p.bestTimes&&typeof p.bestTimes==='object'&&!Array.isArray(p.bestTimes)?p.bestTimes:{};
+   const colors=p.customColors&&typeof p.customColors==='object'?p.customColors:{};
+   set('tns_colors',colors);CAR3D.overrides.clear();
+   for(const [k,v] of Object.entries(colors))if(/^#[a-f\d]{6}$/i.test(v))CAR3D.overrides.set(Number(k),v);
+   const ci=Math.trunc(Number(p.courseIndex)||0);
+   if(ci>=0&&ci<courses.length){courseIndex=ci;try{selectCourse(ci,false)}catch{}}
+   if(p.driveSettings&&typeof p.driveSettings==='object'&&typeof driveSettings==='object'){
+     Object.assign(driveSettings,p.driveSettings);set(DRIVE_KEY,driveSettings);
+   }
+   if(typeof p.aiDifficulty==='string'&&['easy','normal','hard','legend','demon','beginner','standard','expert','rookie','pro','ultimate'].includes(p.aiDifficulty)){
+      aiDifficulty=p.aiDifficulty;set('tns_ai_difficulty',aiDifficulty);
+   }
+   set('tns_car',String(selected));set('omogiz_story_choice',String(storyStageIndex));
+   set('tns_bonus_stage',String(bonusStageIndex));set('tns_bonus_tower_floor',String(bonusTowerFloor));
+   set('tns_bests',bestTimes);storeProgress();
+   try{refreshChosen();refreshGarageDetail();refreshGarageList();refreshWallet();renderShop();updateBonusModeUI()}catch(e){console.warn('画面更新を一部省略:',e)}
+   set(LREV,String(Date.now()));set(LIMPORTED,new Date().toISOString());
+ }finally{paused=false;ui()}
 }
-function writeLocal(s){if(good(s))lsSet(storeKey(),s)}
-function restoreAck(){const a=parse(lsGet(ackKey()),{});ackSha=a?.sha||null;ackHash=a?.hash||''}
-function saveAck(sha,s){ackSha=sha;ackHash=finger(s);lsSet(ackKey(),{sha:ackSha,hash:ackHash,date:Date.now()})}
-function pending(){const s=finger(snapshot());lastSnapshotText=s;writeLocal(snapshot());dirty=s!==ackHash;ui();if(dirty)scheduleUpload()}
-function changed(){if(!ready||paused||blocked)return;const s=finger(snapshot());if(s===lastSnapshotText)return;
- lastSnapshotText=s;writeLocal(snapshot());dirty=s!==ackHash;ui();if(dirty)scheduleUpload();}
-function scheduleUpload(){clearTimeout(uploadTimer);if(!ready||blocked)return;uploadTimer=setTimeout(()=>void synchronize({write:true}),36000)}
-function gitHeaders(){return {'Accept':'application/vnd.github+json','Authorization':'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'}}
-async function api(url,opt={}){
- let r;try{r=await fetch(url,{...opt,headers:gitHeaders(),cache:'no-store'})}
- catch(e){throw Error('GitHubに接続できません。通信・ブラウザの設定を確認してください：'+e.message)}
- const body=await r.text();let data=parse(body,{});
- if(!r.ok){
-  const msg=String(data?.message||r.statusText).slice(0,230);
-  const e=new Error(`GitHub HTTP ${r.status}: ${msg}`);e.status=r.status;throw e;
- }
+function toB64(bytes){let s='';for(let i=0;i<bytes.length;i+=8192)s+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function fromB64(s){if(!/^[a-zA-Z0-9_-]+$/.test(s))throw Error('コードの文字列に誤りがあります。');let x=s.replace(/-/g,'+').replace(/_/g,'/');while(x.length%4)x+='=';const b=atob(x);return Uint8Array.from(b,c=>c.charCodeAt(0))}
+async function gzip(bytes){if(typeof CompressionStream==='undefined')return {flag:'R',bytes};const stream=new Blob([bytes]).stream().pipeThrough(new CompressionStream('gzip'));return {flag:'G',bytes:new Uint8Array(await new Response(stream).arrayBuffer())}}
+async function ungzip(bytes,flag){
+ if(flag==='R')return bytes;
+ if(flag!=='G'||typeof DecompressionStream==='undefined')throw Error('この端末は圧縮形式に対応していません。Chromeを最新版にしてください。');
+ const reader=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip')).getReader(),chunks=[];let len=0;
+ try{while(true){const {value,done}=await reader.read();if(done)break;len+=value.length;if(len>MAX_UNPACK){void reader.cancel();throw Error('展開後の保存データが大きすぎます。')}chunks.push(value)}}finally{try{reader.releaseLock()}catch{}}
+ const res=new Uint8Array(len);let off=0;for(const c of chunks){res.set(c,off);off+=c.length}return res;
+}
+async function generateCode(){
+ if(raced())throw Error('レース終了後に保存データを作成してください。');
+ const payload={format:'OmojiZ-Transfer-v2',createdAt:new Date().toISOString(),data:snapshot()};
+ const raw=enc.encode(JSON.stringify(payload));if(raw.length>MAX_UNPACK)throw Error('保存データが大きすぎます。セーブファイルをご利用ください。');
+ const zipped=await gzip(raw);const code=PREFIX+zipped.flag+'.'+toB64(zipped.bytes);
+ if(code.length>MAX_CODE)throw Error('転送コードが大きすぎます。ファイルの書き出しを使ってください。');
+ set(LSENT,currentRevision());ui();return code;
+}
+function extractCode(input){
+ let x=String(input||'').trim();if(!x)throw Error('引き継ぎコードを貼り付けてください。');
+ if(x.length>MAX_CODE+5000)throw Error('データが長すぎます。');
+ if(/^https?:\/\//i.test(x)){const link=new URL(x);const hash=link.hash.slice(1);if(!hash.startsWith(HEADER))throw Error('このURLには尾文字Zの引き継ぎコードがありません。');x=decodeURIComponent(hash.slice(HEADER.length));}
+ x=x.replace(/\s/g,'');if(!x.startsWith(PREFIX))throw Error('「OMOZ2.」で始まる引き継ぎコードを入力してください。');
+ return x;
+}
+async function decodeCode(input){
+ const c=extractCode(input),a=c.slice(PREFIX.length).split('.');if(a.length!==2||a[1].length>MAX_CODE)throw Error('引き継ぎコードが不正です。');
+ const bytes=fromB64(a[1]);if(bytes.byteLength>MAX_UNPACK)throw Error('保存データが大きすぎます。');
+ const plain=await ungzip(bytes,a[0]),data=parse(dec.decode(plain));
+ if(data?.format!=='OmojiZ-Transfer-v2'||!good(data.data))throw Error('引き継ぎデータが壊れているか、対応外の形式です。');
  return data;
 }
-async function ensurePrivate(){const repo=await api(`https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}`);
- if(repo.private!==true)throw Error('保存先は必ず「Private（非公開）」リポジトリにしてください。公開リポジトリには保存しません。');
- if(repo.archived)throw Error('保存先がアーカイブされています');}
-async function getRemote(){
- try{
-  const r=await api(apiPath());
-  if(typeof r.content!=='string'||typeof r.sha!=='string')throw Error('GitHubのセーブファイルを読み取れません');
-  const contents=decoder.decode(b64ToBytes(r.content));let data=parse(contents);
-  if(!data||data.format!=='OmojiZ-AES-GCM-v1')throw Error('リポジトリのファイルが暗号化セーブ形式ではありません');
-  return {sha:r.sha,data};
- }catch(e){if(e.status===404)return {sha:null,data:null};throw e}
+function describe(data){
+ const p=data.data.profile;const owned=Array.isArray(p.owned)?p.owned.length:0;
+ const coin=Number(p.coins)||0;
+ const story=Object.values(p.storyClears||{}).filter(Boolean).length;
+ const when=Number.isNaN(Date.parse(data.createdAt))?'日時不明':new Date(data.createdAt).toLocaleString('ja-JP');
+ return `作成日時：${when}\n所持金：${coin.toLocaleString('ja-JP')} C / 所有車：${owned} 台 / ストーリー達成：${story} 件\n現在の端末の進行と入れ替える前に確認してください。`;
 }
-async function putRemote(save,sha){
- const sealed=await seal({version:1,modified:new Date().toISOString(),snapshot:save},phrase);
- const file=encoder.encode(JSON.stringify(sealed));
- const b={message:'尾文字Z: encrypted save '+new Date().toISOString(),content:bytesToB64(file)};
- if(sha)b.sha=sha;
- const result=await api(apiPath(),{method:'PUT',body:JSON.stringify(b)});
- if(!result.content?.sha)throw Error('GitHubの保存完了情報がありません');
- return result.content.sha;
+function clearUrlSave(){try{if(location.hash.startsWith('#'+HEADER))history.replaceState(null,'',location.pathname+location.search)}catch{}}
+async function prepare(input){
+ try{if(busy)return;busy=true;mark('引き継ぎデータを検査しています…');pending=await decodeCode(input);
+  const preview=el('omgEasyPreview');if(preview)preview.hidden=false;
+  const d=el('omgEasyPreviewDetails');if(d)d.textContent=describe(pending);
+  mark('✅ 内容を確認できました。よろしければ「このデータを読み込む」を押してください。');open();
+ }catch(e){pending=null;if(el('omgEasyPreview'))el('omgEasyPreview').hidden=true;mark('読み込み準備失敗：'+e.message)}finally{busy=false}
 }
-async function decryptRemote(remote){
- if(!remote?.data)return null;
- const result=await unseal(remote.data,phrase);if(result.version!==1||!good(result.snapshot))throw Error('GitHubに保存された内容が不正です');
- return result.snapshot;
+async function take(){
+ if(!pending){mark('読み込むデータがありません。');return}
+ if(!confirm('この端末の現在のセーブをバックアップし、受け取ったデータへ切り替えますか？\n別端末での進行は自動合算されません。'))return;
+ try{const next=pending.data;apply(next);pending=null;if(el('omgEasyPreview'))el('omgEasyPreview').hidden=true;
+  if(el('omgEasyCodeInput'))el('omgEasyCodeInput').value='';clearUrlSave();
+  mark('✅ 引き継ぎが完了しました。車・所持金・チューニング・ストーリーなどを読み込みました。');
+ }catch(e){mark('引き継ぎに失敗しました：'+e.message)}
 }
-async function rememberToken(){
- const sealed=await seal({token,owner:cfg.owner,repo:cfg.repo,slot:cfg.slot},phrase);
- lsSet(KTOKEN,sealed);
+async function copyText(t){
+ try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(t);return true}}catch{}
+ const input=el('omgEasyCodeInput');if(input){input.value=t;input.focus();input.select();try{if(document.execCommand('copy'))return true}catch{}}
+ return false;
 }
-async function loadToken(){
- let entered=String(el('omgGhToken')?.value||'').trim();if(entered){token=entered;return}
- const saved=parse(lsGet(KTOKEN));if(!saved)throw Error('初回はGitHubのFine-grained tokenを入力してください（スマホでは接続コードを読み込めます）');
- const v=await unseal(saved,phrase);
- if(v.owner!==cfg.owner||v.repo!==cfg.repo||v.slot!==cfg.slot)throw Error('保存された接続設定が異なります。新しいトークンを入力してください');
- token=v.token;
+function makeLink(code){
+ if(!/^https?:$/.test(location.protocol))throw Error('リンクを共有するにはGitHub PagesなどHTTPSで公開してください。ローカルHTMLは「コードをコピー」またはファイル引き継ぎをご利用ください。');
+ const base=location.origin+location.pathname+location.search;
+ return base+'#'+HEADER+encodeURIComponent(code);
 }
-function configForm(){return {owner:String(el('omgGhOwner')?.value||'').trim(),repo:String(el('omgGhRepo')?.value||'').trim(),slot:String(el('omgGhSlot')?.value||'main').trim()||'main'}}
-async function connect(){if(busy)return;if(raced()){mark('レース終了後に接続してください');return}
- busy=true;ui();mark('GitHubへ安全に接続中…');
- try{
-  const next=configForm();validateConfig(next);
-  const p=String(el('omgGhPhrase')?.value||'');if(p.length<12)throw Error('暗号化パスフレーズは12文字以上必要です');
-  if(ready&&(slotId()!==[next.owner,next.repo,next.slot].join(':').toLowerCase()))throw Error('保存先を変える場合は先に「切断」を押してください');
-  cfg=next;phrase=p;await loadToken();await ensurePrivate();
-  if(el('omgGhRemember')?.checked)await rememberToken();else lsDel(KTOKEN);
-  lsSet(KCFG,cfg);if(el('omgGhToken'))el('omgGhToken').value='';if(el('omgGhPhrase'))el('omgGhPhrase').value='';
-  restoreAck();const remote=await getRemote();
-  const local=parse(lsGet(storeKey()));
-  ready=true;blocked=false;latestRemote=null;
-  ECON_KEY=econKey();
-  if(!remote.data){
-   if(good(local))apply(local,{takeBackup:false});else{lsSet(storeKey(),snapshot());storeProgress()}
-   ackSha=null;ackHash='';dirty=true;lastSnapshotText=finger(snapshot());
-   mark('接続しました。GitHubにセーブはまだありません。「GitHubへ初回保存」を押してください。');
-  }else{
-   const cloud=await decryptRemote(remote),cloudHash=finger(cloud);
-   if(good(local)&&ackSha!==remote.sha&&finger(local)!==ackHash){
-    apply(local,{takeBackup:false});blocked=true;latestRemote=remote;dirty=true;
-    mark('⚠️ PC・スマホの進行が食い違っています。残すデータを選択してください。');
-   }else if(good(local)&&ackSha===remote.sha&&finger(local)!==cloudHash){
-    apply(local,{takeBackup:false});dirty=true;saveAck(remote.sha,cloud);lastSnapshotText=finger(local);
-    mark('端末内に未同期の変更があります。「変更をGitHubへ保存」を押してください。');scheduleUpload();
-   }else{
-    apply(cloud);saveAck(remote.sha,cloud);dirty=false;mark('✅ GitHubから最新のセーブを読み込みました。端末間同期が利用可能です。');
-   }
-  }
-  lastSynced=Date.now();ui();
- }catch(e){
-  const hasLocal=cfg.owner&&cfg.repo&&cfg.slot?parse(lsGet(storeKey())):null;
-  if(!ready&&good(hasLocal)){ECON_KEY=econKey();try{apply(hasLocal,{takeBackup:false});ready=true;dirty=true;mark('⚠️ オフラインです。端末内のセーブを読み込みました。接続を回復して同期してください。\n'+e.message)}catch{mark('接続失敗：'+e.message)}}
-  else mark('接続失敗：'+e.message);
- }finally{busy=false;ui()}
+async function send(variant){
+ try{if(busy)return;busy=true;mark('セーブデータをまとめています…');const code=await generateCode();
+  const share=variant==='code'?code:makeLink(code);
+  if(variant==='share'&&navigator.share){await navigator.share({title:'尾文字Zのセーブ引き継ぎ',text:'このリンクを開き、受け取りを確認してください。',url:share});mark('✅ 共有メニューへ引き継ぎリンクを渡しました。');return}
+  const ok=await copyText(share);
+  if(variant==='share'&&!navigator.share)mark(ok?'✅ 共有用リンクをコピーしました。自分宛てに送ってください。':'リンクを下の欄に表示しました。選択してコピーしてください。');
+  else mark(ok?(variant==='code'?'✅ コードをコピーしました。別の端末に貼り付けてください。':'✅ 同期リンクをコピーしました。別端末のChromeで開いてください。'):'コピーを自動実行できませんでした。下の欄から手動コピーしてください。');
+ }catch(e){mark('送信準備に失敗しました：'+e.message)}finally{busy=false}
 }
-async function synchronize({write=false,force=false}={}){
- if(busy||!ready||blocked||!token)return;
- if(raced()){if(write)mark('レース終了後に同期します。');return}
- clearTimeout(uploadTimer);busy=true;ui();
- try{
-  changed();const r=await getRemote();
-  if(r.sha!==ackSha){
-   if(dirty){blocked=true;latestRemote=r;mark('⚠️ 別端末が更新しました。「GitHub版」「この端末版」を選択してください。');ui();return}
-   if(r.data){const save=await decryptRemote(r);apply(save);saveAck(r.sha,save);dirty=false;mark('✅ 別端末の更新を読み込みました。');}
-   else{dirty=true;mark('GitHubに保存がありません。同期ボタンで初回保存します。');}
-  }
-  if(dirty&&(write||force)){
-   const current=snapshot(),fingerprint=finger(current),sha=await putRemote(current,ackSha);
-   saveAck(sha,current);dirty=finger(snapshot())!==fingerprint;
-   lastSnapshotText=finger(snapshot());writeLocal(snapshot());lastSynced=Date.now();
-   mark(dirty?'✅ 保存しましたが、その後の変更が残っています。続けて同期します。':'✅ GitHubに暗号化して保存しました。PCとスマホで同期できます。');
-   if(dirty)scheduleUpload();
-  }else if(!dirty){mark('✅ 最新のセーブと一致しています。 '+new Date().toLocaleTimeString('ja-JP'))}
- }catch(e){
-  if(e.status===409||e.status===422){
-   const newer=await getRemote().catch(()=>null);
-   if(newer&&newer.sha!==ackSha){blocked=true;latestRemote=newer;mark('⚠️ ほかの端末と変更が衝突しました。残すデータを選んでください。')}
-   else mark('GitHubが保存を受け付けませんでした：'+e.message+'\n非公開リポジトリのContents書き込み権限を確認してください。');
-  } else {mark('同期失敗：'+e.message+'\n端末内の進行は残っています。後で再試行してください。')}
- }finally{busy=false;ui()}
+function download(content,name){
+ const url=URL.createObjectURL(new Blob([content],{type:'application/json;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
 }
-async function chooseRemote(){if(!blocked||busy)return;
- busy=true;try{
-  if(!latestRemote?.data)throw Error('GitHub版が存在しません。この端末のデータを選んでください');
-  const cloud=await decryptRemote(latestRemote);
-  if(!confirm('端末内の未同期の進行をバックアップして、GitHub版で置き換えますか？'))return;
-  apply(cloud);saveAck(latestRemote.sha,cloud);dirty=false;blocked=false;mark('✅ GitHub版を採用しました。');
- }catch(e){mark('読み込み失敗：'+e.message)}finally{busy=false;ui()}
-}
-async function chooseLocal(){if(!ready||busy)return;
- if(!confirm('この端末の進行を採用してGitHub版を上書きしますか？（差し替え前のローカル履歴は保存されます）'))return;
- busy=true;try{
-  const current=snapshot();if(latestRemote?.data){try{const old=await decryptRemote(latestRemote);backup(old,'GitHub上書き前の退避')}catch{}}
-  const newSha=await putRemote(current,latestRemote?latestRemote.sha:ackSha);
-  saveAck(newSha,current);dirty=false;blocked=false;latestRemote=null;lastSynced=Date.now();
-  mark('✅ この端末版をGitHubへ保存しました。');
- }catch(e){mark('上書き失敗：'+e.message+'（ほかの端末の更新があれば再接続してください）')}
- finally{busy=false;ui()}
-}
-function disconnect(){
- if(dirty&&!confirm('GitHubへまだ送っていない変更があります。端末内には残して切断しますか？'))return;
- ready=false;blocked=false;token='';phrase='';ackSha=null;ackHash='';latestRemote=null;
- ECON_KEY='tns_economy_v3';dirty=false;clearTimeout(uploadTimer);
- mark('接続を切断しました。端末内セーブは削除していません。');ui();
-}
-function clearSavedToken(){if(!confirm('この端末に暗号化して保存したGitHubトークン・接続先を削除しますか？（クラウドセーブは残ります）'))return;
- disconnect();lsDel(KTOKEN);lsDel(KCFG);cfg={};['omgGhOwner','omgGhRepo','omgGhSlot'].forEach((k,i)=>{if(el(k))el(k).value=i===2?'main':''});mark('接続情報を消去しました。');ui()}
-function copyText(txt){if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(txt);const t=el('omgGhCode');t.value=txt;t.select();document.execCommand('copy');return Promise.resolve()}
-async function makePairCode(){if(!ready||!token||!phrase){mark('先にGitHubへ接続してください');return}
- try{const sealed=await seal({token,owner:cfg.owner,repo:cfg.repo,slot:cfg.slot},phrase);
-  const t={v:1,owner:cfg.owner,repo:cfg.repo,slot:cfg.slot,secret:sealed};
-  const code='OMOZ1.'+bytesToB64(encoder.encode(JSON.stringify(t))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
-  if(el('omgGhCode'))el('omgGhCode').value=code;
-  await copyText(code);mark('📱 接続コードをコピーしました。スマホの同期画面に貼り、同じパスフレーズを入力してください。接続コードとパスフレーズは別々に管理してください。');
- }catch(e){mark('コード作成失敗：'+e.message)}
-}
-function importPairCode(){try{
- const raw=String(el('omgGhCode')?.value||'').trim();if(!raw.startsWith('OMOZ1.'))throw Error('接続コードが正しくありません');
- let txt=raw.slice(6).replace(/-/g,'+').replace(/_/g,'/');while(txt.length%4)txt+='=';
- const d=parse(decoder.decode(b64ToBytes(txt)));if(d?.v!==1||!d.secret||!d.owner||!d.repo)throw Error('接続コードの内容が不正です');
- const next={owner:d.owner,repo:d.repo,slot:d.slot||'main'};validateConfig(next);cfg=next;
- lsSet(KCFG,cfg);lsSet(KTOKEN,d.secret);
- el('omgGhOwner').value=cfg.owner;el('omgGhRepo').value=cfg.repo;el('omgGhSlot').value=cfg.slot;
- if(el('omgGhToken'))el('omgGhToken').value='';
- mark('📱 保存先を設定しました。同じ暗号化パスフレーズを入力して「接続・読み込み」を押してください。');
- }catch(e){mark('接続コード読み込み失敗：'+e.message)}
-}
-function saveBlob(blob,name){const href=URL.createObjectURL(blob),a=document.createElement('a');a.href=href;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(href),2000)}
-async function exportFile(){try{
- const p=phrase||String(el('omgGhPhrase')?.value||'');if(p.length<12)throw Error('12文字以上の暗号化パスフレーズを入力してください');
- const obj=await seal({version:1,modified:new Date().toISOString(),snapshot:snapshot()},p);
- saveBlob(new Blob([JSON.stringify(obj)],{type:'application/json'}),`尾文字Z_暗号化セーブ_${new Date().toISOString().slice(0,10)}.json`);
- mark('✅ 暗号化セーブを出力しました。別端末で読み込めます。');
- }catch(e){mark('ファイル書き出し失敗：'+e.message)}
-}
-async function importFile(file){try{
- if(!file)return;if(raced())throw Error('レース終了後に読み込んでください');
- const p=phrase||String(el('omgGhPhrase')?.value||'');if(p.length<12)throw Error('12文字以上のパスフレーズが必要です');
- if(file.size>3000000)throw Error('ファイルが大きすぎます');
- const contents=parse(await file.text());const obj=await unseal(contents,p);const data=normalize(obj?.snapshot);
- if(!confirm('現在の進行をバックアップしたうえで、ファイルのセーブを読み込みますか？'))return;
- apply(data);dirty=ready;lastSnapshotText=finger(snapshot());writeLocal(data);
- mark('✅ ファイルの進行を読み込みました。GitHub接続中なら「変更をGitHubへ保存」で同期してください。');ui();if(dirty)scheduleUpload();
+async function exportFile(){try{const code=await generateCode();const f={type:'omogiz-transfer-file',version:2,savedAt:new Date().toISOString(),code};download(JSON.stringify(f),`尾文字Z_セーブ_${new Date().toISOString().slice(0,10)}.omoz`);mark('✅ セーブファイルを保存しました。これを別の端末に送ってください。')}catch(e){mark('ファイル保存失敗：'+e.message)}}
+async function importFile(file){
+ if(!file)return;
+ try{if(file.size>MAX_CODE+7000)throw Error('ファイルサイズが大きすぎます。');const raw=await file.text();const obj=parse(raw);if(obj?.type==='omogiz-transfer-file'&&typeof obj.code==='string')await prepare(obj.code);
+  else if(raw.trim().startsWith(PREFIX))await prepare(raw);
+  else if(good(obj)){pending={format:'OmojiZ-Transfer-v2',createdAt:new Date().toISOString(),data:obj};el('omgEasyPreviewDetails').textContent=describe(pending);el('omgEasyPreview').hidden=false;mark('以前の形式のセーブファイルを確認しました。');open();}
+  else throw Error('対応するセーブ形式ではありません。');
  }catch(e){mark('ファイル読み込み失敗：'+e.message)}
 }
-function wire(){
- el('cloudQuickOpen')?.addEventListener('click',show);
- el('omgCloudClose')?.addEventListener('click',hide);
- el('omgCloudModal')?.addEventListener('click',e=>{if(e.target===el('omgCloudModal'))hide()});
- document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
- el('omgGhConnect')?.addEventListener('click',()=>void connect());
- el('omgCloudSync')?.addEventListener('click',()=>void synchronize({write:true,force:true}));
- el('omgGhUseRemote')?.addEventListener('click',()=>void chooseRemote());
- el('omgGhUseLocal')?.addEventListener('click',()=>void chooseLocal());
- el('omgGhDisconnect')?.addEventListener('click',disconnect);
- el('omgGhForget')?.addEventListener('click',clearSavedToken);
- el('omgGhPairCopy')?.addEventListener('click',()=>void makePairCode());
- el('omgGhPairImport')?.addEventListener('click',importPairCode);
- el('omgGhExport')?.addEventListener('click',()=>void exportFile());
- el('omgGhImport')?.addEventListener('change',e=>{void importFile(e.target.files?.[0]);e.target.value='' });
- setInterval(()=>{if(ready&&!busy&&!blocked&&!raced()){changed()}},6000);
- setInterval(()=>{if(ready&&!busy&&!blocked&&!raced()&&document.visibilityState==='visible')void synchronize({write:dirty});},55000);
- window.addEventListener('focus',()=>{if(ready&&!busy&&!blocked&&!raced()){changed();void synchronize({write:dirty})}});
- window.addEventListener('online',()=>{if(ready&&!busy&&!blocked)void synchronize({write:dirty})});
- window.addEventListener('pagehide',()=>{if(ready&&!paused){writeLocal(snapshot())}});
+let legacies=[];
+function findLegacy(){
+ const options=[];try{for(let i=0;i<localStorage.length;i++){
+  const key=localStorage.key(i);if(!key||(!key.startsWith('omogiz_v23_local_')&&!key.startsWith('omogiz_v23_economy_')))continue;
+  const val=parse(get(key));let s=null;
+  if(good(val))s=val;else if(val&&Array.isArray(val.owned))s={schema:1,profile:val,prefs:snapshot().prefs};
+  if(s){options.push({key,data:s});}
+ }}catch(e){mark('以前のデータを探せませんでした：'+e.message);return}
+ legacies=options;const sel=el('omgEasyLegacySelect');if(sel){sel.replaceChildren();if(!options.length){sel.add(new Option('以前の同期データは見つかりませんでした',''));}else options.forEach((x,i)=>sel.add(new Option(`${x.key.slice(0,72)}（${(x.data.profile.owned||[]).length}台）`,String(i))))}
+ mark(options.length?`✅ ${options.length} 件の旧セーブ枠を見つけました。復元する枠を選んでください。`:'以前のGitHub同期データは端末内に見つかりませんでした。');
 }
-function restore(){
- const x=cfg||{};if(el('omgGhOwner'))el('omgGhOwner').value=x.owner||'';
- if(el('omgGhRepo'))el('omgGhRepo').value=x.repo||'omogiz-save-private';
- if(el('omgGhSlot'))el('omgGhSlot').value=x.slot||'main';
- const saved=!!parse(lsGet(KTOKEN));if(el('omgGhToken'))el('omgGhToken').placeholder=saved?'この端末に暗号化したトークン保存済み（空欄でOK）':'Fine-grained PAT（初回のみ）';
- mark('端末内セーブは引き続き利用できます。GitHub同期は初回だけ非公開リポジトリ・トークン・パスフレーズを登録してください。');
- wire();ui();
- const p=el('omgCloudProfileSummary');if(p)p.textContent='端末内保存中 / GitHub接続でPC・スマホ同期';
+function reviewLegacy(){const i=Number(el('omgEasyLegacySelect')?.value);const x=legacies[i];if(!x){mark('旧セーブ枠を選んでください。');return}pending={format:'OmojiZ-Transfer-v2',createdAt:new Date().toISOString(),data:x.data};el('omgEasyPreviewDetails').textContent=describe(pending);el('omgEasyPreview').hidden=false;mark('旧セーブ枠を読み込む準備ができました。内容を確認してください。')}
+function setup(){
+ el('cloudQuickOpen')?.addEventListener('click',open);
+ document.addEventListener('click',e=>{if(e.target.closest?.('#omgShopEasySync'))open()});
+ el('omgCloudClose')?.addEventListener('click',close);
+ el('omgCloudModal')?.addEventListener('click',e=>{if(e.target===el('omgCloudModal'))close()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+ el('omgEasyShareLink')?.addEventListener('click',()=>void send('link'));
+ el('omgEasyCopyCode')?.addEventListener('click',()=>void send('code'));
+ el('omgEasyShareNative')?.addEventListener('click',()=>void send('share'));
+ el('omgEasyPaste')?.addEventListener('click',async()=>{try{if(!navigator.clipboard?.readText)throw Error('貼り付けボタンが使えません。入力欄を長押しして貼り付けてください。');el('omgEasyCodeInput').value=await navigator.clipboard.readText();mark('コードを貼り付けました。「データを確認」を押してください。')}catch(e){mark('自動貼り付けができません。入力欄を長押しして貼り付けてください。')}});
+ el('omgEasyReview')?.addEventListener('click',()=>void prepare(el('omgEasyCodeInput')?.value));
+ el('omgEasyApply')?.addEventListener('click',()=>void take());
+ el('omgEasyCancel')?.addEventListener('click',()=>{pending=null;el('omgEasyPreview').hidden=true;mark('受信を取り消しました。現在のセーブはそのままです。');clearUrlSave()});
+ el('omgEasyExport')?.addEventListener('click',()=>void exportFile());
+ el('omgEasyFileInput')?.addEventListener('change',e=>{void importFile(e.target.files?.[0]);e.target.value=''});
+ el('omgEasyFindLegacy')?.addEventListener('click',findLegacy);
+ el('omgEasyLegacyReview')?.addEventListener('click',reviewLegacy);
+ window.addEventListener('pagehide',()=>{try{storeProgress()}catch{}});
+ ui();mark('💾 セーブデータはこの端末に自動保存中です。別端末に移すときは「引き継ぎリンクをコピー」を使ってください。');
+ if(location.hash.startsWith('#'+HEADER)){
+  const value=location.hash.substring(1+HEADER.length);clearUrlSave();
+  open();el('omgEasyCodeInput').value=value;void prepare(value);
+ }
 }
-window.TNS_SAVE={changed,render:ui,open:show,manual:()=>synchronize({write:true,force:true}),getStatus:()=>({ready,dirty,blocked,owner:cfg.owner||'',repo:cfg.repo||'',slot:cfg.slot||''})};
-// Internal testing hooks were intentionally omitted from the distributed release.
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',restore,{once:true});else restore();
+window.TNS_SAVE={changed,render:ui,open,manual:open,getStatus:()=>({method:'manual-transfer',ready:true,automatic:false,localOnly:true})};
+// Public helpers for controlled regression tests; no credentials or network functionality.
+window.__OMOZ_EASY_SYNC={generateCode,decodeCode,snapshot,apply,prepare,get pending(){return pending},get status(){return lastStatus}};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});else setup();
 })();
 
 </script>
-
 <script id="omogiz-relay-helper-v23">
 /* Optional PC-BAT WSS relay setup. No secret, PAT, or game save is sent to the relay. */
 (()=>{'use strict';
