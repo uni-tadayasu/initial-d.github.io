@@ -595,8 +595,8 @@ body.racing #tachDial{max-height:94px}body.racing #tachGauge .tachFooter{font-si
 @media(max-width:840px){.omzSfxGrid{grid-template-columns:repeat(2,minmax(0,1fr))}#sfxTest{min-height:38px}}
 @media(max-width:470px){.omzSfxPanel{padding:12px}.omzSfxGrid{grid-template-columns:1fr}.omzSfxTop button{width:100%}}
 </style>
-<style id="omz-premium-stripe-style">
-/* Stripe-hosted card checkout, manual receipt fulfilment. */
+<style id="omz-premium-paypay-style">
+/* PayPay merchant checkout, manually confirmed signed entitlement. */
 .omzPremiumNavBtn{border:1px solid #9e783d!important;background:#f6e9ce!important;color:#482f1c!important;font-weight:900!important}
 .omzPremiumInline{display:block;width:100%;margin:10px 0 6px!important;border:1px solid #b99251!important;background:#fff4d9!important;color:#543c22!important;min-height:42px}
 .omzPayCover{position:fixed;inset:0;z-index:2147482000;display:none;overflow:auto;padding:clamp(12px,3.5vw,34px);background:rgba(13,20,18,.86);-webkit-overflow-scrolling:touch;color:#26312e}
@@ -8253,22 +8253,22 @@ body.omz31 #shopModal .shopBody input::placeholder,body.omz31 #garageModal .gara
 })();
 
 </script>
-<div id="omzPremiumModal" class="omzPayCover" role="dialog" aria-modal="true" aria-label="クレジットカード対応プレミアム☆強化" aria-hidden="true">
+<div id="omzPremiumModal" class="omzPayCover" role="dialog" aria-modal="true" aria-label="PayPayオンライン決済対応プレミアム☆強化" aria-hidden="true">
  <div class="omzPayShell">
   <button id="omzPremiumClose" class="omzPayClose" type="button" aria-label="閉じる">×</button>
   <div class="omzPayEyebrow">尾文字Z / SPECIAL EDITION  —  VEHICLE STAR UPGRADE</div>
   <h2>特別☆グレードアップ</h2>
-  <p class="omzPayDescription">車両ごとの☆を最大5まで強化。表示価格は日本円で、ゲーム内コインとは別です。Stripeのカード決済ページで安全にお支払いいただけます。正式な決済リンクが設定されるまでは、お支払いを受け付けません。</p>
+  <p class="omzPayDescription">車両ごとの☆を最大5まで強化。表示価格は日本円で、ゲーム内コインとは別です。PayPay加盟店の正式な決済ページでお支払いいただく予定です。加盟店契約と安全な決済接続が完了するまで、お支払いは受け付けません。</p>
   <div class="omzPayGrid">
    <div class="omzPayCard"><label for="omzPayCar">対象の所有車</label><select id="omzPayCar"></select><div id="omzPayCurrent" class="omzPayProgress" aria-label="現在の星レベル"></div><small>強化は選んだ車両だけに適用されます。</small></div>
    <div class="omzPayCard"><label>料金プランを選択</label><div class="omzPayChoices"><button type="button" id="omzPayStep" class="active">次の☆へ<b>3,000円</b></button><button type="button" id="omzPayBulk">☆5まで一括<b id="omzPayBulkPrice">12,000円</b></button></div><div id="omzPaySummary" class="omzPaySmall"></div></div>
   </div>
-  <div class="omzPayCard"><div class="omzPayEyebrow">ORDER &amp; SECURE CARD CHECKOUT</div><div id="omzPayTotal" class="omzPayPrice">3,000円</div>
-    <div class="omzPayRow"><button id="omzPayNewOrder" type="button" class="omzPayAction primary">注文情報を作成（支払いなし）</button><button id="omzPayCopyOrder" type="button" class="omzPayAction" disabled>申請情報をコピー</button><button id="omzPayCheckout" type="button" class="omzPayAction" disabled>カード決済（準備中）</button></div>
+  <div class="omzPayCard"><div class="omzPayEyebrow">ORDER &amp; PAYPAY MERCHANT CHECKOUT</div><div id="omzPayTotal" class="omzPayPrice">3,000円</div>
+    <div class="omzPayRow"><button id="omzPayNewOrder" type="button" class="omzPayAction primary">注文情報を作成（支払いなし）</button><button id="omzPayCopyOrder" type="button" class="omzPayAction" disabled>申請情報をコピー</button><button id="omzPayCheckout" type="button" class="omzPayAction" disabled>PayPay決済（準備中）</button></div>
     <label for="omzPayRequestCode">注文情報（運営への確認依頼に利用）</label><textarea readonly id="omzPayRequestCode" placeholder="『注文情報を作成』を押すと表示されます"></textarea>
-    <div class="omzPayNote omzPayWarning" id="omzPayMerchantStatus">クレジットカード決済は現在準備中です。正式なStripe決済リンクが設定されるまでお支払いは発生しません。</div>
-     <div class="omzPaySettlementInfo" role="note"><strong>Stripeの安全なカード決済</strong><span>カード番号はStripeの決済ページでのみ入力します。ゲームのHTMLはカード情報も受取銀行口座も収集しません。売上金はStripeで確認済みの事業者用銀行口座へ、所定の入金サイクルで振り込まれます。</span><a href="https://stripe.com/jp/payments/payment-links" target="_blank" rel="noopener noreferrer">Stripe公式：Payment Links</a></div>
-    <p class="omzPaySmall">決済ページから戻るだけでは☆は変わりません。運営者がStripe上でお支払いを確認し、署名付き認証コードを発行します。注文番号は決済時に照合します。 <a href="./payment-info.html" target="_blank" rel="noopener noreferrer">料金・受け取りの説明</a>。<a id="omzPayLegalLink" href="#" target="_blank" rel="noopener noreferrer" hidden>特定商取引法に基づく表記</a></p>
+    <div class="omzPayNote omzPayWarning" id="omzPayMerchantStatus">PayPayオンライン決済は準備中です。正式な加盟店決済が利用可能になるまではお支払いは発生しません。個人間送金では商品代金を受け取りません。</div>
+     <div class="omzPaySettlementInfo" role="note"><strong>PayPayオンライン決済（加盟店契約が必要）</strong><span>支払いはPayPay加盟店として承認された決済画面でのみ行います。ゲームのHTMLにPayPayの加盟店API秘密鍵や受取銀行口座情報を記載しません。</span><a href="https://paypay.ne.jp/store-online/" target="_blank" rel="noopener noreferrer">PayPay公式：オンライン決済</a></div>
+    <p class="omzPaySmall">決済画面から戻るだけでは☆は変わりません。運営者がPayPay加盟店の取引履歴で支払完了と注文番号を確認し、署名付き認証コードを発行します。 <a href="./payment-info.html" target="_blank" rel="noopener noreferrer">料金・受け取りの説明</a>。<a id="omzPayLegalLink" href="#" target="_blank" rel="noopener noreferrer" hidden>特定商取引法に基づく表記</a></p>
   </div>
   <div class="omzPayCard" style="margin-top:12px"><h3>支払い確認済みの☆を受け取る</h3>
     <label for="omzPayRedeemInput">運営から受け取った署名付き認証コード</label><textarea id="omzPayRedeemInput" placeholder="OMZPAY1. で始まるコードを貼り付けてください"></textarea>
@@ -8276,23 +8276,24 @@ body.omz31 #shopModal .shopBody input::placeholder,body.omz31 #garageModal .gara
     <div class="omzPayStatus" id="omzPayStatus" role="status">注文・決済・反映の状況をここに表示します。</div>
     <div class="omzPayHistory" id="omzPayHistory"></div>
   </div>
-  <p class="omzPayLegal omzPaySmall">※販売事業者の表示、購入条件、キャンセル・返金条件、Stripe決済リンクの設定が完了するまでは有料決済を開始できません。<a href="https://www.no-trouble.caa.go.jp/what/mailorder/advertising.php" target="_blank" rel="noopener noreferrer">通信販売の表示義務（消費者庁）</a>。このHTML単体では決済確認の自動化や不正なセーブ改変の完全防止はできません。</p>
+  <p class="omzPayLegal omzPaySmall">※販売事業者の表示、購入条件、キャンセル・返金条件、正式なPayPay加盟店決済接続が完了するまでは有料決済を開始できません。<a href="https://www.no-trouble.caa.go.jp/what/mailorder/advertising.php" target="_blank" rel="noopener noreferrer">通信販売の表示義務（消費者庁）</a>。このHTML単体では決済確認の自動化や不正なセーブ改変の完全防止はできません。</p>
  </div>
 </div>
-<script id="omz-premium-payment-v35">
-/* OMZ PREMIUM STAR CREDIT CARD — official Stripe Payment Links only.
- * IMPORTANT: Payment Links do not prove payment inside static HTML; merchant
- * verifies the Stripe transaction and issues the pre-existing signed redeem code.
- * No card information, account numbers, API secrets or signing keys in this HTML.
+<script id="omz-premium-payment-v37">
+/* OMZ PREMIUM STAR PAYPAY — PayPay merchant checkout integration (disabled by default).
+ * The HTTPS checkout gateway must be operated by an approved merchant/payment provider.
+ * It must create per-order official PayPay checkout via server-held credentials, and verify
+ * paid status server-side. Never include PayPay API secrets, bank details, or personal PayPay IDs here.
+ * Signed entitlement is issued only after merchant payment verification.
  */
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
 const KEY_PUBLIC={"kty":"EC","crv":"P-256","x":"nAK4d_Hkzfo7sfvj8Wiszm4ATzvjfN28txku-sgeC8Q","y":"WgDnmQvRIb-E1BgN9loBThv4gGwGeVhN04d_UhBkFN8","key_ops":["verify"],"ext":true};
 const MERCHANT={
-
- approvedCardCheckout:{3000:'',6000:'',9000:'',12000:''}, // Paste live https://buy.stripe.com/... URLs for each JPY amount.
- legalNoticeUrl:'', // HTTPS link to your completed 特定商取引法に基づく表記 page.
- enabled:false // Set true ONLY after real links, legal disclosures and fulfillment process are ready.
+ paypayCheckoutEndpoint:'', // Approved HTTPS gateway that creates a unique official PayPay checkout for each order. NOT a personal transfer URL.
+ approvedCheckoutHosts:[], // e.g. ['qr.paypay.ne.jp'] plus the actual PSP's approved checkout hostname, not a domain suffix.
+ legalNoticeUrl:'', // HTTPS URL of the completed/real statutory seller disclosure.
+ enabled:false // Enable ONLY after merchant review, gateway setup and actual verification flow are complete.
 };
 const yen=n=>Number(n).toLocaleString('ja-JP')+'円';
 const utf8=s=>new TextEncoder().encode(s);
@@ -8311,15 +8312,27 @@ function userIdentity(){
 }
 function currentCar(){return CARS.find(c=>c.id===carId)}
 function estimate(){const c=currentCar();if(!c||!ownsCar(c.id))return null;const from=carStars(c.id);if(from>=5)return {car:c,from,to:5,amount:0};const to=choice==='bulk'?5:from+1;return {car:c,from,to,amount:(to-from)*3000};}
-function merchantUrl(amount){const url=MERCHANT.approvedCardCheckout[amount],legal=MERCHANT.legalNoticeUrl;
- if(!MERCHANT.enabled||!url||!legal)return '';
+function validPublicHttps(value){
  try{
-   const u=new URL(url),l=new URL(legal);
-   if(u.protocol!=='https:'||l.protocol!=='https:'||u.username||u.password||l.username||l.password)return '';
-   if(u.hostname!=='buy.stripe.com')return '';
-   if(!/^\/[^/]+/.test(u.pathname)||/^(?:localhost|127\.|192\.168\.)/i.test(l.hostname))return '';
-   return u.href;
- }catch{return ''}
+   const u=new URL(value);
+   if(u.protocol!=='https:'||u.username||u.password||u.port||u.hash)return null;
+   const host=u.hostname.toLowerCase();
+   if(host==='localhost'||host.endsWith('.localhost')||host==='example.com'||host.endsWith('.example')||host.endsWith('.local')||/^(?:\d+\.){3}\d+$/.test(host)||host==='[::1]')return null;
+   return u;
+ }catch{return null}
+}
+function merchantUrl(amount){
+ if(![3000,6000,9000,12000].includes(Number(amount))||!MERCHANT.enabled)return '';
+ const u=validPublicHttps(MERCHANT.paypayCheckoutEndpoint),legal=validPublicHttps(MERCHANT.legalNoticeUrl);
+ if(!u||!legal||!Array.isArray(MERCHANT.approvedCheckoutHosts)||!MERCHANT.approvedCheckoutHosts.length)return '';
+ const hosts=MERCHANT.approvedCheckoutHosts.every(h=>typeof h==='string'&&/^(?=.{4,253}$)[a-z0-9-]+(?:\.[a-z0-9-]+)+$/i.test(h)&&!h.endsWith('.example'));
+ return hosts?u.href:'';
+}
+function approvedCheckoutUrl(url){
+ const u=validPublicHttps(url);if(!u)throw Error('決済URLが安全なHTTPS形式ではありません');
+ const host=u.hostname.toLowerCase();
+ if(!MERCHANT.approvedCheckoutHosts.some(h=>host===h.toLowerCase()))throw Error('未承認の決済先ドメインです。運営者へお問い合わせください');
+ return u.href;
 }
 function render(){
  const s=$('omzPayCar');if(!s)return;const owned=CARS.filter(c=>ownsCar(c.id));if(!owned.some(c=>c.id===carId))carId=owned[0]?.id??null;
@@ -8334,8 +8347,8 @@ function render(){
  const checkout=merchantUrl(e.amount);
  const legalLink=$('omzPayLegalLink');if(legalLink){const ok=MERCHANT.enabled&&MERCHANT.legalNoticeUrl&&/^https:\/\//.test(MERCHANT.legalNoticeUrl);legalLink.hidden=!ok;if(ok)legalLink.href=MERCHANT.legalNoticeUrl;}
  $('omzPayCheckout').disabled=!checkout||!lastRequest||!e.amount;
- $('omzPayCheckout').textContent=checkout?'🔒 カード決済へ（Stripe）':'カード決済（準備中）';
- $('omzPayMerchantStatus').textContent=checkout?'Stripeのカード決済画面を開けます。注文情報を保存し、決済完了後は運営者による取引確認と認証コードの発行が必要です。':'Stripe決済リンク・販売事業者情報が未設定です。現在の支払い受付は停止中です。口座振込やカード番号の直接入力は求めません。';
+ $('omzPayCheckout').textContent=checkout?'🔒 カード決済へ（Stripe）':'PayPay決済（準備中）';
+ $('omzPayMerchantStatus').textContent=checkout?'PayPay加盟店の注文別決済ページに進めます。決済完了後も、取引照合と認証コード発行が必要です。':'PayPay加盟店の決済接続・販売事業者情報が未設定です。現在は支払いを受け付けていません。個人間送金や銀行口座への直接送金は行わないでください。';
  const orders=(profile.premiumOrders||[]).slice(-5).reverse();
  $('omzPayHistory').innerHTML=orders.length?'<h3>最近の申請番号</h3>'+orders.map(x=>`<div><span>${escapeValue(x.order)} ／ ${yen(x.amount)} ／ ☆${x.from}→☆${x.to}</span><button type="button" data-premium-order="${escapeValue(x.order)}">コピー</button></div>`).join(''):'';
 }
@@ -8347,7 +8360,7 @@ function open(id){if(typeof started!=='undefined'&&started){notify('レース終
 function close(){$('omzPremiumModal').classList.remove('open');$('omzPremiumModal').setAttribute('aria-hidden','true');}
 async function copy(s){try{await navigator.clipboard.writeText(s);mark('注文情報をコピーしました。')}catch{mark('自動コピーできません。注文欄を長押ししてコピーしてください。')}}
 function createOrder(){const e=estimate();if(!e||!e.amount){mark('☆5にはこれ以上課金できません。');return}
- const req={v:1,order:'OMZ-'+Date.now().toString(36).toUpperCase()+'-'+randomId(8).replace(/[-_]/g,'X').toUpperCase(),uid:userIdentity(),car:e.car.id,from:e.from,to:e.to,amount:e.amount,method:'Stripe-Card',created:new Date().toISOString()};
+ const req={v:1,order:'OMZ-'+Date.now().toString(36).toUpperCase()+'-'+randomId(8).replace(/[-_]/g,'X').toUpperCase(),uid:userIdentity(),car:e.car.id,from:e.from,to:e.to,amount:e.amount,method:'PayPay-Merchant',created:new Date().toISOString()};
  const encoded='OMZREQ1.'+encode64(utf8(JSON.stringify(req)));
  (profile.premiumOrders??=[]).push({...req,request:encoded});profile.premiumOrders=profile.premiumOrders.slice(-40);storeProgress();
  lastRequest=encoded;$('omzPayRequestCode').value=encoded;$('omzPayCopyOrder').disabled=false;
@@ -8385,17 +8398,30 @@ function init(){
  for(const [id,v] of [['omzPayStep','step'],['omzPayBulk','bulk']])$(id).addEventListener('click',()=>{choice=v;lastRequest='';$('omzPayRequestCode').value='';$('omzPayCopyOrder').disabled=true;render()});
  $('omzPayNewOrder').addEventListener('click',createOrder);
  $('omzPayCopyOrder').addEventListener('click',()=>void copy($('omzPayRequestCode').value));
- $('omzPayCheckout').addEventListener('click',()=>{
-  const e=estimate(),base=e&&merchantUrl(e.amount);
-  if(!base||!lastRequest||!lastRequest.startsWith('OMZREQ1.'))return;
-  try{
-   const req=JSON.parse(new TextDecoder().decode(decode64(lastRequest.split('.')[1])));
-   if(req.car!==e.car.id||req.amount!==e.amount||req.from!==e.from||req.to!==e.to||req.method!=='Stripe-Card')throw Error('注文が変更されています。注文情報を作り直してください');
-   const u=new URL(base);u.searchParams.set('client_reference_id',req.order);
-   window.open(u.href,'_blank','noopener,noreferrer');
-   mark('Stripeの決済ページを別タブで開く操作を行いました。表示されない場合はChromeのポップアップ設定をご確認ください。');
-  }catch(err){mark('決済画面を開けません：'+err.message)}
- });
+  $('omzPayCheckout').addEventListener('click',async()=>{
+   const e=estimate(),endpoint=e&&merchantUrl(e.amount);
+   if(!endpoint||!lastRequest||!lastRequest.startsWith('OMZREQ1.'))return;
+   const btn=$('omzPayCheckout');btn.disabled=true;btn.textContent='PayPay決済を準備中…';
+   try{
+    const req=JSON.parse(new TextDecoder().decode(decode64(lastRequest.split('.')[1])));
+    if(req.car!==e.car.id||req.amount!==e.amount||req.from!==e.from||req.to!==e.to||req.method!=='PayPay-Merchant')throw Error('注文が変更されています。注文情報を作り直してください');
+    if(!profile.premiumOrders?.some(o=>o.order===req.order&&o.amount===req.amount))throw Error('保存済み注文がありません');
+    const returnUrl=location.protocol==='https:'?location.origin+location.pathname:'';
+    mark('加盟店の安全な決済接続先へ注文番号を送信しています。');
+    // The gateway (NOT this untrusted HTML) must authenticate the merchant,
+    // validate amount/order, create official PayPay checkout and verify the transaction.
+    const response=await fetch(endpoint,{method:'POST',mode:'cors',credentials:'omit',cache:'no-store',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify({v:1,merchantPaymentId:req.order,orderId:req.order,
+      customerRef:req.uid,carId:req.car,from:req.from,to:req.to,amount:req.amount,currency:'JPY',
+      method:'PayPay',returnUrl})});
+    if(!response.ok)throw Error('加盟店の決済サーバーが受付できませんでした（HTTP '+response.status+'）');
+    const data=await response.json();
+    if((data.merchantPaymentId||data.orderId)!==req.order||Number(data.amount)!==req.amount||data.currency!=='JPY')throw Error('決済サーバーの注文番号または金額が一致しません');
+    const checkout=approvedCheckoutUrl(data.paymentUrl||data.checkoutUrl);
+    storeProgress();mark('PayPay加盟店決済ページへ移動します。戻っただけでは☆は付与されません。');
+    location.assign(checkout);
+   }catch(err){mark('決済を開始できません：'+(err?.message||String(err))+'。支払いや送金は行わず運営者へ確認してください。');render();}
+  });
  $('omzPayRedeem').addEventListener('click',()=>void redeem());
  $('omzPayHistory').addEventListener('click',e=>{const order=e.target.closest?.('[data-premium-order]')?.dataset?.premiumOrder;const x=profile.premiumOrders?.find(x=>x.order===order);if(x)void copy(x.request)});
 }
