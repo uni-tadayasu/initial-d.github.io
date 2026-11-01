@@ -1,0 +1,63 @@
+{
+  "project": "尾文字Z",
+  "version": "V36",
+  "release_date": "2026-11-01",
+  "description": "SEO + Stripe payment-link readiness (no live checkout until operator configuration)",
+  "public_files": [
+    {
+      "name": ".nojekyll",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "name": "README_はじめに.txt",
+      "sha256": "598086ab6e1302d8fbff1f6d0e4e6be415835fa2a7989e53997378d761911b90",
+      "size": 2180
+    },
+    {
+      "name": "about.html",
+      "sha256": "7682265fbba8c10591aa5052d428d73462ed5777b30ad2c0037d8fdd4dc97ee8",
+      "size": 9110
+    },
+    {
+      "name": "cars.html",
+      "sha256": "6138206c8a408b1396129861434e28627f011ac1cb0a5b03d7a7bd1e864694f4",
+      "size": 8855
+    },
+    {
+      "name": "how-to-play.html",
+      "sha256": "2df72f91ab6198313ffc05c02d705cd137602ddbd5ae621c42a92e58175822ff",
+      "size": 9494
+    },
+    {
+      "name": "index.html",
+      "sha256": "53fb37b2df4c887766b0e59688bd18fa25e72d46230fa2f9eaca14187a68bfd3",
+      "size": 4081378
+    },
+    {
+      "name": "og-image.jpg",
+      "sha256": "f99a09c4e362db73bc92b1d4c1e876386f763e8dafae010831553f25ec96604a",
+      "size": 108312
+    },
+    {
+      "name": "payment-info.html",
+      "sha256": "ac409107cbf67da519aae9150dadafdcbc94a21edb3eb03191f0e10eb5a7e64a",
+      "size": 5704
+    },
+    {
+      "name": "robots.txt",
+      "sha256": "2e854a87e88d179bbf639549fc8a5522c17ff948c3c0a489808bd83a2672a288",
+      "size": 154
+    },
+    {
+      "name": "site-icon.png",
+      "sha256": "7ef23fb6aac6aa77a90036841f504c0e80fdc155b16afbd85ab17018814f3b9d",
+      "size": 6693
+    },
+    {
+      "name": "sitemap.xml",
+      "sha256": "8091685023f696af2ff2e7c9ebda60c422371640e54febd1ba9f4bd6aa67985b",
+      "size": 687
+    }
+  ]
+}

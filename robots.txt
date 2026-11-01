@@ -1,0 +1,5 @@
+# 尾文字Z 公開コンテンツ用
+User-agent: *
+Allow: /initial-d.github.io/
+
+Sitemap: https://uni-tadayasu.github.io/initial-d.github.io/sitemap.xml
