@@ -1,0 +1,17 @@
+# OMOJI Z V46 material palette
+newmtl GOLD_FOIL
+Ka 0.03 0.03 0.03
+Kd 0.96863 0.83922 0.48235
+Ks 0.72750 0.72750 0.72750
+Ns 679
+d 1.00
+illum 2
+
+newmtl IVORY
+Ka 0.03 0.03 0.03
+Kd 0.94902 0.90588 0.79216
+Ks 0.60000 0.60000 0.60000
+Ns 560
+d 1.00
+illum 2
+

@@ -1,14 +1,14 @@
 {
-  "version": 43,
+  "version": 46,
   "updatedAt": "2026-11-01",
   "site": {
     "name": "尾文字Z",
     "title": "尾文字Z｜峠レース・車カスタム・オンライン対戦",
-    "description": "尾文字ZはPC・スマホのブラウザで遊べる峠レースゲーム。144台の車両、769コース、チューニング、メタル通貨、S・A・B・Cランク車両ガチャなどを楽しもう。",
+    "description": "尾文字ZはPC・スマホのブラウザで遊べる峠レースゲーム。3,000台（既存144台＋オリジナル2,856台）の車両、769コース、チューニング、メタル通貨、S・A・B・Cランク車両ガチャなどを楽しもう。",
     "url": "https://uni-tadayasu.github.io/initial-d.github.io/",
     "heroTitle": "尾文字Z",
     "heroSub": "愛車と走る、無数の峠。",
-    "announcement": "新通貨メタル・車両ガチャ・ランク別解放を追加しました。レース、デイリー、実績でも無料獲得できます。",
+    "announcement": "NEW：3,000台コレクション＆高精度ブラック・マリア・イエロービートルのOBJを公開。世界限定1台の在庫管理は各車継続。",
     "noticeLevel": "info",
     "contactEmail": "",
     "xUrl": "",
@@ -18,6 +18,26 @@
     "footer": "尾文字Z — ブラウザで走る、オリジナル峠レーシングゲーム。"
   },
   "news": [
+    {
+      "id": "v46-cars3000-and-obj",
+      "type": "大型アップデート",
+      "title": "車両3,000台・限定モデルOBJを高精度リニューアル",
+      "date": "2026-11-01",
+      "body": "既存144台を保持し、オリジナル架空車両2,856台を追加。ガレージはページ式に刷新。世界限定1台のブラック・マリアとイエロービートルも車体・ドレスの高密度3Dモデルへアップデートしました。",
+      "link": "./catalog.html",
+      "pinned": true,
+      "visible": true
+    },
+    {
+      "id": "v45-exclusive-twins",
+      "type": "新機能",
+      "title": "世界限定1台のブラック・マリア＆イエロービートル",
+      "date": "2026-11-01",
+      "body": "ブラック・マリア NOIR とイエロービートル SUNBURST に、それぞれ世界限定1台の専用ボディ・専用ドレスを実装。メタル購入申請後、運営者承認と署名付き認証コードで利用できます。",
+      "link": "./limited-models.html",
+      "pinned": true,
+      "visible": true
+    },
     {
       "id": "v43-metal-gacha",
       "type": "新機能",
@@ -78,6 +98,10 @@
     {
       "label": "車両図鑑",
       "url": "./cars.html"
+    },
+    {
+      "label": "世界限定車両",
+      "url": "./limited-models.html"
     },
     {
       "label": "コース",

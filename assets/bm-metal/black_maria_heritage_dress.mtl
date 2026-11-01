@@ -1,0 +1,17 @@
+# OMOJI Z V46 material palette
+newmtl BRIGHT_CHROME
+Ka 0.03 0.03 0.03
+Kd 0.77255 0.82353 0.86275
+Ks 0.72750 0.72750 0.72750
+Ns 679
+d 1.00
+illum 2
+
+newmtl STEEL
+Ka 0.03 0.03 0.03
+Kd 0.58431 0.62353 0.66667
+Ks 0.65250 0.65250 0.65250
+Ns 609
+d 1.00
+illum 2
+

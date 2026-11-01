@@ -1,0 +1,45 @@
+/* 尾文字Z V45: BLACK MARIA & YELLOW BEETLE, independent world-one-of-one models */
+.omzLimitedBanners{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 18px}
+.omzLimitedBanner{border:1px solid #927eb0;border-radius:12px;padding:14px;background:linear-gradient(120deg,#231629,#1b2642);display:flex;gap:15px;justify-content:space-between;align-items:center;box-shadow:0 8px 30px #0003;min-width:0;color:#ecdfef}
+.omzLimitedBanner.gold{border-color:#dcb565;background:linear-gradient(120deg,#342615,#192d36);color:#ffedb8}
+.omzLimitedBanner>div:first-child{display:grid;gap:4px;min-width:0}.omzLimitedBanner small{font-size:9px;color:#b9b2cb;letter-spacing:.13em}
+.omzLimitedBanner.gold small{color:#e3cf97}.omzLimitedBanner b{font-size:14px;line-height:1.5}.omzLimitedBanner span{font-size:10px;color:#adbec8}
+.omzLimitedAction{display:flex;flex-direction:column;gap:8px;align-items:center;flex:none}.omzLimitedAction strong{font-size:10px;color:#ffdfa6}
+.omzLimitedBanner button,.omzLimitedGarageBadge button{border:1px solid #ffdea1;border-radius:7px;background:#d8a361;color:#191d27;font-size:11px;font-weight:900;cursor:pointer;padding:9px 11px;touch-action:manipulation}
+.omzLimitedBanner.gold button{background:#f7c84f;color:#2f2814}
+#omzLimitedCover{position:fixed;inset:0;z-index:2147483600;background:rgba(3,8,15,.91);display:none;align-items:center;justify-content:center;overflow:auto;padding:clamp(5px,2vw,16px);overscroll-behavior:contain}
+#omzLimitedCover.open{display:flex}#omzLimitedCover *{box-sizing:border-box}
+#omzLimitedShell{width:min(1100px,100%);max-height:96dvh;overflow:auto;background:linear-gradient(145deg,#0b1424,#201729 70%);border:1px solid #c19b77;border-radius:14px;padding:clamp(11px,2.3vw,24px);box-shadow:0 20px 90px #000c;color:#f2ebdf;font-family:system-ui,"Yu Gothic",sans-serif}
+#omzLimitedShell[data-theme=gold]{background:linear-gradient(145deg,#151b25,#302615 80%);border-color:#d3b454}
+.omzLimitedHead{display:flex;justify-content:space-between;align-items:center;gap:10px}.omzLimitedHead small{color:#abcdd3;font-size:10px;font-weight:800;letter-spacing:.12em}
+.omzLimitedHead h2{color:#f9dcaa;margin:6px 0 10px;font-size:clamp(19px,3.7vw,34px);line-height:1.3}
+.omzLimitedHead button{font-size:24px;background:#292f3f;border:1px solid #b7bac0;border-radius:8px;width:42px;height:42px;color:white;flex:none;cursor:pointer}
+#omzLimitedTabs{display:flex;gap:8px;flex-wrap:wrap;margin:3px 0 12px}#omzLimitedTabs button{flex:1;min-width:145px;padding:11px;font-size:12px;border:1px solid #657485;border-radius:8px;background:#1d2938;color:#c9d4df;cursor:pointer;font-weight:900}
+#omzLimitedTabs button.selected{background:#b78c52;border-color:#ffe1a1;color:#151b25}
+.omzLimitedCols{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.85fr);gap:13px}
+.omzLimitedStage{border:1px solid #ffffff36;border-radius:10px;overflow:hidden;background:#0b1424}
+#omzLimitedCanvas{display:block;width:100%;height:auto;max-height:380px;aspect-ratio:1.77;touch-action:none;cursor:grab}
+.omzLimitedStage small{display:block;padding:9px 11px;font-size:10px;color:#b4c8d7;line-height:1.6}
+.omzLimitedDresses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:10px 0}
+.omzLimitedDresses button{background:#19283b;border:1px solid #ffffff40;border-radius:8px;padding:6px;color:#f4f2e9;cursor:pointer;display:flex;flex-direction:column;gap:4px;font-size:10px;text-align:center;min-width:0}
+.omzLimitedDresses button.selected{border-color:#f0c57b;background:#4b3c32}
+.omzLimitedDresses img{width:100%;aspect-ratio:1.64;object-fit:cover;border-radius:5px}
+.omzLimitedDresses small{color:#dccda6}
+.omzLimitedImportant{background:#3d2c2982;border-left:4px solid #d9a25e;padding:11px;border-radius:6px;font-size:11px;line-height:1.8;color:#e8d7c1}
+.omzLimitedCheckout{padding:14px;border:1px solid #ffffff2b;border-radius:11px;background:#101d2ce0;min-width:0}
+.omzLimitedCheckout p,.omzLimitedCheckout label{font-size:11px;color:#bacbd8;line-height:1.8;overflow-wrap:anywhere}
+.omzLimitedCheckout h3{font-size:14px;margin:16px 0 6px;color:#ffe1a5}
+.omzLimitedCheckout b,.omzLimitedCheckout strong{color:#ffdf9d}
+.omzLimitedCheckout code{font-size:10px;color:#a8e7dc;overflow-wrap:anywhere}
+.omzLimitedCheckout button{padding:9px 11px;border:1px solid #8399a7;border-radius:7px;font-size:11px;font-weight:900;color:#e6f2f7;background:#243a4b;cursor:pointer}
+.omzLimitedCheckout button.omzLimitedGold{background:#e3b267;color:#1b2532;border-color:#ffda8e}
+.omzLimitedCheckout button:disabled{opacity:.45;cursor:not-allowed}
+.omzLimitedCheckout textarea{display:block;width:100%;min-height:80px;resize:vertical;margin:7px 0 9px;background:#091424;border:1px solid #8397ab;border-radius:7px;padding:10px;color:white;user-select:text!important;-webkit-user-select:text!important;touch-action:manipulation}
+.omzLimitedRow{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.omzLimitedRow button{flex:1;min-width:130px}
+.omzLimitedMeta{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;margin-bottom:7px}.omzLimitedMeta strong{background:#1e3142;border:1px solid #677b8e;padding:7px;border-radius:6px;font-size:11px}
+.omzLimitedStatus{min-height:38px;color:#f0e2c8!important;white-space:pre-wrap;border-left:4px solid #e1b675;background:#d8b16913;padding:11px;line-height:1.7!important;margin-top:15px}
+.omzLimitedOwner{margin-top:15px;padding:10px;border:1px solid #e2c18194;border-radius:9px}
+.omzLimitedGarageBadge{padding:10px;border:1px solid #d5b575;border-radius:9px;background:#54422320;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px;margin:9px 0}
+.omzLimitedGarageBadge b{font-size:11px;color:#f9e0a7}
+@media(max-width:850px){.omzLimitedBanners{grid-template-columns:1fr}.omzLimitedCols{grid-template-columns:1fr}.omzLimitedDresses{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:560px){.omzLimitedCols{gap:8px}.omzLimitedDresses{grid-template-columns:repeat(2,minmax(0,1fr))}.omzLimitedBanner{padding:11px;gap:8px}.omzLimitedBanner b{font-size:12px}.omzLimitedAction{gap:4px}.omzLimitedAction button{padding:8px}.omzLimitedCheckout{padding:10px}#omzLimitedShell{max-height:97dvh}}

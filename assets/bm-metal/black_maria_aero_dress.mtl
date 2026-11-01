@@ -1,0 +1,17 @@
+# OMOJI Z V46 material palette
+newmtl CARBON
+Ka 0.03 0.03 0.03
+Kd 0.14510 0.16471 0.18824
+Ks 0.46500 0.46500 0.46500
+Ns 434
+d 1.00
+illum 2
+
+newmtl PURPLE_ACCENT
+Ka 0.03 0.03 0.03
+Kd 0.39608 0.24706 0.75294
+Ks 0.61500 0.61500 0.61500
+Ns 574
+d 1.00
+illum 2
+
