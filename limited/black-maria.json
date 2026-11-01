@@ -2,7 +2,7 @@
   "schema": 1,
   "sku": "BM-NOIR-ONE-001",
   "name": "ブラック・マリア / ONE OF ONE",
-  "status": "available",
+  "status": "sold",
   "total": 1,
   "priceMetal": 12000,
   "salesEmail": "hisashi0128.k@gmail.com",
@@ -12,10 +12,10 @@
     "x": "oIIsk2yqrrZdVWYssAmkWDDIiGYnjeXhcms0b3XHP8g",
     "y": "7wybDG35jBzJ5mIBnR2Eps3_TejaHmzhN6DhwxXgZJ0"
   },
-  "saleId": null,
-  "ownerHash": null,
-  "ownerDisplay": null,
-  "soldAt": null,
-  "updatedAt": "2026-11-01T13:56:01.800Z",
-  "notice": "世界限定1台・運営者承認制。初期状態は申請受付停止。"
+  "saleId": "SALE-E84159090942EA79001BB377",
+  "ownerHash": "txxD3Bp1pzuiHa4LkR8LvhPBJXuyTQd1M73BL28mFa0",
+  "ownerDisplay": "EXCLUSIVE OWNER #001",
+  "soldAt": "2026-11-01T13:56:15.971Z",
+  "updatedAt": "2026-11-01T13:56:16.350Z",
+  "notice": "世界限定1台は完売しました。"
 }
