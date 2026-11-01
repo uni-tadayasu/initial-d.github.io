@@ -1,0 +1,99 @@
+{
+  "version": 42,
+  "updatedAt": "2026-11-01",
+  "site": {
+    "name": "尾文字Z",
+    "title": "尾文字Z｜峠レース・車カスタム・オンライン対戦",
+    "description": "尾文字ZはPC・スマホのブラウザで無料で楽しめる峠レースゲーム。車両カスタム、ドレスアップ、チューニング、コース選択、ストーリー、オンライン対戦を収録。",
+    "url": "https://uni-tadayasu.github.io/initial-d.github.io/",
+    "heroTitle": "尾文字Z",
+    "heroSub": "愛車と走る、無数の峠。",
+    "announcement": "最新ニュース・更新情報を公開しています。",
+    "noticeLevel": "info",
+    "contactEmail": "",
+    "xUrl": "",
+    "youtubeUrl": "",
+    "discordUrl": "",
+    "shopNotice": "有料☆強化は日本郵便の代金引換方式です。設定完了後に注文受付を開始します。",
+    "footer": "尾文字Z — ブラウザで走る、オリジナル峠レーシングゲーム。"
+  },
+  "news": [
+    {
+      "id": "v42-site-update",
+      "type": "更新",
+      "title": "サイト表示と操作画面の調整",
+      "date": "2026-11-01",
+      "body": "スマートフォン表示、画面のスクロール、各種メニューの使いやすさを見直しました。",
+      "link": "./how-to-play.html",
+      "pinned": true,
+      "visible": true
+    },
+    {
+      "id": "cod-guidance",
+      "type": "お知らせ",
+      "title": "郵便局代金引換についてのご案内",
+      "date": "2026-11-01",
+      "body": "有料強化の注文方法、配送後の認証コード受け取りの流れを案内しています。注文受付は運営者による設定完了後に開始します。",
+      "link": "./shop-guide.html",
+      "pinned": false,
+      "visible": true
+    },
+    {
+      "id": "race-guide",
+      "type": "ガイド",
+      "title": "初めてプレイする方へ",
+      "date": "2026-11-01",
+      "body": "車の操作方法、走行設定、セーブデータの引き継ぎ方法をまとめました。",
+      "link": "./how-to-play.html",
+      "pinned": false,
+      "visible": true
+    },
+    {
+      "id": "tuning-information",
+      "type": "機能",
+      "title": "車両カスタムとチューニング",
+      "date": "2026-11-01",
+      "body": "車の購入、エンジン載せ替え、ドレスアップなど、ゲーム内の機能を紹介しています。",
+      "link": "./cars.html",
+      "pinned": false,
+      "visible": true
+    }
+  ],
+  "events": [],
+  "links": [
+    {
+      "label": "遊び方",
+      "url": "./how-to-play.html"
+    },
+    {
+      "label": "車両図鑑",
+      "url": "./cars.html"
+    },
+    {
+      "label": "コース",
+      "url": "./courses.html"
+    },
+    {
+      "label": "ショップ・代引",
+      "url": "./shop-guide.html"
+    },
+    {
+      "label": "よくある質問",
+      "url": "./faq.html"
+    }
+  ],
+  "faq": [
+    {
+      "q": "会員登録は必要ですか？",
+      "a": "基本的なゲームプレイにアカウント登録は必要ありません。"
+    },
+    {
+      "q": "セーブデータはどこに保存されますか？",
+      "a": "ブラウザ内に保存されます。端末のデータ消去に備えて、ゲーム内のバックアップ機能を利用してください。"
+    },
+    {
+      "q": "有料☆強化はすぐ反映されますか？",
+      "a": "代金引換で郵便物を受け取り、運営者が配達と代金回収を確認した後に発行する認証コードで反映します。"
+    }
+  ]
+}
