@@ -5,12 +5,17 @@
   "status": "paused",
   "total": 1,
   "priceMetal": 12000,
-  "salesEmail": "",
-  "publicKey": null,
+  "salesEmail": "hisashi0128.k@gmail.com",
+  "publicKey": {
+    "crv": "P-256",
+    "kty": "EC",
+    "x": "oIIsk2yqrrZdVWYssAmkWDDIiGYnjeXhcms0b3XHP8g",
+    "y": "7wybDG35jBzJ5mIBnR2Eps3_TejaHmzhN6DhwxXgZJ0"
+  },
   "saleId": null,
   "ownerHash": null,
   "ownerDisplay": null,
   "soldAt": null,
-  "updatedAt": "2026-11-01T13:08:22.868Z",
+  "updatedAt": "2026-11-01T13:09:29.874Z",
   "notice": "世界限定1台・運営者承認制。初期状態は申請受付停止。"
 }
